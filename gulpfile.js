@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const gulpUtil = require('gulp-util');
 const Promise = require('bluebird');
 const environment = require('gulp-env');
 const User = require('./api/models/user').User;
