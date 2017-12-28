@@ -3,6 +3,8 @@ const db = require('../config/database');
 const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 const User = require('../models/user').User;
+const jwt = require('jsonwebtoken');
+
 
 const signup = async (req, res) => {
   try {
@@ -17,12 +19,17 @@ const signup = async (req, res) => {
       res.status(409).send({ errorMessage: message });
     } else {
       password = hash;
-      const newUser = await User.create({ username, email, password });
-      res.status(201).send(newUser);
+      const user = await User.create({ username, email, password });
+      const payload = {
+        username: user.username,
+      };
+
+      const token = jwt.sign(payload, process.env.jwtSecret);
+      res.status(201).json({ token, user });
     }
   } catch(e) {
     console.log(e);
-    res.status(422).send({ errorMessage: e.message });
+    res.status(422).json({ errorMessage: e.message });
   }
 };
 
@@ -34,10 +41,16 @@ const login = async (req, res) => {
     const user = await User.findOne({ where: { username, email } });
     const data = await bcrypt.compare(password, user.password);
     console.log("User logged in");
-    res.status(200).send(user);
+
+    const payload = {
+      username: user.username
+    };
+
+    const token = jwt.sign(payload, process.env.jwtSecret);
+    res.status(200).json({ token, user });
   } catch(e) {
     console.log(e.message);
-    res.status(422).send({ errorMessage: e.message });
+    res.status(422).json({ errorMessage: e.message });
   }
 };
 

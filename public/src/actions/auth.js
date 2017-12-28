@@ -6,7 +6,20 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const GRAB_ALL_TOPICS_FAILURE = "GRAB_ALL_TOPICS_FAILURE";
+export const GRAB_ALL_TOPICS = "GRAB_ALL_TOPICS";
+export const GRAB_ALL_TOPICS_REQUEST = "GRAB_ALL_TOPICS_REQUEST";
 
+
+const clearLogin = () => ({
+  type: "CLEAR_LOGIN",
+  password: ''
+});
+
+const clearSignup = () => ({
+  type: "CLEAR_LOGIN",
+  password: ''
+});
 
 const requestLogin = user => ({
   type: 'LOGIN_REQUEST',
@@ -16,6 +29,7 @@ const requestLogin = user => ({
   user,
   email: '',
   id: 0,
+  topics: [],
 });
 
 
@@ -27,6 +41,7 @@ const receiveLogin = info => ({
   user: info.user,
   email: info.email,
   id: info.id,
+  topics: [],
 });
 
 
@@ -38,6 +53,7 @@ const loginError = message => ({
   user: undefined,
   email: '',
   id: 0,
+  topics: [],
 });
 
 
@@ -49,6 +65,7 @@ const requestLogout = () => ({
   user: undefined,
   email: '',
   id: 0,
+  topics: [],
 });
 
 
@@ -60,7 +77,50 @@ const receiveLogout = () => ({
   user: undefined,
   email: '',
   id: 0,
+  topics: [],
 });
+
+const failedToGrabAllTopics = () => ({
+  type: "GRAB_ALL_TOPICS_FAILURE",
+  isFetching: false,
+  topics: [],
+});
+
+const grabAllTopicsRequest = () => ({
+  type: "GRAB_ALL_TOPICS_REQUEST",
+  isFetching: true,
+})
+
+const grabAllTopicsSuccess = (topics) => ({
+  type: "GRAB_ALL_TOPICS",
+  topics,
+});
+
+
+const grabAllTopics = () => {
+  return (dispatch) => {
+    dispatch(grabAllTopicsRequest());
+
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Verified": token,
+        "Content-Type": "application/json",
+      }
+    };
+
+    return axios.get("api/topics", "", config)
+      .then(response => {
+        if(response.data.topics.length < 1) {
+          dispatch(failedToGrabAllTopics());
+          return Promise.reject(response);
+        }
+
+        dispatch(grabAllTopicsSuccess(response.data.topics));
+      })
+      .catch(err => console.log("ERROR GRABBING ALL TOPICS: ", err));
+  }
+};
 
 
 const loginUser = (creds, history) => {
@@ -72,21 +132,24 @@ const loginUser = (creds, history) => {
 
   return (dispatch) => {
     dispatch(requestLogin(creds.username));
-    console.log("CREDS ARE: ", creds);
     return axios.post(`/api/login`, axiosBod)
       .then(response => {
-        if(!response.data.email){
+        if(!response.data.token){
           dispatch(loginError('Bad Request...'));
           return Promise.reject(response);
         }
 
-        localStorage.setItem('token', "true");
-        const user = response.data.username;
-        const email = response.data.email;
-        const id = reponse.data.id;
+        dispatch(clearLogin());
+        dispatch(clearSignup());
 
+        localStorage.setItem('token', response.data.token);
+        const user = response.data.user.username;
+        const email = response.data.user.email;
+        const id = response.data.user.id;
+
+        grabAllTopics();
         dispatch(receiveLogin({ user, email, id }));
-        history.push("/");
+        history.push('/');
       })
       .catch(err => {
         console.log('Error: ', err);
@@ -107,19 +170,22 @@ const signupUser = (creds, history) => {
     return axios.post('/api/signup', axiosBod)
       .then(response => {
         console.log("YOOO: ", response);
-        if (!response.data.email) {
+        if (!response.data.token) {
           dispatch(loginError('Bad Request...'));
           return Promise.reject(response);
         }
 
-        localStorage.setItem('token', "true");
+        dispatch(clearLogin());
+        dispatch(clearSignup());
 
-        const user = response.data.username;
-        const email = response.data.email;
-        const id = response.data.id;
+        localStorage.setItem('token', response.data.token);
+        const user = response.data.user.username;
+        const email = response.data.user.email;
+        const id = response.data.user.id;
 
+        grabAllTopics();
         dispatch(receiveLogin({ user, email, id }));
-        history.push("/");
+        history.push('/');
       })
       .catch(err => {
         console.log("Error: ", err);
@@ -136,4 +202,4 @@ const logoutUser = (history) => (dispatch) => {
 };
 
 
-export { logoutUser, signupUser, loginUser };
+export { logoutUser, signupUser, loginUser, grabAllTopics };

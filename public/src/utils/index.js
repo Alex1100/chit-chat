@@ -38,3 +38,8 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true }, (stream) => {
 }, (err) => {
   console.error(err);
 });
+
+
+
+export const emailRegX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+

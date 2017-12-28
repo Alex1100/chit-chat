@@ -1,6 +1,7 @@
 export const UPDATE_USERNAME_INPUT = "UPDATE_USERNAME_INPUT";
 export const UPDATE_EMAIL_INPUT = "UPDATE_EMAIL_INPUT";
 export const UPDATE_PASSWORD_INPUT = "UPDATE_PASSWORD_INPUT";
+export const CLEAR_LOGIN = "CLEAR_LOGIN";
 
 const updateUsername = (usr) => ({
   type: "UPDATE_USERNAME_INPUT",

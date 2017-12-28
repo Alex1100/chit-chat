@@ -14,6 +14,7 @@ class VideoChatBox extends Component {
   }
 
   componentDidMount() {
+    navigator.getUserMedia =  (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
     navigator.getUserMedia({ video: true, audio: true }, (stream) => {
       const peer = new Peer({
         initiator: location.hash === "#init",
@@ -22,6 +23,14 @@ class VideoChatBox extends Component {
       });
 
       console.log("Peer is: ", peer);
+      peer.on("call", (call) => {
+        console.log("CALL IS: ", call);
+        peer.answer(stream);
+      })
+
+      peer.on('stream', (stream) => {
+        this.playStream(stream);
+      });
 
       peer.on('signal', (data) => {
         this.signalPeer(data);
@@ -32,27 +41,21 @@ class VideoChatBox extends Component {
       });
 
       document.getElementById('send').addEventListener('click', () => {
-        this.sendMessage();
+        this.sendMessage(peer);
       });
 
       peer.on('data', (data) => {
         this.receivedData(data);
       });
 
-      peer.on('stream', (stream) => {
-        console.log("GOT THE STREAM: ", stream);
-        const video = document.createElement('video');
-        document.body.appendChild(video);
 
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-      });
     }, (err) => {
       console.error(err);
     });
   }
 
   signalPeer(data) {
+    console.log("SIGNAL SENT: ", data);
     document.getElementById('yourId').value = JSON.stringify(data);
   }
 
@@ -62,19 +65,20 @@ class VideoChatBox extends Component {
     this.signalPeer(otherId);
   }
 
-  sendMessage() {
+  sendMessage(peer) {
     const yourMessage = document.getElementById('yourMessage').value;
     peer.send(yourMessage);
   }
 
   receivedData(data) {
+    console.log("GOT THE DATA: ", data);
     document.getElementById('messages').textContent += data + "\n";
   }
 
   playStream(stream) {
     console.log("GOT THE STREAM: ", stream);
     const video = document.createElement('video');
-    document.body.appendChild(video);
+    document.getElementById("messages").appendChild(video);
 
     video.src = window.URL.createObjectURL(stream);
     video.play();
@@ -104,12 +108,4 @@ class VideoChatBox extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-  const { videoData } = state;
-  return {
-    videoData
-  };
-}
-
-
-export default connect(mapStateToProps)(VideoChatBox);
+export default VideoChatBox;

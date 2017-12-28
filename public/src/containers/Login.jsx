@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { loginUser } from '../actions/auth';
-import { inputUsername, inputPassword } from '../actions/login';
+import { inputUsername, inputEmail, inputPassword } from '../actions/login';
 import { connect } from 'react-redux';
-
+import { emailRegX } from '../utils/index';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleEmail = this.handleUsername.bind(this);
+    this.handleUsername = this.handleUsername.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.LoginUser = this.LoginUser.bind(this);
@@ -34,9 +34,9 @@ class Login extends Component {
     } = this.props;
 
     if(
-      username.length > 6 &&
-      email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i) &&
-      password.length > 6
+      username.length >= 6 &&
+      emailRegX.test(email) &&
+      password.length >= 6
     ){
       dispatch(loginUser({ username, email, password }, history))
     }
@@ -91,7 +91,7 @@ class Login extends Component {
     ) :
     (
       <div>
-        <h1>{errorMesage}</h1>
+        <h1>{errorMessage}</h1>
         <form>
           <label>Username:</label>
           <input

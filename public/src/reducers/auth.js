@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../actions/auth';
+import { GRAB_ALL_TOPICS, GRAB_ALL_TOPICS_REQUEST, GRAB_ALL_TOPICS_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../actions/auth';
 
 
 const auth = (state = {
@@ -7,10 +7,26 @@ const auth = (state = {
   errorMessage: '',
   user: '',
   email: '',
+  topics: [],
 }, action) => {
   switch (action.type) {
+    case GRAB_ALL_TOPICS:
+      return {
+        ...state,
+        topics: action.topics
+      };
+    case GRAB_ALL_TOPICS_REQUEST:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
+    case GRAB_ALL_TOPICS_FAILURE:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        topics: action.topics,
+      };
     case LOGIN_REQUEST:
-      console.log("STATE PAYLOAD IS: ", action.payload);
       return {
         ...state,
         isFetching: action.isFetching,
@@ -18,6 +34,8 @@ const auth = (state = {
         errorMessage: action.errorMessage,
         user: action.user,
         email: action.email,
+        id: action.id,
+        topics: action.topics,
       };
     case LOGIN_SUCCESS:
       return {
@@ -27,6 +45,8 @@ const auth = (state = {
         errorMessage: action.errorMessage,
         user: action.user,
         email: action.email,
+        id: action.id,
+        topics: action.topics,
       };
     case LOGIN_FAILURE:
       return {
@@ -36,6 +56,8 @@ const auth = (state = {
         errorMessage: action.message,
         user: action.user,
         email: action.email,
+        id: action.id,
+        topics: action.topics,
       };
     case LOGOUT_REQUEST:
       return {
@@ -45,6 +67,8 @@ const auth = (state = {
         errorMessage: action.errorMessage,
         user: action.user,
         email: action.email,
+        id: action.id,
+        topics: action.topics,
       };
     case LOGOUT_SUCCESS:
       return {
@@ -54,6 +78,8 @@ const auth = (state = {
         errorMessage: action.errorMessage,
         user: action.user,
         email: action.email,
+        id: action.id,
+        topics: action.topics,
       };
     default:
       return state;

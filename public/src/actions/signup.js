@@ -1,6 +1,8 @@
 export const UPDATE_USERNAME_INPUT = "UPDATE_USERNAME_INPUT";
 export const UPDATE_EMAIL_INPUT = "UPDATE_EMAIL_INPUT";
 export const UPDATE_PASSWORD_INPUT = "UPDATE_PASSWORD_INPUT";
+export const CLEAR_SIGNUP = "CLEAR_SIGNUP";
+
 
 const updateUsername = (usr) => ({
   type: "UPDATE_USERNAME_INPUT",
@@ -16,6 +18,7 @@ const updatePassword = (pwd) => ({
   type: "UPDATE_PASSWORD_INPUT",
   password: pwd,
 });
+
 
 const inputUsername = (usr) => (dispatch) => {
   dispatch(updateUsername(usr));

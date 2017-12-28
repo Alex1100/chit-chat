@@ -6,13 +6,55 @@ import UserNav from '../components/UserNav';
 import Login from './Login';
 import Signup from './Signup';
 import VideoChatBox from './VideoChatBox';
+import TopicList from './TopicList';
 
 
 class Router extends Component {
 
   render() {
-    const { dispatch, errorMessage, history, user, id } = this.props;
-    return this.props.isAuthenticated === false || this.props.isAuthenticated === undefined ? (
+
+    const {
+      dispatch,
+      isAuthenticated,
+      errorMessage,
+      history,
+      user,
+      id,
+      selectedTopic,
+      topics
+    } = this.props;
+
+    return isAuthenticated ? (
+      <Switch>
+        <Route exact path="/">
+          <div>
+            <UserNav
+              dispatch={dispatch}
+              history={history}
+              user={user}
+            />
+            <TopicList
+              dispatch={dispatch}
+              history={history}
+              user={user}
+              topics={topics}
+              id={id}
+            />
+          </div>
+        </Route>
+        <Route exact path="/chat">
+          <div>
+            <VideoChatBox
+              dispatch={dispatch}
+              history={history}
+              user={user}
+              selectedTopic={selectedTopic}
+              id={id}
+            />
+          </div>
+        </Route>
+      </Switch>
+    ) : (
       <Switch>
         <Route exact path="/">
           <div>
@@ -38,33 +80,18 @@ class Router extends Component {
           />
         </Route>
       </Switch>
-    ) : (
-      <Switch>
-        <Route exact path="/">
-          <div>
-            <UserNav
-              dispatch={dispatch}
-              history={history}
-              user={user}
-            />
-            <VideoChatBox
-              dispatch={dispatch}
-              history={history}
-              user={user}
-              id={id}
-            />
-          </div>
-        </Route>
-      </Switch>
     )
   }
 };
 
 
 const mapStateToProps = (state) => {
-  const { auth } = state;
-  const { isAuthenticated, errorMessage, user, id } = auth;
+  const { auth, topicsData } = state;
+  const { isAuthenticated, errorMessage, user, id, topics } = auth;
+  const { selectedTopic } = topicsData;
   return {
+    topics,
+    selectedTopic,
     isAuthenticated,
     errorMessage,
     user,

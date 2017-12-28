@@ -1,4 +1,4 @@
-import { UPDATE_USERNAME_INPUT, UPDATE_EMAIL_INPUT, UPDATE_PASSWORD_INPUT } from '../actions/login';
+import { UPDATE_USERNAME_INPUT, CLEAR_LOGIN, UPDATE_EMAIL_INPUT, UPDATE_PASSWORD_INPUT } from '../actions/login';
 
 const login = (state = {
   username: '',
@@ -21,6 +21,11 @@ const login = (state = {
         ...state,
         password: action.password,
       };
+    case CLEAR_LOGIN:
+      return {
+        ...state,
+        password: action.password,
+      }
     default:
       return state;
   }
