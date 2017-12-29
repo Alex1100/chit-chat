@@ -14,8 +14,12 @@ import Router from './containers/Router';
 
 
 const loggerMiddleware = createLogger({});
-
-const middleware = [thunkMiddleware, loggerMiddleware]
+let middleware = [];
+if (NODE_ENV == 'DEV') {
+  middleware.push(thunkMiddleware, loggerMiddleware);
+} else {
+  middleware.push(thunkMiddleware);
+}
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 

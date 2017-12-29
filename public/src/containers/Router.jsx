@@ -5,7 +5,6 @@ import GuestNav from '../components/GuestNav';
 import UserNav from '../components/UserNav';
 import Login from './Login';
 import Signup from './Signup';
-import VideoChatBox from './VideoChatBox';
 import TopicList from './TopicList';
 
 
@@ -38,17 +37,6 @@ class Router extends Component {
               history={history}
               user={user}
               topics={topics}
-              id={id}
-            />
-          </div>
-        </Route>
-        <Route exact path="/chat">
-          <div>
-            <VideoChatBox
-              dispatch={dispatch}
-              history={history}
-              user={user}
-              selectedTopic={selectedTopic}
               id={id}
             />
           </div>

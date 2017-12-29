@@ -30,12 +30,9 @@ const addTopic = async (req, res) => {
 const getTopics = async (req, res) => {
   try {
     if (req.decoded) {
-      console.log("HERE YO");
-      const topics = await Topic.findOne({});
-      console.log("TOPICS ARE: ", topics);
+      const topics = await Topic.findAll({});
       res.status(200).json(topics);
     } else {
-      console.log("HERE YO ERROR");
       throw new Error("Invalid JWT Token");
     }
   } catch (e) {

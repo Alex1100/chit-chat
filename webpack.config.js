@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+require('dotenv').load();
 require('dotenv').config();
 
 const SRC_DIR = path.resolve(__dirname, 'public/src');
@@ -102,7 +103,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'WEBRTC_API_KEY': JSON.stringify(process.env.WEBRTC_API_KEY),
-    })
+      WEBRTC_API_KEY: JSON.stringify(process.env.WEBRTC_API_KEY),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
+    new webpack.NamedModulesPlugin(),
   ]
 };

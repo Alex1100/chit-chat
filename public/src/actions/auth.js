@@ -89,6 +89,7 @@ const failedToGrabAllTopics = () => ({
 const grabAllTopicsRequest = () => ({
   type: "GRAB_ALL_TOPICS_REQUEST",
   isFetching: true,
+  topics: [],
 })
 
 const grabAllTopicsSuccess = (topics) => ({
@@ -97,29 +98,21 @@ const grabAllTopicsSuccess = (topics) => ({
 });
 
 
-const grabAllTopics = () => {
-  return (dispatch) => {
-    dispatch(grabAllTopicsRequest());
+const grabAllTopics = (dispatch) => {
+  dispatch(grabAllTopicsRequest());
 
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        "Verified": token,
-        "Content-Type": "application/json",
+  const token = localStorage.getItem("token");
+
+  return axios.get(`api/topics/${token}`)
+    .then(response => {
+      if(!response.data) {
+        dispatch(failedToGrabAllTopics());
+        return Promise.reject(response);
       }
-    };
 
-    return axios.get("api/topics", "", config)
-      .then(response => {
-        if(response.data.topics.length < 1) {
-          dispatch(failedToGrabAllTopics());
-          return Promise.reject(response);
-        }
-
-        dispatch(grabAllTopicsSuccess(response.data.topics));
-      })
-      .catch(err => console.log("ERROR GRABBING ALL TOPICS: ", err));
-  }
+      dispatch(grabAllTopicsSuccess(response.data));
+    })
+    .catch(err => console.log("ERROR GRABBING ALL TOPICS: ", err));
 };
 
 
@@ -147,7 +140,7 @@ const loginUser = (creds, history) => {
         const email = response.data.user.email;
         const id = response.data.user.id;
 
-        grabAllTopics();
+        grabAllTopics(dispatch);
         dispatch(receiveLogin({ user, email, id }));
         history.push('/');
       })
@@ -169,7 +162,6 @@ const signupUser = (creds, history) => {
     dispatch(requestLogin(creds));
     return axios.post('/api/signup', axiosBod)
       .then(response => {
-        console.log("YOOO: ", response);
         if (!response.data.token) {
           dispatch(loginError('Bad Request...'));
           return Promise.reject(response);
@@ -183,7 +175,7 @@ const signupUser = (creds, history) => {
         const email = response.data.user.email;
         const id = response.data.user.id;
 
-        grabAllTopics();
+        grabAllTopics(dispatch);
         dispatch(receiveLogin({ user, email, id }));
         history.push('/');
       })

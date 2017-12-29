@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { grabAllTopics } from './auth';
 
 
 export const INPUT_TOPIC = "INPUT_TOPIC";
@@ -7,6 +6,9 @@ export const ADD_NEW_TOPIC = "ADD_NEW_TOPIC";
 export const ADDED_NEW_TOPIC = "ADDED_NEW_TOPIC";
 export const TOPIC_ADD_FAILURE = "TOPIC_ADD_FAILURE";
 export const SELECT_TOPIC = "SELECT_TOPIC";
+export const GRAB_ALL_TOPICS_FAILURE = "GRAB_ALL_TOPICS_FAILURE";
+export const GRAB_ALL_TOPICS = "GRAB_ALL_TOPICS";
+export const GRAB_ALL_TOPICS_REQUEST = "GRAB_ALL_TOPICS_REQUEST";
 
 const inputNewTopic = (topic) => ({
   type: "INPUT_TOPIC",
@@ -29,30 +31,79 @@ const failedToAddNewTopic = (message) => ({
   message,
 });
 
-const selectTopic = (selectedTopic) => ({
+const selectATopic = (selectedTopic) => ({
   type: "SELECT_TOPIC",
   selectedTopic,
 });
+
+
+const failedToGrabAllTopics = () => ({
+  type: "GRAB_ALL_TOPICS_FAILURE",
+  isFetching: false,
+  topics: [],
+});
+
+const grabAllTopicsRequest = () => ({
+  type: "GRAB_ALL_TOPICS_REQUEST",
+  isFetching: true,
+  topics: [],
+})
+
+const grabAllTopicsSuccess = (topics) => ({
+  type: "GRAB_ALL_TOPICS",
+  topics,
+});
+
+
+const inputTopic = (topic) => (dispatch) => {
+  dispatch(inputNewTopic(topic));
+};
+
+const selectTopic = (info) => (dispatch) => {
+  dispatch(selectATopic(info[0]));
+};
 
 
 const addTopic = (topic, history) => {
   return (dispatch) => {
     dispatch(addNewTopicRequest());
 
-    axios.post("/api/topics", {topic})
+    const name = topic;
+    const token = localStorage.getItem("token");
+
+    return axios.post(`/api/topics`, {name, token})
       .then(response => {
-        if(response.data.topic.length < 1) {
+        if(!response.data.name) {
           dispatch(failedToAddNewTopic("Failed to load topics..."));
           history.push('/');
           return Promise.reject();
         }
 
         dispatch(addedNewTopic());
-        grabAllTopics();
+        grabAllTopics(dispatch);
         history.push('/');
       })
       .catch(err => console.log("COULDN'T ADD NEW TOPIC: ", err));
   }
 };
 
-export { addTopic, selectTopic };
+
+const grabAllTopics = (dispatch) => {
+  dispatch(grabAllTopicsRequest());
+
+  const token = localStorage.getItem("token");
+
+  return axios.get(`api/topics/${token}`)
+    .then(response => {
+      if(!response.data) {
+        dispatch(failedToGrabAllTopics());
+        return Promise.reject(response);
+      }
+
+      dispatch(grabAllTopicsSuccess(response.data));
+    })
+    .catch(err => console.log("ERROR GRABBING ALL TOPICS: ", err));
+};
+
+
+export { addTopic, selectTopic, inputTopic };
