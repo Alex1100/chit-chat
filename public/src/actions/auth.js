@@ -16,11 +16,6 @@ const clearLogin = () => ({
   password: ''
 });
 
-const clearSignup = () => ({
-  type: "CLEAR_LOGIN",
-  password: ''
-});
-
 const requestLogin = user => ({
   type: 'LOGIN_REQUEST',
   isFetching: true,
@@ -133,7 +128,6 @@ const loginUser = (creds, history) => {
         }
 
         dispatch(clearLogin());
-        dispatch(clearSignup());
 
         localStorage.setItem('token', response.data.token);
         const user = response.data.user.username;
@@ -168,7 +162,6 @@ const signupUser = (creds, history) => {
         }
 
         dispatch(clearLogin());
-        dispatch(clearSignup());
 
         localStorage.setItem('token', response.data.token);
         const user = response.data.user.username;

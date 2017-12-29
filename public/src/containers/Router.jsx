@@ -6,6 +6,7 @@ import UserNav from '../components/UserNav';
 import Login from './Login';
 import Signup from './Signup';
 import TopicList from './TopicList';
+import VideoRecorder from './VideoRecorder';
 
 
 class Router extends Component {
@@ -38,6 +39,17 @@ class Router extends Component {
               user={user}
               topics={topics}
               id={id}
+            />
+          </div>
+        </Route>
+        <Route exact path="/add-video">
+          <div className="video-recorder-page">
+            <VideoRecorder
+              dispatch={dispatch}
+              history={history}
+              user={user}
+              id={id}
+              selectedTopic={selectedTopic}
             />
           </div>
         </Route>

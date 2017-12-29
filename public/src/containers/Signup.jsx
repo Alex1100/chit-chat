@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { signupUser } from '../actions/auth';
-import { inputUsername, inputEmail, inputPassword } from '../actions/signup';
+import { inputUsername, inputEmail, inputPassword } from '../actions/login';
 import { connect } from 'react-redux';
 
 

@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Topic from "../components/Topic";
 import { addTopic, inputTopic } from "../actions/topic";
+import { Link } from 'react-router-dom';
+import { Nav, NavItem, Button } from 'react-bootstrap';
+import SearchBar from './SearchBar';
+import { clearSearch } from '../actions/search';
+
 
 class TopicsList extends Component {
   constructor(props) {
     super(props);
     this.handleTopicChange = this.handleTopicChange.bind(this);
     this.addNewTopic = this.addNewTopic.bind(this);
+    this.clearSearchInput = this.clearSearchInput.bind(this);
   }
 
   handleTopicChange(e) {
@@ -18,6 +24,11 @@ class TopicsList extends Component {
   addNewTopic(topic) {
     const { dispatch, history, newTopic } = this.props;
     dispatch(addTopic(newTopic, history));
+  }
+
+  clearSearchInput() {
+    const { dispatch } = this.props;
+    dispatch(clearSearch());
   }
 
 
@@ -31,6 +42,13 @@ class TopicsList extends Component {
           <button className="topics-add-btn" type="submit" onClick={(e) => {e.preventDefault; this.addNewTopic()}}></button>
         </div>
         <br/>
+        <div className="add-video-link">
+          <Nav bsStyle="tabs">
+            <NavItem><Link to="/add-video">Add Video</Link></NavItem>
+            <NavItem className="search-input-nav-item"><SearchBar props={this.props} /></NavItem>
+            <NavItem className="clearSearch"><Button onClick={(e) => {e.preventDefault(); this.clearSearchInput()}}>Clear Search</Button></NavItem>
+          </Nav>
+        </div>
         <h1 className="topics-header">All Topics</h1>
         {
           topics.map((el, wi) => (
@@ -47,9 +65,9 @@ class TopicsList extends Component {
         </div>
         <br/>
       </div>
-    )
+    );
   }
-}
+};
 
 
 const mapStateToProps = (state) => {

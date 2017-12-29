@@ -11,6 +11,10 @@ const Video = db.define('video', {
     type: Sequelize.TEXT,
     allowNull: true,
   },
+  thumbnail: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+  },
   content: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
     allowNull: false,
