@@ -5,7 +5,6 @@ import { addTopic, inputTopic } from "../actions/topic";
 import { Link } from 'react-router-dom';
 import { Nav, NavItem, Button } from 'react-bootstrap';
 import SearchBar from './SearchBar';
-import { clearSearch } from '../actions/search';
 
 
 class TopicsList extends Component {
@@ -13,7 +12,6 @@ class TopicsList extends Component {
     super(props);
     this.handleTopicChange = this.handleTopicChange.bind(this);
     this.addNewTopic = this.addNewTopic.bind(this);
-    this.clearSearchInput = this.clearSearchInput.bind(this);
   }
 
   handleTopicChange(e) {
@@ -26,11 +24,6 @@ class TopicsList extends Component {
     dispatch(addTopic(newTopic, history));
   }
 
-  clearSearchInput() {
-    const { dispatch } = this.props;
-    dispatch(clearSearch());
-  }
-
 
   render() {
     const { topics, selectedTopic, newTopic, dispatch, history } = this.props;
@@ -39,14 +32,13 @@ class TopicsList extends Component {
         <div className="topics-add-container">
           <label className="topics-add-label">Add New Topic</label>
           <input className="topics-add-input" type="text" onChange={(e) => {e.preventDefault(); this.handleTopicChange(e)}} name="newTopic" value={newTopic} />
-          <button className="topics-add-btn" type="submit" onClick={(e) => {e.preventDefault; this.addNewTopic()}}></button>
+          <button className="topics-add-btn" type="submit" onClick={(e) => {e.preventDefault; this.addNewTopic()}}>Add Topic</button>
         </div>
         <br/>
         <div className="add-video-link">
           <Nav bsStyle="tabs">
             <NavItem><Link to="/add-video">Add Video</Link></NavItem>
-            <NavItem className="search-input-nav-item"><SearchBar props={this.props} /></NavItem>
-            <NavItem className="clearSearch"><Button onClick={(e) => {e.preventDefault(); this.clearSearchInput()}}>Clear Search</Button></NavItem>
+            <NavItem><Link to="/random-topic">Random Topic</Link></NavItem>
           </Nav>
         </div>
         <h1 className="topics-header">All Topics</h1>

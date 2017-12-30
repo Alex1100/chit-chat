@@ -22,15 +22,12 @@ const clearSearchContext = () => ({
 });
 
 const inputSearch = (term) => (dispatch) => {
-  console.log("TERM IS: ", term);
   dispatch(updateSearch(term));
 };
 
-const filterChange = (filter) => {
-  return (dispatch) => {
-    console.log("FILTER IS: ", filter);
-    dispatch(updateFilter(filter));
-  }
+const filterChange = (filter, history) => (dispatch) => {
+  dispatch(updateFilter(filter));
+  history.push(history.location.pathname);
 };
 
 const clearSearch = () => (dispatch) => {
@@ -43,9 +40,4 @@ const searchContent = (term, filter, history) => {
   }
 };
 
-module.exports = {
-  inputSearch,
-  filterChange,
-  clearSearch,
-  searchContent,
-};
+export { inputSearch, filterChange, clearSearch, searchContent };

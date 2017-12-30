@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
+import { clearSearch } from '../actions/search';
+import SearchBar from '../containers/SearchBar';
+
 
 const UserNav = (props) => (
   <div>
@@ -13,6 +16,8 @@ const UserNav = (props) => (
       </Navbar.Header>
       <Nav>
         <NavItem><Link to="/" onClick={() => props.dispatch(logoutUser(props.history))}>Logout</Link></NavItem>
+        <SearchBar dispatch={props.dispatch} history={props.history} />
+        <NavItem className="clearSearch"><Button onClick={(e) => {e.preventDefault(); props.dispatch(clearSearch())}}>Clear Search</Button></NavItem>
       </Nav>
     </Navbar>
   </div>

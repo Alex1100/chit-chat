@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  FormGroup,
-  InputGroup,
-  DropdownButton,
-  MenuItem,
-  FormControl,
   Col,
 } from 'react-bootstrap';
 
@@ -14,6 +9,11 @@ import {
   filterChange,
   searchContent,
 } from '../actions/search';
+
+import {
+  RadioGroup,
+  Radio,
+} from 'react-radio-group';
 
 
 class SearchBar extends Component {
@@ -30,8 +30,8 @@ class SearchBar extends Component {
   }
 
   handleFilterChange(e) {
-    const { dispatch } = this.props;
-    dispatch(filterChange(e.target.getAttribute("value")));
+    const { dispatch, history } = this.props;
+    dispatch(filterChange(e, history));
   }
 
   search() {
@@ -47,42 +47,33 @@ class SearchBar extends Component {
 
   render() {
     const { input, filter } = this.props;
-    console.log("INPUTIS: ", input, "\n", filter);
-    console.log("SEARCH BAR NEEDS TO BE FIXED....");
     return (
       <div className="search-input-container">
-        <form>
-          <div
-            className="search-input"
-          >
-            <Col md={6}>
-              <input
-                className="search-input-text"
-                type="text"
-                name="term"
-                placeholder="Search by topics or video titles"
-                onChange={(e) => {e.preventDefault(); this.handleInputChange(e)}}
-              />
-              <DropdownButton
-                componentClass={InputGroup.Button}
-                id="input-dropdown-addon"
-                title={filter}
-                name="filter"
-              >
-                <MenuItem onClick={(e) => {e.preventDefault(); this.handleFilterChange(e)}} key="1" value="Videos">Videos</MenuItem>
-                <MenuItem onClick={(e) => {e.preventDefault(); this.handleFilterChange(e)}} key="2" value="Topics">Topics</MenuItem>
-              </DropdownButton>
-            </Col>
-          </div>
+        <div
+          className="search-input"
+        >
+          <input
+            className="search-input-text"
+            type="text"
+            name="input"
+            value={input}
+            onChange={(e) => {e.preventDefault(); this.handleInputChange(e)}}
+          />
           <br/>
-          <Col mdOffset={0} md={2}>
-            <button onClick={(e) => {e.preventDefault(); this.search(e)}}>
-              Search
-            </button>
-          </Col>
-        </form>
+          <RadioGroup name="fruit" selectedValue={filter} onChange={(e) => this.handleFilterChange(e)}>
+            <span className="radio-btn"><Radio id="VideosRadio" value="Videos" />Videos</span>
+            <span className="radio-btn"><Radio id="TopicsRadio" value="Topics" />Topics</span>
+          </RadioGroup>
+        </div>
+        <br/>
+        <br/>
+        <Col mdOffset={0} md={2}>
+          <button onClick={(e) => {e.preventDefault(); this.search(e)}}>
+            Search
+          </button>
+        </Col>
       </div>
-    );
+    )
   }
 };
 

@@ -4,6 +4,7 @@ import login from './login';
 import signup from './signup';
 import topicsData from './topic';
 import search from './search';
+import videoData from './video';
 
 const RootReducer = combineReducers({
   auth,
@@ -11,6 +12,7 @@ const RootReducer = combineReducers({
   signup,
   topicsData,
   search,
+  videoData,
 });
 
 export default RootReducer;

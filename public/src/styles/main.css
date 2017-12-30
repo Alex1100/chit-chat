@@ -1,0 +1,10 @@
+div.topics-list > div.topics-add-container > button.topics-add-btn {
+  display: block;
+  position: relative;
+  width: 6em;
+  height: 3em;
+  background-color: black;
+  color: orange;
+  border: solid 3px grey;
+  border-radius: 15px;
+}
