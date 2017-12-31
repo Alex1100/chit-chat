@@ -12,6 +12,7 @@ const setVideObject = (video) => ({
 });
 
 const updateRecorder = (recorder) => (dispatch) => {
+  console.log("UPDATING RECORDER: ", recorder);
   dispatch(addToRecorderObject(recorder));
 };
 
@@ -19,5 +20,9 @@ const setVideo = (video) => (dispatch) => {
   dispatch(setVideObject(video));
 }
 
+const clearRecorder = (recorder) => (dispatch) => {
+  dispatch(addToRecorderObject(recorder = ''));
+}
 
-export { updateRecorder, setVideo };
+
+export { updateRecorder, setVideo, clearRecorder };

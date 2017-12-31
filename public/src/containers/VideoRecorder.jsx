@@ -30,25 +30,29 @@ class VideoRecorder extends Component {
       recorder = this.props.recorder;
     }
 
+
     const options = {
       mimeType: 'video/webm',
-      bitsPerSecond: 128000
+      bitsPerSecond: 192000
     };
 
     recorder = RecordRTC(stream, options);
     console.log("RECORDER BEFORE UPDATING IS: ", recorder);
     dispatch(updateRecorder(recorder));
+    console.log("RECORDER AFTER UPDATE: ", recorder);
     recorder.startRecording();
+    console.log("STREAM SHOULD BE: ", stream);
   }
 
 
   captureCamera() {
     console.log("RECORDER IS: ", this.props.recorder);
-    navigator.mediaDevices.getUserMedia({
+    navigator.getWebcam = (navigator.mediaDevices.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    navigator.getWebcam({
       audio: true,
       video: true
     })
-    .then(this.successCallback)
+    .then((stream) => this.successCallback(stream))
     .catch(error => {
       alert('Unable to capture your camera. Please check console logs.');
       console.error(error);
@@ -61,8 +65,9 @@ class VideoRecorder extends Component {
     recorder.stopRecording((audioVideoWebMURL) => {
       video.src = audioVideoWebMURL;
       document.getElementById('btn-stop-recording').disabled = false;
-
+      console.log("AUDIO SOURCE IS: ", audioVideoWebMURL);
       var recordedBlob = recorder.getBlob();
+      console.log("RECORDED BLOB IS: ", recordedBlob);
       recorder.getDataURL(dataURL => {
         console.log("DATA URL IS: ", dataURL);
       })

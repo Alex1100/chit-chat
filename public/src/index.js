@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('webrtc-adapter');
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';

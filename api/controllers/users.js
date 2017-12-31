@@ -18,8 +18,7 @@ const signup = async (req, res) => {
       console.log(message);
       res.status(409).send({ errorMessage: message });
     } else {
-      password = hash;
-      const user = await User.create({ username, email, password });
+      const user = await User.create({ username, email, password: hash });
       const payload = {
         username: user.username,
       };
@@ -38,7 +37,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     let { username, email, password } = req.body;
-    const user = await User.findOne({ where: { username, email } });
+    const user = await User.findOne({ where: { username } });
     const data = await bcrypt.compare(password, user.password);
     console.log("User logged in");
 

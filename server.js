@@ -9,10 +9,21 @@ const debug = require('debug')('app:http');
 const db = require('./api/config/database');
 const routes = require('./api/config/routes');
 const PORT = process.env.PORT || 3005;
-
-const server = require('http').Server(app);
 const path = require('path');
 
+//optional for adding SSL certs later on
+// const https = require('https');
+// const fs = require('fs');
+// const options = {
+//     key: fs.readFileSync(path.join(__dirname, '/server.key')),
+//     cert: fs.readFileSync(path.join(__dirname, '/server.crt')),
+//     requestCert: false,
+//     rejectUnauthorized: false
+// };
+
+// const server = https.createServer(options, app);
+
+const server = require('http').Server(app);
 
 function debugReq(req, res, next){
   debug("params:", req.params);
@@ -21,8 +32,10 @@ function debugReq(req, res, next){
   next();
 };
 
+
+
 app.use(logger('dev'));
-app.use(bodyParser.json({limit: "1500mb"}));
+app.use(bodyParser.json({limit: "10500mb"}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(debugReq);
 app.use('/', express.static(path.join(__dirname, "public")));
