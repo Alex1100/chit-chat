@@ -16,7 +16,7 @@ const Video = db.define('video', {
     allowNull: false,
   },
   content: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
+    type: Sequelize.TEXT,
     allowNull: false,
   },
   donatedSoFar: {

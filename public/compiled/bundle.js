@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e494635038b082085abc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "72cca5654dc7acf61ed8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -91160,6 +91160,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 var ADD_TO_RECORDER = exports.ADD_TO_RECORDER = "ADD_TO_RECORDER";
 var SET_VIDEO = exports.SET_VIDEO = "SET_VIDEO";
+var UPDATE_DATAURL = exports.UPDATE_DATAURL = "UPDATE_DATAURL";
+var UPDATE_TITLE = exports.UPDATE_TITLE = "UPDATE_TITLE";
+var UPDATE_DESCRIPTION = exports.UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 
 var addToRecorderObject = function addToRecorderObject(recorder) {
   return {
@@ -91172,6 +91175,27 @@ var setVideObject = function setVideObject(video) {
   return {
     type: "SET_VIDEO",
     video: video
+  };
+};
+
+var updateDataURL = function updateDataURL(dataURL) {
+  return {
+    type: "UPDATE_DATAURL",
+    videoURL: dataURL
+  };
+};
+
+var updateVideoTitle = function updateVideoTitle(title) {
+  return {
+    type: "UPDATE_TITLE",
+    videoTitle: title
+  };
+};
+
+var updateVideoDescription = function updateVideoDescription(description) {
+  return {
+    type: "UPDATE_DESCRIPTION",
+    videoDescription: description
   };
 };
 
@@ -91188,15 +91212,36 @@ var setVideo = function setVideo(video) {
   };
 };
 
+var updateVideoDataURL = function updateVideoDataURL(dataURL) {
+  return function (dispatch) {
+    dispatch(updateDataURL(dataURL));
+  };
+};
+
 var clearRecorder = function clearRecorder(recorder) {
   return function (dispatch) {
     dispatch(addToRecorderObject(recorder = ''));
   };
 };
 
+var updateTitleInput = function updateTitleInput(title) {
+  return function (dispatch) {
+    dispatch(updateVideoTitle(title));
+  };
+};
+
+var updateDescriptionInput = function updateDescriptionInput(description) {
+  return function (dispatch) {
+    dispatch(updateVideoDescription(description));
+  };
+};
+
 exports.updateRecorder = updateRecorder;
+exports.updateVideoDataURL = updateVideoDataURL;
 exports.setVideo = setVideo;
 exports.clearRecorder = clearRecorder;
+exports.updateTitleInput = updateTitleInput;
+exports.updateDescriptionInput = updateDescriptionInput;
 ;
 
 var _temp = function () {
@@ -91208,15 +91253,33 @@ var _temp = function () {
 
   __REACT_HOT_LOADER__.register(SET_VIDEO, "SET_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
+  __REACT_HOT_LOADER__.register(UPDATE_DATAURL, "UPDATE_DATAURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(UPDATE_TITLE, "UPDATE_TITLE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(UPDATE_DESCRIPTION, "UPDATE_DESCRIPTION", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
   __REACT_HOT_LOADER__.register(addToRecorderObject, "addToRecorderObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(setVideObject, "setVideObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateDataURL, "updateDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateVideoTitle, "updateVideoTitle", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateVideoDescription, "updateVideoDescription", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(updateRecorder, "updateRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(setVideo, "setVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
+  __REACT_HOT_LOADER__.register(updateVideoDataURL, "updateVideoDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
   __REACT_HOT_LOADER__.register(clearRecorder, "clearRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateTitleInput, "updateTitleInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateDescriptionInput, "updateDescriptionInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 }();
 
 ;
@@ -92534,6 +92597,8 @@ var VideoRecorder = function (_Component) {
     _this.stopRecordingCallback = _this.stopRecordingCallback.bind(_this);
     _this.initRecording = _this.initRecording.bind(_this);
     _this.endRecording = _this.endRecording.bind(_this);
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.uploadVideo = _this.uploadVideo.bind(_this);
     return _this;
   }
 
@@ -92547,14 +92612,9 @@ var VideoRecorder = function (_Component) {
   }, {
     key: 'successCallback',
     value: function successCallback(stream) {
-      // RecordRTC usage goes here
+      var recorder = void 0;
       var dispatch = this.props.dispatch;
 
-
-      var recorder = void 0;
-      if (this.props.recorder) {
-        recorder = this.props.recorder;
-      }
 
       var options = {
         mimeType: 'video/webm',
@@ -92562,26 +92622,23 @@ var VideoRecorder = function (_Component) {
       };
 
       recorder = RecordRTC(stream, options);
-      console.log("RECORDER BEFORE UPDATING IS: ", recorder);
       dispatch((0, _video.updateRecorder)(recorder));
-      console.log("RECORDER AFTER UPDATE: ", recorder);
       recorder.startRecording();
-      console.log("STREAM SHOULD BE: ", stream);
     }
   }, {
     key: 'captureCamera',
     value: function captureCamera() {
       var _this2 = this;
 
-      console.log("RECORDER IS: ", this.props.recorder);
       navigator.getWebcam = navigator.mediaDevices.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
       navigator.getWebcam({
         audio: true,
         video: true
       }).then(function (stream) {
         return _this2.successCallback(stream);
       }).catch(function (error) {
-        alert('Unable to capture your camera. Please check console logs.');
+        alert('Unable to capture your camera.');
         console.error(error);
       });
     }
@@ -92589,26 +92646,18 @@ var VideoRecorder = function (_Component) {
     key: 'stopRecordingCallback',
     value: function stopRecordingCallback() {
       var _props = this.props,
+          dispatch = _props.dispatch,
           video = _props.video,
           recorder = _props.recorder;
 
+
       recorder.stopRecording(function (audioVideoWebMURL) {
         video.src = audioVideoWebMURL;
-        document.getElementById('btn-stop-recording').disabled = false;
-        console.log("AUDIO SOURCE IS: ", audioVideoWebMURL);
         var recordedBlob = recorder.getBlob();
-        console.log("RECORDED BLOB IS: ", recordedBlob);
         recorder.getDataURL(function (dataURL) {
-          console.log("DATA URL IS: ", dataURL);
+          dispatch((0, _video.updateVideoDataURL)(dataURL));
         });
       });
-
-      // video.src = video.srcObject = null;
-      // video.src = URL.createObjectURL(recorder.getBlob());
-      // video.play();
-      // recorder.camera.stop();
-      // recorder.destroy();
-      // recorder = null;
     }
   }, {
     key: 'initRecording',
@@ -92617,57 +92666,106 @@ var VideoRecorder = function (_Component) {
           video = _props2.video,
           recorder = _props2.recorder;
 
-      document.getElementById('btn-start-recording').disabled = true;
-      // e.target.disabled = true;
       this.captureCamera();
-
-      // this.captureCamera((camera) => {
-      //   setSrcObject(camera, video);
-      //   video.play();
-
-      //   recorder = RecordRTC(camera, {
-      //     type: 'video'
-      //   });
-
-      //   recorder.startRecording();
-
-      //   //release camera on stopRecording
-      //   recorder.camera = camera;
-      //   document.getElementById('btn-stop-recording').disabled = false;
-      // })
     }
   }, {
     key: 'endRecording',
     value: function endRecording() {
-      document.getElementById('btn-stop-recording').disabled = true;
       this.stopRecordingCallback();
+    }
+  }, {
+    key: 'handleChange',
+    value: function handleChange(e) {
+      var name = e.target.name;
+      var dispatch = this.props.dispatch;
+
+      if (name === "title") {
+        dispatch((0, _video.updateTitleInput)(e.target.value));
+      } else {
+        dispatch((0, _video.updateDescriptionInput)(e.target.value));
+      }
+    }
+  }, {
+    key: 'uploadVideo',
+    value: function uploadVideo(e) {
+      if (this.props.videoURL) {
+        console.log("UPLOAD WORKS!!: ", this.props.videoURL);
+      }
     }
   }, {
     key: 'render',
     value: function render() {
       var _this3 = this;
 
+      var _props3 = this.props,
+          videoTitle = _props3.videoTitle,
+          videoDescription = _props3.videoDescription;
+
+
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('video', { controls: true, autoPlay: true, id: 'video' }),
+        _react2.default.createElement('video', { controls: true, played: true, poster: true, id: 'video' }),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'video-controls' },
           _react2.default.createElement(
             'button',
             { id: 'btn-start-recording', onClick: function onClick(e) {
-                e.preventDefault();_this3.initRecording(e);
+                return _this3.initRecording(e);
               } },
             'Start Recording'
           ),
           _react2.default.createElement(
             'button',
-            { id: 'btn-stop-recording', onClick: function onClick(e) {
-                e.preventDefault();_this3.endRecording();
+            { id: 'btn-stop-recording', onClick: function onClick() {
+                return _this3.endRecording();
               } },
             'Stop Recording'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'video-info' },
+          _react2.default.createElement(
+            'label',
+            { className: 'video-title-label' },
+            'Title'
+          ),
+          _react2.default.createElement('input', {
+            className: 'video-title-input',
+            type: 'text',
+            name: 'title',
+            value: videoTitle,
+            onChange: function onChange(e) {
+              return _this3.handleChange(e);
+            }
+          }),
+          _react2.default.createElement(
+            'label',
+            { className: 'video-description-label' },
+            'Description'
+          ),
+          _react2.default.createElement('input', {
+            className: 'video-description-input',
+            type: 'textarea',
+            name: 'videoDescription',
+            value: videoDescription,
+            onChange: function onChange(e) {
+              return _this3.handleChange(e);
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'submit-vid-container' },
+          _react2.default.createElement(
+            'button',
+            { className: 'submit-vid-btn', onClick: function onClick(e) {
+                e.preventDefault();_this3.uploadVideo(e);
+              } },
+            'Upload'
           )
         )
       );
@@ -92682,11 +92780,17 @@ var VideoRecorder = function (_Component) {
 var mapStateToProps = function mapStateToProps(state) {
   var videoData = state.videoData;
   var recorder = videoData.recorder,
-      video = videoData.video;
+      video = videoData.video,
+      videoURL = videoData.videoURL,
+      videoDescription = videoData.videoDescription,
+      videoTitle = videoData.videoTitle;
+
 
   return {
     recorder: recorder,
-    video: video
+    video: video,
+    videoURL: videoURL,
+    videoTitle: videoTitle
   };
 };
 
@@ -93276,11 +93380,22 @@ var _video = __webpack_require__("./public/src/actions/video.js");
 var videoData = function videoData() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     video: '',
-    recorder: ''
+    recorder: '',
+    videoURL: '',
+    videoDescription: '',
+    videoTitle: ''
   };
   var action = arguments[1];
 
   switch (action.type) {
+    case _video.UPDATE_TITLE:
+      return _extends({}, state, {
+        videoTitle: action.videoTitle
+      });
+    case _video.UPDATE_DESCRIPTION:
+      return _extends({}, state, {
+        videoDescription: action.videoDescription
+      });
     case _video.ADD_TO_RECORDER:
       return _extends({}, state, {
         recorder: action.recorder
@@ -93288,6 +93403,11 @@ var videoData = function videoData() {
     case _video.SET_VIDEO:
       return _extends({}, state, {
         video: action.video
+      });
+    case _video.UPDATE_DATAURL:
+      return _extends({}, state, {
+        videoURL: action.videoURL,
+        recorder: ''
       });
     default:
       return state;
