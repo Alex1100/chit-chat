@@ -4,8 +4,6 @@ const User = require('./api/models/user').User;
 const Topic = require('./api/models/topic').Topic;
 const Video = require('./api/models/video').Video;
 const VideoTopic = require('./api/models/videoTopics').VideoTopic;
-const Sequelize = require('sequelize');
-const db = require('./api/config/database');
 
 environment({
   file: './.env',
