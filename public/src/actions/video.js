@@ -1,8 +1,14 @@
+import axios from 'axios';
+
 export const ADD_TO_RECORDER = "ADD_TO_RECORDER";
 export const SET_VIDEO = "SET_VIDEO";
 export const UPDATE_DATAURL = "UPDATE_DATAURL";
 export const UPDATE_TITLE = "UPDATE_TITLE";
 export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
+export const UPDATE_TOPIC = "UPDATE_TOPIC";
+export const UPDATE_IMAGE = "UPDATE_IMAGE";
+export const VIDEO_UPLOAD_SUCCESS = "VIDEO_UPLOAD_SUCCESS";
+export const VIDEO_UPLOAD_FAILURE = "VIDEO_UPLOAD_FAILURE";
 
 
 const addToRecorderObject = (recorder) => ({
@@ -30,10 +36,35 @@ const updateVideoDescription = (description) => ({
   videoDescription: description,
 });
 
+const updateVideoTopic = (topic) => ({
+  type: "UPDATE_TOPIC",
+  videoTopic: topic,
+});
+
+const updateVideoImageURL = (imageURL) => ({
+  type: "UPDATE_IMAGE",
+  imageURL
+});
+
+const failedVideoUpload = (message) => ({
+  type: "VIDEO_UPLOAD_FAILURE",
+  message
+});
+
+const successVideoUpload = () => ({
+  type: "VIDEO_UPLOAD_SUCCESS",
+  videoURL: '',
+  imageURL : '',
+  videoTitle: '',
+  videoDescription: '',
+  message: ''
+});
+
 const updateRecorder = (recorder) => (dispatch) => {
   console.log("UPDATING RECORDER: ", recorder);
   dispatch(addToRecorderObject(recorder));
 };
+
 
 const setVideo = (video) => (dispatch) => {
   dispatch(setVideObject(video));
@@ -55,6 +86,40 @@ const updateDescriptionInput = (description) => (dispatch) => {
   dispatch(updateVideoDescription(description));
 };
 
+const updateTopicInput = (topic) => (dispatch) => {
+  dispatch(updateVideoTopic(topic));
+};
+
+const updateImageURL = (imageURL) => (dispatch) => {
+  dispatch(updateVideoImageURL(imageURL));
+};
+
+const uploadVideo = (props) => {
+  return (dispatch) => {
+    const axiosBod = {
+      videoTitle: props.videoTitle,
+      videoDescription: props.videoDescription,
+      videoURL: JSON.stringify(props.videoURL),
+      imageURL: JSON.stringify(props.imageURL),
+      userId: props.userId,
+      videoTopic: props.videoTopic,
+      token: localStorage.getItem("token")
+    };
+
+    axios.post("/api/upload", axiosBod)
+      .then(response => {
+        if(response.data.resCode !== 201) {
+          dispatch(failedVideoUpload("Bad Request..."));
+          return Promise.reject(response.resCode);
+        }
+
+        dispatch(successVideoUpload());
+        props.history.push('/');
+      })
+      .catch(err => console.log("ERROR UPLOADING VIDEO IS: ", err));
+  }
+}
+
 
 export {
   updateRecorder,
@@ -62,5 +127,8 @@ export {
   setVideo,
   clearRecorder,
   updateTitleInput,
-  updateDescriptionInput
+  updateDescriptionInput,
+  updateTopicInput,
+  updateImageURL,
+  uploadVideo
 };

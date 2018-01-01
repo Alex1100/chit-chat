@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "72cca5654dc7acf61ed8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "13c80236e7df048cafa3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -91158,11 +91158,23 @@ var _temp = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.uploadVideo = exports.updateImageURL = exports.updateTopicInput = exports.updateDescriptionInput = exports.updateTitleInput = exports.clearRecorder = exports.setVideo = exports.updateVideoDataURL = exports.updateRecorder = exports.VIDEO_UPLOAD_FAILURE = exports.VIDEO_UPLOAD_SUCCESS = exports.UPDATE_IMAGE = exports.UPDATE_TOPIC = exports.UPDATE_DESCRIPTION = exports.UPDATE_TITLE = exports.UPDATE_DATAURL = exports.SET_VIDEO = exports.ADD_TO_RECORDER = undefined;
+
+var _axios = __webpack_require__("./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var ADD_TO_RECORDER = exports.ADD_TO_RECORDER = "ADD_TO_RECORDER";
 var SET_VIDEO = exports.SET_VIDEO = "SET_VIDEO";
 var UPDATE_DATAURL = exports.UPDATE_DATAURL = "UPDATE_DATAURL";
 var UPDATE_TITLE = exports.UPDATE_TITLE = "UPDATE_TITLE";
 var UPDATE_DESCRIPTION = exports.UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
+var UPDATE_TOPIC = exports.UPDATE_TOPIC = "UPDATE_TOPIC";
+var UPDATE_IMAGE = exports.UPDATE_IMAGE = "UPDATE_IMAGE";
+var VIDEO_UPLOAD_SUCCESS = exports.VIDEO_UPLOAD_SUCCESS = "VIDEO_UPLOAD_SUCCESS";
+var VIDEO_UPLOAD_FAILURE = exports.VIDEO_UPLOAD_FAILURE = "VIDEO_UPLOAD_FAILURE";
 
 var addToRecorderObject = function addToRecorderObject(recorder) {
   return {
@@ -91196,6 +91208,38 @@ var updateVideoDescription = function updateVideoDescription(description) {
   return {
     type: "UPDATE_DESCRIPTION",
     videoDescription: description
+  };
+};
+
+var updateVideoTopic = function updateVideoTopic(topic) {
+  return {
+    type: "UPDATE_TOPIC",
+    videoTopic: topic
+  };
+};
+
+var updateVideoImageURL = function updateVideoImageURL(imageURL) {
+  return {
+    type: "UPDATE_IMAGE",
+    imageURL: imageURL
+  };
+};
+
+var failedVideoUpload = function failedVideoUpload(message) {
+  return {
+    type: "VIDEO_UPLOAD_FAILURE",
+    message: message
+  };
+};
+
+var successVideoUpload = function successVideoUpload() {
+  return {
+    type: "VIDEO_UPLOAD_SUCCESS",
+    videoURL: '',
+    imageURL: '',
+    videoTitle: '',
+    videoDescription: '',
+    message: ''
   };
 };
 
@@ -91236,12 +91280,53 @@ var updateDescriptionInput = function updateDescriptionInput(description) {
   };
 };
 
+var updateTopicInput = function updateTopicInput(topic) {
+  return function (dispatch) {
+    dispatch(updateVideoTopic(topic));
+  };
+};
+
+var updateImageURL = function updateImageURL(imageURL) {
+  return function (dispatch) {
+    dispatch(updateVideoImageURL(imageURL));
+  };
+};
+
+var uploadVideo = function uploadVideo(props) {
+  return function (dispatch) {
+    var axiosBod = {
+      videoTitle: props.videoTitle,
+      videoDescription: props.videoDescription,
+      videoURL: JSON.stringify(props.videoURL),
+      imageURL: JSON.stringify(props.imageURL),
+      userId: props.userId,
+      videoTopic: props.videoTopic,
+      token: localStorage.getItem("token")
+    };
+
+    _axios2.default.post("/api/upload", axiosBod).then(function (response) {
+      if (response.data.resCode !== 201) {
+        dispatch(failedVideoUpload("Bad Request..."));
+        return Promise.reject(response.resCode);
+      }
+
+      dispatch(successVideoUpload());
+      props.history.push('/');
+    }).catch(function (err) {
+      return console.log("ERROR UPLOADING VIDEO IS: ", err);
+    });
+  };
+};
+
 exports.updateRecorder = updateRecorder;
 exports.updateVideoDataURL = updateVideoDataURL;
 exports.setVideo = setVideo;
 exports.clearRecorder = clearRecorder;
 exports.updateTitleInput = updateTitleInput;
 exports.updateDescriptionInput = updateDescriptionInput;
+exports.updateTopicInput = updateTopicInput;
+exports.updateImageURL = updateImageURL;
+exports.uploadVideo = uploadVideo;
 ;
 
 var _temp = function () {
@@ -91259,6 +91344,14 @@ var _temp = function () {
 
   __REACT_HOT_LOADER__.register(UPDATE_DESCRIPTION, "UPDATE_DESCRIPTION", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
+  __REACT_HOT_LOADER__.register(UPDATE_TOPIC, "UPDATE_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(UPDATE_IMAGE, "UPDATE_IMAGE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_SUCCESS, "VIDEO_UPLOAD_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_FAILURE, "VIDEO_UPLOAD_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
   __REACT_HOT_LOADER__.register(addToRecorderObject, "addToRecorderObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(setVideObject, "setVideObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
@@ -91268,6 +91361,14 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(updateVideoTitle, "updateVideoTitle", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(updateVideoDescription, "updateVideoDescription", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateVideoTopic, "updateVideoTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateVideoImageURL, "updateVideoImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(failedVideoUpload, "failedVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(successVideoUpload, "successVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(updateRecorder, "updateRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
@@ -91280,6 +91381,12 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(updateTitleInput, "updateTitleInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 
   __REACT_HOT_LOADER__.register(updateDescriptionInput, "updateDescriptionInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateTopicInput, "updateTopicInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(updateImageURL, "updateImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+
+  __REACT_HOT_LOADER__.register(uploadVideo, "uploadVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
 }();
 
 ;
@@ -92576,6 +92683,8 @@ var _video = __webpack_require__("./public/src/actions/video.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -92599,6 +92708,7 @@ var VideoRecorder = function (_Component) {
     _this.endRecording = _this.endRecording.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
     _this.uploadVideo = _this.uploadVideo.bind(_this);
+    _this.handleImageChange = _this.handleImageChange.bind(_this);
     return _this;
   }
 
@@ -92608,6 +92718,20 @@ var VideoRecorder = function (_Component) {
       var dispatch = this.props.dispatch;
 
       dispatch((0, _video.setVideo)(document.querySelector('video')));
+    }
+  }, {
+    key: 'handleImageChange',
+    value: function handleImageChange(e) {
+      var dispatch = this.props.dispatch;
+
+      var reader = new FileReader();
+      var file = e.target.files[0];
+      var image = void 0;
+      reader.onloadend = function () {
+        image = reader.result;
+        dispatch((0, _video.updateImageURL)(image));
+      };
+      reader.readAsDataURL(file);
     }
   }, {
     key: 'successCallback',
@@ -92681,15 +92805,36 @@ var VideoRecorder = function (_Component) {
 
       if (name === "title") {
         dispatch((0, _video.updateTitleInput)(e.target.value));
-      } else {
+      } else if (name === "description") {
         dispatch((0, _video.updateDescriptionInput)(e.target.value));
+      } else if (name === "topic") {
+        dispatch((0, _video.updateTopicInput)(e.target.value));
       }
     }
   }, {
     key: 'uploadVideo',
     value: function uploadVideo(e) {
-      if (this.props.videoURL) {
-        console.log("UPLOAD WORKS!!: ", this.props.videoURL);
+      if (this.props.videoURL && this.props.imageURL && this.props.videoTopic) {
+        var _uploadVideo2;
+
+        var _props3 = this.props,
+            dispatch = _props3.dispatch,
+            history = _props3.history,
+            id = _props3.id,
+            videoURL = _props3.videoURL,
+            imageURL = _props3.imageURL,
+            videoTitle = _props3.videoTitle,
+            videoDescription = _props3.videoDescription,
+            videoTopic = _props3.videoTopic;
+
+
+        dispatch((0, _video.uploadVideo)((_uploadVideo2 = {
+          userId: id,
+          videoTopic: videoTopic,
+          videoURL: videoURL,
+          videoTitle: videoTitle,
+          videoDescription: videoDescription
+        }, _defineProperty(_uploadVideo2, 'videoTopic', videoTopic), _defineProperty(_uploadVideo2, 'imageURL', imageURL), _defineProperty(_uploadVideo2, 'history', history), _uploadVideo2)));
       }
     }
   }, {
@@ -92697,9 +92842,10 @@ var VideoRecorder = function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var _props3 = this.props,
-          videoTitle = _props3.videoTitle,
-          videoDescription = _props3.videoDescription;
+      var _props4 = this.props,
+          videoTitle = _props4.videoTitle,
+          videoDescription = _props4.videoDescription,
+          videoTopic = _props4.videoTopic;
 
 
       return _react2.default.createElement(
@@ -92744,17 +92890,39 @@ var VideoRecorder = function (_Component) {
           }),
           _react2.default.createElement(
             'label',
+            { className: 'video-topic-label' },
+            'Topic'
+          ),
+          _react2.default.createElement('input', {
+            className: 'video-topic-input',
+            type: 'text',
+            name: 'topic',
+            value: videoTopic,
+            onChange: function onChange(e) {
+              return _this3.handleChange(e);
+            }
+          }),
+          _react2.default.createElement(
+            'label',
             { className: 'video-description-label' },
             'Description'
           ),
           _react2.default.createElement('input', {
             className: 'video-description-input',
             type: 'textarea',
-            name: 'videoDescription',
+            name: 'description',
             value: videoDescription,
             onChange: function onChange(e) {
               return _this3.handleChange(e);
             }
+          }),
+          _react2.default.createElement('input', {
+            className: 'image-upload',
+            onChange: function onChange(e) {
+              e.preventDefault();_this3.handleImageChange(e);
+            },
+            type: 'file',
+            name: 'video-picture'
           })
         ),
         _react2.default.createElement(
@@ -92783,14 +92951,21 @@ var mapStateToProps = function mapStateToProps(state) {
       video = videoData.video,
       videoURL = videoData.videoURL,
       videoDescription = videoData.videoDescription,
-      videoTitle = videoData.videoTitle;
+      videoTitle = videoData.videoTitle,
+      imageURL = videoData.imageURL,
+      videoTopic = videoData.videoTopic,
+      message = videoData.message;
 
 
   return {
     recorder: recorder,
     video: video,
     videoURL: videoURL,
-    videoTitle: videoTitle
+    videoTitle: videoTitle,
+    videoDescription: videoDescription,
+    imageURL: imageURL,
+    videoTopic: videoTopic,
+    message: message
   };
 };
 
@@ -93383,11 +93558,34 @@ var videoData = function videoData() {
     recorder: '',
     videoURL: '',
     videoDescription: '',
-    videoTitle: ''
+    videoTitle: '',
+    imageURL: '',
+    message: '',
+    videoTopic: ''
   };
   var action = arguments[1];
 
   switch (action.type) {
+    case _video.UPDATE_TOPIC:
+      return _extends({}, state, {
+        videoTopic: action.videoTopic
+      });
+    case _video.VIDEO_UPLOAD_SUCCESS:
+      return _extends({}, state, {
+        videoURL: action.videoURL,
+        imageURL: action.imageURL,
+        videoTitle: action.videoTitle,
+        videoDescription: action.videoDescription,
+        message: action.message
+      });
+    case _video.VIDEO_UPLOAD_FAILURE:
+      return _extends({}, state, {
+        message: action.message
+      });
+    case _video.UPDATE_IMAGE:
+      return _extends({}, state, {
+        imageURL: action.imageURL
+      });
     case _video.UPDATE_TITLE:
       return _extends({}, state, {
         videoTitle: action.videoTitle

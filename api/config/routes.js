@@ -15,6 +15,8 @@ router.post("/login", usersController.login);
 router.post("/topics", isAuthenticated, topicsController.addTopic);
 router.get("/topics/:token", isAuthenticated, topicsController.getTopics);
 router.post("/donate", [isAuthenticated, sendEth], videosController.getInfo);
+router.post("/upload", isAuthenticated, videosController.addVideo);
+router.get("/videos", videosController.grabVideos);
 
 
 module.exports = router;

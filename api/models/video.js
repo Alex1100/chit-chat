@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
+const User = require('./user').User;
+const Topic = require('./topic').Topic;
 
 const Video = db.define('video', {
   title: {
@@ -29,7 +31,7 @@ const Video = db.define('video', {
   },
   comments: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
-    allowNull: true,
+    defaultValue: []
   },
   createdAt: {
     type: Sequelize.DATE,
@@ -41,6 +43,10 @@ const Video = db.define('video', {
   }
 });
 
+User.hasMany(Video, { foreignKey: 'user_id', allowNull: false, onDelete: 'CASCADE' });
+Video.belongsTo(User, { foreignKey: 'user_id', allowNull: false, onDelete: 'CASCADE' });
+Topic.hasMany(Video, { foreignKey: 'topic_id', allowNull: false, onDelete: 'CASCADE' });
+Video.belongsTo(Topic, { foreignKey: 'topic_id', allowNull: false, onDelete: 'CASCADE' });
 
 module.exports = {
   Video,

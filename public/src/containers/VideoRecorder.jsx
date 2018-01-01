@@ -6,7 +6,10 @@ import {
   updateVideoDataURL,
   setVideo,
   updateTitleInput,
-  updateDescriptionInput
+  updateDescriptionInput,
+  updateTopicInput,
+  updateImageURL,
+  uploadVideo
 } from '../actions/video';
 
 
@@ -21,12 +24,25 @@ class VideoRecorder extends Component {
     this.endRecording = this.endRecording.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.uploadVideo = this.uploadVideo.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
   }
 
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(setVideo(document.querySelector('video')));
+  }
+
+  handleImageChange(e) {
+    const { dispatch } = this.props;
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    let image;
+    reader.onloadend = () => {
+      image = reader.result;
+      dispatch(updateImageURL(image));
+    }
+    reader.readAsDataURL(file);
   }
 
 
@@ -100,14 +116,44 @@ class VideoRecorder extends Component {
     const { dispatch } = this.props;
     if (name === "title") {
       dispatch(updateTitleInput(e.target.value));
-    } else {
+    } else if (name === "description") {
       dispatch(updateDescriptionInput(e.target.value));
+    } else if (name === "topic") {
+      dispatch(updateTopicInput(e.target.value));
     }
   }
 
   uploadVideo(e) {
-    if (this.props.videoURL) {
-      console.log("UPLOAD WORKS!!: ", this.props.videoURL);
+    if (
+      this.props.videoURL &&
+      this.props.imageURL &&
+      this.props.videoTopic
+    ) {
+      const {
+        dispatch,
+        history,
+        id,
+        videoURL,
+        imageURL,
+        videoTitle,
+        videoDescription,
+        videoTopic
+      } = this.props;
+
+      dispatch(
+        uploadVideo(
+          {
+            userId: id,
+            videoTopic,
+            videoURL,
+            videoTitle,
+            videoDescription,
+            videoTopic,
+            imageURL,
+            history
+          }
+        )
+      );
     }
   }
 
@@ -115,7 +161,8 @@ class VideoRecorder extends Component {
   render() {
     const {
       videoTitle,
-      videoDescription
+      videoDescription,
+      videoTopic
     } = this.props;
 
     return (
@@ -135,13 +182,27 @@ class VideoRecorder extends Component {
             value={videoTitle}
             onChange={(e) => this.handleChange(e)}
           />
+          <label className="video-topic-label">Topic</label>
+          <input
+            className="video-topic-input"
+            type="text"
+            name="topic"
+            value={videoTopic}
+            onChange={(e) => this.handleChange(e)}
+          />
           <label className="video-description-label">Description</label>
           <input
             className="video-description-input"
             type="textarea"
-            name="videoDescription"
+            name="description"
             value={videoDescription}
             onChange={(e) => this.handleChange(e)}
+          />
+          <input
+            className="image-upload"
+            onChange={(e) => {e.preventDefault(); this.handleImageChange(e)}}
+            type="file"
+            name="video-picture"
           />
         </div>
         <div className="submit-vid-container">
@@ -161,6 +222,9 @@ const mapStateToProps = (state) => {
     videoURL,
     videoDescription,
     videoTitle,
+    imageURL,
+    videoTopic,
+    message
   } = videoData;
 
   return {
@@ -168,6 +232,10 @@ const mapStateToProps = (state) => {
     video,
     videoURL,
     videoTitle,
+    videoDescription,
+    imageURL,
+    videoTopic,
+    message
   };
 };
 
