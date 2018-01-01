@@ -7,7 +7,8 @@ import {
   UPDATE_TOPIC,
   UPDATE_IMAGE,
   VIDEO_UPLOAD_SUCCESS,
-  VIDEO_UPLOAD_FAILURE
+  VIDEO_UPLOAD_FAILURE,
+  SET_CURRENT_VIDEO
 } from '../actions/video';
 
 
@@ -20,8 +21,14 @@ const videoData = (state = {
   imageURL: '',
   message: '',
   videoTopic: '',
+  currentVideo: '',
 }, action) => {
   switch (action.type) {
+    case SET_CURRENT_VIDEO:
+      return {
+        ...state,
+        currentVideo: action.currentVideo
+      };
     case UPDATE_TOPIC:
       return {
         ...state,

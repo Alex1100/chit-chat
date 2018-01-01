@@ -1,4 +1,9 @@
-import { INPUT_TOPIC, SELECT_TOPIC, ADD_NEW_TOPIC, TOPIC_ADD_FAILURE } from '../actions/topic';
+import {
+  INPUT_TOPIC,
+  SELECT_TOPIC,
+  ADD_NEW_TOPIC,
+  TOPIC_ADD_FAILURE
+} from '../actions/topic';
 
 
 const topicsData = (state = {

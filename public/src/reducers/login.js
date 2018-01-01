@@ -1,10 +1,16 @@
-import { UPDATE_USERNAME_INPUT, CLEAR_LOGIN, UPDATE_EMAIL_INPUT, UPDATE_PASSWORD_INPUT } from '../actions/login';
+import {
+  UPDATE_USERNAME_INPUT,
+  CLEAR_LOGIN,
+  UPDATE_EMAIL_INPUT,
+  UPDATE_PASSWORD_INPUT
+} from '../actions/login';
 
 const login = (state = {
   username: '',
   email: '',
   password: '',
-}, action) => {
+},
+action) => {
   switch (action.type) {
     case UPDATE_USERNAME_INPUT:
       return {

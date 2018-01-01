@@ -9,7 +9,7 @@ export const UPDATE_TOPIC = "UPDATE_TOPIC";
 export const UPDATE_IMAGE = "UPDATE_IMAGE";
 export const VIDEO_UPLOAD_SUCCESS = "VIDEO_UPLOAD_SUCCESS";
 export const VIDEO_UPLOAD_FAILURE = "VIDEO_UPLOAD_FAILURE";
-
+export const SET_CURRENT_VIDEO = "SET_CURRENT_VIDEO";
 
 const addToRecorderObject = (recorder) => ({
   type: "ADD_TO_RECORDER",
@@ -58,6 +58,11 @@ const successVideoUpload = () => ({
   videoTitle: '',
   videoDescription: '',
   message: ''
+});
+
+const setCurrentVideo = (currentVideo) => ({
+  type: "SET_CURRENT_VIDEO",
+  currentVideo
 });
 
 const updateRecorder = (recorder) => (dispatch) => {
@@ -118,6 +123,12 @@ const uploadVideo = (props) => {
       })
       .catch(err => console.log("ERROR UPLOADING VIDEO IS: ", err));
   }
+};
+
+
+const playVideo = (info) => (dispatch) => {
+  dispatch(setCurrentVideo(info.currentVideo));
+  info.history.push("video-player");
 }
 
 
@@ -130,5 +141,6 @@ export {
   updateDescriptionInput,
   updateTopicInput,
   updateImageURL,
-  uploadVideo
+  uploadVideo,
+  playVideo
 };

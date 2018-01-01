@@ -1,4 +1,8 @@
-import { UPDATE_INPUT_TERM, UPDATE_FILTER_SEARCH, CLEAR_SEARCH_CONTENT } from '../actions/search';
+import {
+  UPDATE_INPUT_TERM,
+  UPDATE_FILTER_SEARCH,
+  CLEAR_SEARCH_CONTENT
+} from '../actions/search';
 
 const search = (state = {
   input: '',

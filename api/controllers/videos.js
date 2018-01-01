@@ -74,7 +74,8 @@ const addVideo = async (req, res) => {
 const grabVideos = async (req, res) => {
   try {
     const zeVideos = await Video.findAll({});
-    res.status(200).json(zeVideos);
+    console.log("VIDEOS ARE HERE: ", zeVideos);
+    res.status(200).json({videos: zeVideos});
   } catch (e) {
     console.log("ERROR GETTING VIDS: ", e);
   }

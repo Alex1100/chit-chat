@@ -1,4 +1,13 @@
-import { GRAB_ALL_TOPICS, GRAB_ALL_TOPICS_REQUEST, GRAB_ALL_TOPICS_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../actions/auth';
+import {
+  GRAB_ALL_TOPICS,
+  GRAB_ALL_TOPICS_REQUEST,
+  GRAB_ALL_TOPICS_FAILURE,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS
+} from '../actions/auth';
 
 
 const auth = (state = {
@@ -8,6 +17,7 @@ const auth = (state = {
   user: '',
   email: '',
   topics: [],
+  videos: [],
 }, action) => {
   switch (action.type) {
     case GRAB_ALL_TOPICS:

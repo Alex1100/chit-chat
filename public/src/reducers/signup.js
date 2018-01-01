@@ -1,4 +1,9 @@
-import { UPDATE_USERNAME_INPUT, CLEAR_LOGIN, UPDATE_EMAIL_INPUT, UPDATE_PASSWORD_INPUT } from '../actions/login';
+import {
+  UPDATE_USERNAME_INPUT,
+  CLEAR_LOGIN,
+  UPDATE_EMAIL_INPUT,
+  UPDATE_PASSWORD_INPUT
+} from '../actions/login';
 
 const signup = (state = {
   username: '',

@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, Button } from 'react-bootstrap';
+import {
+  Nav,
+  Navbar,
+  NavItem,
+  Button
+} from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
 import { clearSearch } from '../actions/search';
@@ -11,16 +17,42 @@ const UserNav = (props) => (
     <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">Hey {props.user}!</Link>
+          <Link to="/">
+            Hey {props.user}!
+          </Link>
         </Navbar.Brand>
       </Navbar.Header>
       <Nav>
-        <NavItem><Link to="/" onClick={() => props.dispatch(logoutUser(props.history))}>Logout</Link></NavItem>
-        <SearchBar dispatch={props.dispatch} history={props.history} />
-        <NavItem className="clearSearch"><Button onClick={(e) => {e.preventDefault(); props.dispatch(clearSearch())}}>Clear Search</Button></NavItem>
+        <NavItem>
+          <Link
+            to="/"
+            onClick={() => props.dispatch(
+              logoutUser(
+                props.history
+              )
+            )}>
+            Logout
+          </Link>
+        </NavItem>
+        <SearchBar
+          dispatch={props.dispatch}
+          history={props.history}
+        />
+        <NavItem
+          className="clearSearch">
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              props.dispatch(
+                clearSearch()
+              );
+            }}>
+            Clear Search
+          </Button>
+        </NavItem>
       </Nav>
     </Navbar>
   </div>
-)
+);
 
 export default UserNav;

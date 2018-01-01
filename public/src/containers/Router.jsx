@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  withRouter
+} from 'react-router-dom';
+
 import GuestNav from '../components/GuestNav';
 import UserNav from '../components/UserNav';
 import Login from './Login';
 import Signup from './Signup';
 import TopicList from './TopicList';
 import VideoRecorder from './VideoRecorder';
+import VideoList from './VideoList';
+import Video from './Video';
 
 
 class Router extends Component {
 
   render() {
-
     const {
       dispatch,
       isAuthenticated,
@@ -21,12 +27,16 @@ class Router extends Component {
       user,
       id,
       selectedTopic,
-      topics
+      topics,
+      currentVideo,
+      videos,
     } = this.props;
 
     return isAuthenticated ? (
       <Switch>
-        <Route exact path="/">
+        <Route
+          exact
+          path="/">
           <div>
             <UserNav
               dispatch={dispatch}
@@ -42,8 +52,11 @@ class Router extends Component {
             />
           </div>
         </Route>
-        <Route exact path="/add-video">
-          <div className="video-recorder-page">
+        <Route
+          exact
+          path="/add-video">
+          <div
+            className="video-recorder-page">
             <VideoRecorder
               dispatch={dispatch}
               history={history}
@@ -53,10 +66,40 @@ class Router extends Component {
             />
           </div>
         </Route>
+        <Route
+          exact
+          path="/videos">
+          <div
+            className="video-list-page">
+            <VideoList
+              dispatch={dispatch}
+              history={history}
+              user={user}
+              id={id}
+              selectedTopic={selectedTopic}
+            />
+          </div>
+        </Route>
+        <Route
+          exact
+          path="/video-player">
+          <div
+            className="video-page">
+            <Video
+              dispatch={dispatch}
+              history={history}
+              user={user}
+              userId={id}
+              video={currentVideo}
+            />
+          </div>
+        </Route>
       </Switch>
     ) : (
       <Switch>
-        <Route exact path="/">
+        <Route
+          exact
+          path="/">
           <div>
             <GuestNav
               dispatch={dispatch}
@@ -65,30 +108,68 @@ class Router extends Component {
             />
           </div>
         </Route>
-        <Route exact path="/login">
-          <Login
-            dispatch={dispatch}
-            errorMessage={errorMessage}
-            history={history}
-          />
+        <Route
+          exact
+          path="/login">
+          <div>
+            <GuestNav
+              dispatch={dispatch}
+              errorMessage={errorMessage}
+              history={history}
+            />
+            <Login
+              dispatch={dispatch}
+              errorMessage={errorMessage}
+              history={history}
+            />
+          </div>
         </Route>
-        <Route exact path="/signup">
-          <Signup
-            dispatch={dispatch}
-            errorMessage={errorMessage}
-            history={history}
-          />
+        <Route
+          exact
+          path="/signup">
+          <div>
+            <GuestNav
+              dispatch={dispatch}
+              errorMessage={errorMessage}
+              history={history}
+            />
+            <Signup
+              dispatch={dispatch}
+              errorMessage={errorMessage}
+              history={history}
+            />
+          </div>
         </Route>
       </Switch>
-    )
+    );
   }
 };
 
 
 const mapStateToProps = (state) => {
-  const { auth, topicsData } = state;
-  const { isAuthenticated, errorMessage, user, id, topics } = auth;
+  const {
+    auth,
+    topicsData,
+    videoListData,
+    videoData
+  } = state;
+
+  const {
+    isAuthenticated,
+    errorMessage,
+    user,
+    id,
+    topics
+  } = auth;
+
+  const {
+    videos,
+  } = videoListData;
+
+  const { currentVideo } = videoData;
+
   const { selectedTopic } = topicsData;
+
   return {
     topics,
     selectedTopic,
@@ -96,6 +177,8 @@ const mapStateToProps = (state) => {
     errorMessage,
     user,
     id,
+    videos,
+    currentVideo,
   };
 };
 

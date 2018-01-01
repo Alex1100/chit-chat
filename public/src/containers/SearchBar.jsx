@@ -19,6 +19,7 @@ import {
 class SearchBar extends Component {
   constructor(props) {
     super(props);
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.search = this.search.bind(this);
@@ -30,7 +31,11 @@ class SearchBar extends Component {
   }
 
   handleFilterChange(e) {
-    const { dispatch, history } = this.props;
+    const {
+      dispatch,
+      history
+    } = this.props;
+
     dispatch(filterChange(e, history));
   }
 
@@ -42,44 +47,84 @@ class SearchBar extends Component {
       filter
     } = this.props;
 
-    dispatch(searchContent(input, filter, history));
+    dispatch(
+      searchContent(
+        input,
+        filter,
+        history
+      )
+    );
   }
 
   render() {
-    const { input, filter } = this.props;
+    const {
+      input,
+      filter
+    } = this.props;
+
     return (
-      <div className="search-input-container">
+      <div
+        className="search-input-container">
         <div
-          className="search-input"
-        >
+          className="search-input">
           <input
             className="search-input-text"
             type="text"
             name="input"
             value={input}
-            onChange={(e) => {e.preventDefault(); this.handleInputChange(e)}}
+            onChange={(e) => {
+              e.preventDefault();
+              this.handleInputChange(e);
+            }}
           />
           <br/>
-          <RadioGroup name="fruit" selectedValue={filter} onChange={(e) => this.handleFilterChange(e)}>
-            <span className="radio-btn"><Radio id="VideosRadio" value="Videos" />Videos</span>
-            <span className="radio-btn"><Radio id="TopicsRadio" value="Topics" />Topics</span>
+          <RadioGroup
+            name="searchFilter"
+            selectedValue={filter}
+            onChange={(e) => this.handleFilterChange(e)}>
+            <span
+              className="radio-btn">
+              <Radio
+                id="VideosRadio"
+                value="Videos"
+              />
+              Videos
+            </span>
+            <span
+              className="radio-btn">
+              <Radio
+                id="TopicsRadio"
+                value="Topics"
+              />
+              Topics
+            </span>
           </RadioGroup>
         </div>
         <br/>
         <br/>
-        <Col mdOffset={0} md={2}>
-          <button onClick={(e) => {e.preventDefault(); this.search(e)}}>
+        <Col
+          mdOffset={0}
+          md={2}>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              this.search(e);
+            }}>
             Search
           </button>
         </Col>
       </div>
-    )
+    );
   }
 };
 
 const mapStateToProps = (state) => {
   const { search } = state;
-  const { input, filter } = search;
+  const {
+    input,
+    filter
+  } = search;
+
   return {
     input,
     filter,

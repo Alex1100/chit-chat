@@ -23,6 +23,7 @@ const addNewTopicRequest = () => ({
 const addedNewTopic = () => ({
   type: "ADDED_NEW_TOPIC",
   isFetching: false,
+  newTopic: '',
 });
 
 const failedToAddNewTopic = (message) => ({

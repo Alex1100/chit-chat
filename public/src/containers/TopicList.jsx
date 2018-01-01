@@ -1,17 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Topic from "../components/Topic";
-import { addTopic, inputTopic } from "../actions/topic";
+import {
+  addTopic,
+  inputTopic
+} from "../actions/topic";
+
+import {
+  updateVideoList,
+  updateVideoRequest,
+  updateVideoFailure,
+  grabVideos
+} from '../actions/videoList';
+
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Nav, NavItem, Button } from 'react-bootstrap';
+import {
+  Nav,
+  NavItem,
+  Button
+} from 'react-bootstrap';
+
 import SearchBar from './SearchBar';
 
 
 class TopicsList extends Component {
   constructor(props) {
     super(props);
+
     this.handleTopicChange = this.handleTopicChange.bind(this);
     this.addNewTopic = this.addNewTopic.bind(this);
+    this.getVideos = this.getVideos.bind(this);
+  }
+
+  getVideos() {
+    const {
+      dispatch,
+      history
+    } = this.props;
+
+    dispatch(grabVideos(history));
   }
 
   handleTopicChange(e) {
@@ -19,41 +47,125 @@ class TopicsList extends Component {
     dispatch(inputTopic(e.target.value));
   }
 
-  addNewTopic(topic) {
-    const { dispatch, history, newTopic } = this.props;
+  addNewTopic() {
+    const {
+      dispatch,
+      history,
+      newTopic
+    } = this.props;
+
     dispatch(addTopic(newTopic, history));
   }
 
 
   render() {
-    const { topics, selectedTopic, newTopic, dispatch, history } = this.props;
+    const {
+      topics,
+      selectedTopic,
+      newTopic,
+      dispatch,
+      history
+    } = this.props;
+
     return topics ? (
-      <div className="topics-list">
-        <div className="topics-add-container">
-          <label className="topics-add-label">Add New Topic</label>
-          <input className="topics-add-input" type="text" onChange={(e) => {e.preventDefault(); this.handleTopicChange(e)}} name="newTopic" value={newTopic} />
-          <button className="topics-add-btn" type="submit" onClick={(e) => {e.preventDefault; this.addNewTopic()}}>Add Topic</button>
+      <div
+        className="topics-list">
+        <div
+          className="topics-add-container">
+          <label
+            className="topics-add-label">
+            Add New Topic
+          </label>
+          <input
+            className="topics-add-input"
+            type="text"
+            onChange={(e) => {
+              e.preventDefault();
+              this.handleTopicChange(e);
+            }}
+            name="newTopic"
+            value={newTopic}
+          />
+          <button
+            className="topics-add-btn"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault;
+              this.addNewTopic();
+            }}>
+            Add Topic
+          </button>
         </div>
         <br/>
-        <div className="add-video-link">
-          <Nav bsStyle="tabs">
-            <NavItem><Link to="/add-video">Add Video</Link></NavItem>
-            <NavItem><Link to="/random-topic">Random Topic</Link></NavItem>
+        <div
+          className="add-video-link">
+          <Nav
+            bsStyle="tabs">
+            <NavItem>
+              <Link
+                to="/add-video">
+                Add Video
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link
+                to="/random-topic">
+                Random Topic
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.getVideos();
+                }}
+                to="/videos">
+                All Videos
+              </Link>
+            </NavItem>
           </Nav>
         </div>
-        <h1 className="topics-header">All Topics</h1>
+        <h1
+          className="topics-header">
+          All Topics
+        </h1>
         {
           topics.map((el, wi) => (
-            <Topic className="topic-item" dispatch={dispatch} history={history} key={wi.toString()} id={el.id} name={el.name}/>
+            <Topic
+              className="topic-item"
+              dispatch={dispatch}
+              history={history}
+              key={wi.toString()}
+              id={el.id}
+              name={el.name}
+            />
           ))
         }
       </div>
     ) : (
-      <div className="topics-list">
-        <div className="topics-add-container">
-          <label>Add New Topic</label>
-          <input type="text" onChange={(e) => {e.preventDefault(); this.handleTopicChange(e)}} name="newTopic" value={newTopic} />
-          <button type="submit" onClick={(e) => {e.preventDefault; this.addNewTopic()}}></button>
+      <div
+        className="topics-list">
+        <div
+          className="topics-add-container">
+          <label>
+            Add New Topic
+          </label>
+          <input
+            type="text"
+            onChange={(e) => {
+              e.preventDefault();
+              this.handleTopicChange(e);
+            }}
+            name="newTopic"
+            value={newTopic}
+          />
+          <button
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault;
+              this.addNewTopic();
+            }}>
+          </button>
         </div>
         <br/>
       </div>
@@ -64,7 +176,11 @@ class TopicsList extends Component {
 
 const mapStateToProps = (state) => {
   const { topicsData } = state;
-  const { selectedTopic, newTopic} = topicsData
+  const {
+    selectedTopic,
+    newTopic
+  } = topicsData;
+
   return {
     selectedTopic,
     newTopic,

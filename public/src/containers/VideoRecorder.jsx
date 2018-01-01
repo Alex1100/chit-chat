@@ -103,6 +103,7 @@ class VideoRecorder extends Component {
       video,
       recorder
     } = this.props;
+
     this.captureCamera();
   };
 
@@ -167,14 +168,32 @@ class VideoRecorder extends Component {
 
     return (
       <div>
-        <video controls played poster id="video"></video>
+        <video
+          controls
+          played
+          poster
+          id="video"
+        />
         <br/>
-        <div className="video-controls">
-          <button id="btn-start-recording" onClick={(e) => this.initRecording(e)}>Start Recording</button>
-          <button id="btn-stop-recording" onClick={() => this.endRecording()}>Stop Recording</button>
+        <div
+          className="video-controls">
+          <button
+            id="btn-start-recording"
+            onClick={(e) => this.initRecording(e)}>
+            Start Recording
+          </button>
+          <button
+            id="btn-stop-recording"
+            onClick={() => this.endRecording()}>
+            Stop Recording
+          </button>
         </div>
-        <div className="video-info">
-          <label className="video-title-label">Title</label>
+        <div
+          className="video-info">
+          <label
+            className="video-title-label">
+            Title
+          </label>
           <input
             className="video-title-input"
             type="text"
@@ -182,7 +201,10 @@ class VideoRecorder extends Component {
             value={videoTitle}
             onChange={(e) => this.handleChange(e)}
           />
-          <label className="video-topic-label">Topic</label>
+          <label
+            className="video-topic-label">
+            Topic
+          </label>
           <input
             className="video-topic-input"
             type="text"
@@ -190,7 +212,10 @@ class VideoRecorder extends Component {
             value={videoTopic}
             onChange={(e) => this.handleChange(e)}
           />
-          <label className="video-description-label">Description</label>
+          <label
+            className="video-description-label">
+            Description
+          </label>
           <input
             className="video-description-input"
             type="textarea"
@@ -205,8 +230,16 @@ class VideoRecorder extends Component {
             name="video-picture"
           />
         </div>
-        <div className="submit-vid-container">
-          <button className="submit-vid-btn" onClick={(e) => {e.preventDefault(); this.uploadVideo(e)}}>Upload</button>
+        <div
+          className="submit-vid-container">
+          <button
+            className="submit-vid-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              this.uploadVideo(e);
+            }}>
+            Upload
+          </button>
         </div>
       </div>
     );
