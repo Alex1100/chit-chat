@@ -1,5 +1,5 @@
 {
-  "name": "webrtc-practice",
+  "name": "chit-chat",
   "version": "1.0.0",
   "description": "",
   "chromium-args": "--enable-usermedia-screen-capturing",

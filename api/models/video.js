@@ -3,6 +3,7 @@ const db = require('../config/database');
 const User = require('./user').User;
 const Topic = require('./topic').Topic;
 
+
 const Video = db.define('video', {
   title: {
     type: Sequelize.STRING,
@@ -29,10 +30,6 @@ const Video = db.define('video', {
     type: Sequelize.INTEGER,
     defaultValue: 0,
   },
-  comments: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
-    defaultValue: []
-  },
   createdAt: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.fn('NOW'),
@@ -43,10 +40,30 @@ const Video = db.define('video', {
   }
 });
 
-User.hasMany(Video, { foreignKey: 'user_id', allowNull: false, onDelete: 'CASCADE' });
-Video.belongsTo(User, { foreignKey: 'user_id', allowNull: false, onDelete: 'CASCADE' });
-Topic.hasMany(Video, { foreignKey: 'topic_id', allowNull: false, onDelete: 'CASCADE' });
-Video.belongsTo(Topic, { foreignKey: 'topic_id', allowNull: false, onDelete: 'CASCADE' });
+User.hasMany(Video, {
+  foreignKey: 'user_id',
+  allowNull: false,
+  onDelete: 'CASCADE'
+});
+
+Video.belongsTo(User, {
+  foreignKey: 'user_id',
+  allowNull: false,
+  onDelete: 'CASCADE'
+});
+
+Topic.hasMany(Video, {
+  foreignKey: 'topic_id',
+  allowNull: false,
+  onDelete: 'CASCADE'
+});
+
+Video.belongsTo(Topic, {
+  foreignKey: 'topic_id',
+  allowNull: false,
+  onDelete: 'CASCADE'
+});
+
 
 module.exports = {
   Video,
