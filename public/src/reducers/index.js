@@ -6,6 +6,8 @@ import topicsData from './topic';
 import search from './search';
 import videoData from './video';
 import videoListData from './videoList';
+import videoCommentsData from './videoComments';
+
 
 const RootReducer = combineReducers({
   auth,
@@ -14,7 +16,8 @@ const RootReducer = combineReducers({
   topicsData,
   search,
   videoData,
-  videoListData
+  videoListData,
+  videoCommentsData
 });
 
 export default RootReducer;

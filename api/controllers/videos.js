@@ -2,6 +2,8 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 const Video = require('../models/video').Video;
 const Topic = require('../models/topic').Topic;
+const axios = require('axios');
+
 
 const getInfo = async (req, res) => {
   try {
@@ -33,7 +35,7 @@ const addVideo = async (req, res) => {
     } = req.body;
 
     if (req.decoded) {
-      let titleTaken = await Video.findOne({ where: { title: videoTitle } })
+      let titleTaken = await Video.findOne({ where: { title: videoTitle } });
       if (!titleTaken) {
         const currentTopic = await Topic.findOne({ where: { name: videoTopic } });
         const thumbnail = JSON.parse(imageURL);
@@ -59,27 +61,44 @@ const addVideo = async (req, res) => {
           });
         }
 
+        const videoUploadURL = `${process.env.RAILS_MICROSERVICE}/videos`;
+        const axiosBod = {
+          title: videoTitle,
+          user_id: userId
+        };
+
+        const axiosConfig = {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        };
+
+        const uploadedVideo = await axios.post(videoUploadURL, axiosBod, axiosConfig);
+
         res.status(201).send({resCode: 201});
       }
     } else {
-      throw new Error("Invalid JWT Token...")
+      throw new Error("Invalid JWT Token...");
     }
   } catch (e) {
     console.log("ERROR IS: ", e);
     res.status(422).send(e.message);
   }
-}
+};
 
 
 const grabVideos = async (req, res) => {
   try {
-    const zeVideos = await Video.findAll({});
-    console.log("VIDEOS ARE HERE: ", zeVideos);
-    res.status(200).json({videos: zeVideos});
+    if (req.decoded) {
+      const zeVideos = await Video.findAll({});
+      console.log("VIDEOS ARE HERE: ", zeVideos);
+      res.status(200).json({videos: zeVideos});
+    } else {
+      throw new Error("Invalid JWT Token...");
+    }
   } catch (e) {
     console.log("ERROR GETTING VIDS: ", e);
   }
-}
+};
 
 
 module.exports = {

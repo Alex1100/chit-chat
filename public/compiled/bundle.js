@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a34a95e5f303b3edc30b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "410710bab8b495eb5a57"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -84071,49 +84071,49 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(LOGIN_REQUEST, 'LOGIN_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(LOGIN_REQUEST, 'LOGIN_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(LOGIN_SUCCESS, 'LOGIN_SUCCESS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(LOGIN_SUCCESS, 'LOGIN_SUCCESS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(LOGIN_FAILURE, 'LOGIN_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(LOGIN_FAILURE, 'LOGIN_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(LOGOUT_REQUEST, 'LOGOUT_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(LOGOUT_REQUEST, 'LOGOUT_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(LOGOUT_SUCCESS, 'LOGOUT_SUCCESS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(LOGOUT_SUCCESS, 'LOGOUT_SUCCESS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(LOGOUT_FAILURE, 'LOGOUT_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(LOGOUT_FAILURE, 'LOGOUT_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_FAILURE, 'GRAB_ALL_TOPICS_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_FAILURE, 'GRAB_ALL_TOPICS_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS, 'GRAB_ALL_TOPICS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS, 'GRAB_ALL_TOPICS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_REQUEST, 'GRAB_ALL_TOPICS_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_REQUEST, 'GRAB_ALL_TOPICS_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(clearLogin, 'clearLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(clearLogin, 'clearLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(requestLogin, 'requestLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(requestLogin, 'requestLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(receiveLogin, 'receiveLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(receiveLogin, 'receiveLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(loginError, 'loginError', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(loginError, 'loginError', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(requestLogout, 'requestLogout', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(requestLogout, 'requestLogout', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(receiveLogout, 'receiveLogout', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(receiveLogout, 'receiveLogout', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(failedToGrabAllTopics, 'failedToGrabAllTopics', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(failedToGrabAllTopics, 'failedToGrabAllTopics', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(grabAllTopicsRequest, 'grabAllTopicsRequest', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(grabAllTopicsRequest, 'grabAllTopicsRequest', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(grabAllTopicsSuccess, 'grabAllTopicsSuccess', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(grabAllTopicsSuccess, 'grabAllTopicsSuccess', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(grabAllTopics, 'grabAllTopics', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(grabAllTopics, 'grabAllTopics', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(loginUser, 'loginUser', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(loginUser, 'loginUser', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(signupUser, 'signupUser', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(signupUser, 'signupUser', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
-  __REACT_HOT_LOADER__.register(logoutUser, 'logoutUser', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/auth.js');
+  __REACT_HOT_LOADER__.register(logoutUser, 'logoutUser', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 }();
 
 ;
@@ -84184,25 +84184,25 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(UPDATE_USERNAME_INPUT, "UPDATE_USERNAME_INPUT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(UPDATE_USERNAME_INPUT, "UPDATE_USERNAME_INPUT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_EMAIL_INPUT, "UPDATE_EMAIL_INPUT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(UPDATE_EMAIL_INPUT, "UPDATE_EMAIL_INPUT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_PASSWORD_INPUT, "UPDATE_PASSWORD_INPUT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(UPDATE_PASSWORD_INPUT, "UPDATE_PASSWORD_INPUT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(CLEAR_LOGIN, "CLEAR_LOGIN", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(CLEAR_LOGIN, "CLEAR_LOGIN", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(updateUsername, "updateUsername", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(updateUsername, "updateUsername", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(updateEmail, "updateEmail", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(updateEmail, "updateEmail", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(updatePassword, "updatePassword", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(updatePassword, "updatePassword", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(inputUsername, "inputUsername", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(inputUsername, "inputUsername", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(inputEmail, "inputEmail", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(inputEmail, "inputEmail", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
-  __REACT_HOT_LOADER__.register(inputPassword, "inputPassword", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/login.js");
+  __REACT_HOT_LOADER__.register(inputPassword, "inputPassword", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 }();
 
 ;
@@ -84288,25 +84288,25 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(UPDATE_INPUT_TERM, "UPDATE_INPUT_TERM", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(UPDATE_INPUT_TERM, "UPDATE_INPUT_TERM", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_FILTER_SEARCH, "UPDATE_FILTER_SEARCH", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(UPDATE_FILTER_SEARCH, "UPDATE_FILTER_SEARCH", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(CLEAR_SEARCH_CONTENT, "CLEAR_SEARCH_CONTENT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(CLEAR_SEARCH_CONTENT, "CLEAR_SEARCH_CONTENT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(updateSearch, "updateSearch", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(updateSearch, "updateSearch", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(updateFilter, "updateFilter", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(updateFilter, "updateFilter", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(clearSearchContext, "clearSearchContext", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(clearSearchContext, "clearSearchContext", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(inputSearch, "inputSearch", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(inputSearch, "inputSearch", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(filterChange, "filterChange", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(filterChange, "filterChange", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(clearSearch, "clearSearch", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(clearSearch, "clearSearch", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 
-  __REACT_HOT_LOADER__.register(searchContent, "searchContent", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/search.js");
+  __REACT_HOT_LOADER__.register(searchContent, "searchContent", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/search.js");
 }();
 
 ;
@@ -84461,45 +84461,45 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(INPUT_TOPIC, "INPUT_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(INPUT_TOPIC, "INPUT_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(ADD_NEW_TOPIC, "ADD_NEW_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(ADD_NEW_TOPIC, "ADD_NEW_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(ADDED_NEW_TOPIC, "ADDED_NEW_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(ADDED_NEW_TOPIC, "ADDED_NEW_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(TOPIC_ADD_FAILURE, "TOPIC_ADD_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(TOPIC_ADD_FAILURE, "TOPIC_ADD_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(SELECT_TOPIC, "SELECT_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(SELECT_TOPIC, "SELECT_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_FAILURE, "GRAB_ALL_TOPICS_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_FAILURE, "GRAB_ALL_TOPICS_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS, "GRAB_ALL_TOPICS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS, "GRAB_ALL_TOPICS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_REQUEST, "GRAB_ALL_TOPICS_REQUEST", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_REQUEST, "GRAB_ALL_TOPICS_REQUEST", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(inputNewTopic, "inputNewTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(inputNewTopic, "inputNewTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(addNewTopicRequest, "addNewTopicRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(addNewTopicRequest, "addNewTopicRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(addedNewTopic, "addedNewTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(addedNewTopic, "addedNewTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(failedToAddNewTopic, "failedToAddNewTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(failedToAddNewTopic, "failedToAddNewTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(selectATopic, "selectATopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(selectATopic, "selectATopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(failedToGrabAllTopics, "failedToGrabAllTopics", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(failedToGrabAllTopics, "failedToGrabAllTopics", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(grabAllTopicsRequest, "grabAllTopicsRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(grabAllTopicsRequest, "grabAllTopicsRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(grabAllTopicsSuccess, "grabAllTopicsSuccess", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(grabAllTopicsSuccess, "grabAllTopicsSuccess", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(inputTopic, "inputTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(inputTopic, "inputTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(selectTopic, "selectTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(selectTopic, "selectTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(addTopic, "addTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(addTopic, "addTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 
-  __REACT_HOT_LOADER__.register(grabAllTopics, "grabAllTopics", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/topic.js");
+  __REACT_HOT_LOADER__.register(grabAllTopics, "grabAllTopics", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/topic.js");
 }();
 
 ;
@@ -84686,8 +84686,14 @@ var uploadVideo = function uploadVideo(props) {
 
 var playVideo = function playVideo(info) {
   return function (dispatch) {
-    dispatch(setCurrentVideo(info.currentVideo));
-    info.history.push("video-player");
+    _axios2.default.get("http://localhost:3000" + "/video/" + info.currentVideo.videoId + "/comments").then(function (response) {
+      console.log("COMMENTS ARE: ", repsonse);
+      info.currentVideo["comments"] = response.data.comments;
+      dispatch(setCurrentVideo(info.currentVideo));
+      info.history.push("video-player");
+    }).catch(function (err) {
+      console.log("COULDN'T RETRIEVE COMMENTS: ", err);
+    });
   };
 };
 
@@ -84708,69 +84714,138 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(ADD_TO_RECORDER, "ADD_TO_RECORDER", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(ADD_TO_RECORDER, "ADD_TO_RECORDER", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(SET_VIDEO, "SET_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(SET_VIDEO, "SET_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_DATAURL, "UPDATE_DATAURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_DATAURL, "UPDATE_DATAURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_TITLE, "UPDATE_TITLE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_TITLE, "UPDATE_TITLE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_DESCRIPTION, "UPDATE_DESCRIPTION", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_DESCRIPTION, "UPDATE_DESCRIPTION", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_TOPIC, "UPDATE_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_TOPIC, "UPDATE_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(UPDATE_IMAGE, "UPDATE_IMAGE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_IMAGE, "UPDATE_IMAGE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_SUCCESS, "VIDEO_UPLOAD_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_SUCCESS, "VIDEO_UPLOAD_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_FAILURE, "VIDEO_UPLOAD_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_FAILURE, "VIDEO_UPLOAD_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(SET_CURRENT_VIDEO, "SET_CURRENT_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(SET_CURRENT_VIDEO, "SET_CURRENT_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(addToRecorderObject, "addToRecorderObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(addToRecorderObject, "addToRecorderObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(setVideObject, "setVideObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(setVideObject, "setVideObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateDataURL, "updateDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateDataURL, "updateDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoTitle, "updateVideoTitle", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoTitle, "updateVideoTitle", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoDescription, "updateVideoDescription", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoDescription, "updateVideoDescription", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoTopic, "updateVideoTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoTopic, "updateVideoTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoImageURL, "updateVideoImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoImageURL, "updateVideoImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(failedVideoUpload, "failedVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(failedVideoUpload, "failedVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(successVideoUpload, "successVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(successVideoUpload, "successVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(setCurrentVideo, "setCurrentVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(setCurrentVideo, "setCurrentVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateRecorder, "updateRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateRecorder, "updateRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(setVideo, "setVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(setVideo, "setVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoDataURL, "updateVideoDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoDataURL, "updateVideoDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(clearRecorder, "clearRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(clearRecorder, "clearRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateTitleInput, "updateTitleInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateTitleInput, "updateTitleInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateDescriptionInput, "updateDescriptionInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateDescriptionInput, "updateDescriptionInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateTopicInput, "updateTopicInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateTopicInput, "updateTopicInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(updateImageURL, "updateImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateImageURL, "updateImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(uploadVideo, "uploadVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(uploadVideo, "uploadVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 
-  __REACT_HOT_LOADER__.register(playVideo, "playVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(playVideo, "playVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
 }();
 
 ;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
+
+/***/ }),
+
+/***/ "./public/src/actions/videoComment.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setVideoCommentsListView = exports.TOGGLE_COMMENT_LIST_VIEW = exports.GRAB_COMMENT_COMMENT_FAILURE = exports.GRAB_COMMENT_COMMENTS_SUCCESS = exports.GRAB_COMMENT_COMMENTS_REQUEST = exports.GRAB_VIDEOS_COMMENTS_FAILURE = exports.GRAB_VIDEOS_COMMENTS_SUCCESS = exports.GRAB_VIDEOS_COMMENTS_REQUEST = undefined;
+
+var _axios = __webpack_require__("./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var GRAB_VIDEOS_COMMENTS_REQUEST = exports.GRAB_VIDEOS_COMMENTS_REQUEST = "GRAB_VIDEOS_COMMENTS_REQUEST";
+var GRAB_VIDEOS_COMMENTS_SUCCESS = exports.GRAB_VIDEOS_COMMENTS_SUCCESS = "GRAB_VIDEOS_COMMENTS_SUCCESS";
+var GRAB_VIDEOS_COMMENTS_FAILURE = exports.GRAB_VIDEOS_COMMENTS_FAILURE = "GRAB_VIDEOS_COMMENTS_FAILURE";
+var GRAB_COMMENT_COMMENTS_REQUEST = exports.GRAB_COMMENT_COMMENTS_REQUEST = "GRAB_COMMENT_COMMENTS_REQUEST";
+var GRAB_COMMENT_COMMENTS_SUCCESS = exports.GRAB_COMMENT_COMMENTS_SUCCESS = "GRAB_COMMENT_COMMENTS_SUCCESS";
+var GRAB_COMMENT_COMMENT_FAILURE = exports.GRAB_COMMENT_COMMENT_FAILURE = "GRAB_COMMENT_COMMENT_FAILURE";
+var TOGGLE_COMMENT_LIST_VIEW = exports.TOGGLE_COMMENT_LIST_VIEW = "TOGGLE_COMMENT_LIST_VIEW";
+
+var toggleCommentListView = function toggleCommentListView(commentsVisisble) {
+  return {
+    type: "TOGGLE_COMMENT_LIST_VIEW",
+    commentsVisisble: commentsVisisble
+  };
+};
+
+var setVideoCommentsListView = function setVideoCommentsListView(commentsVisisble) {
+  return function (dispatch) {
+    dispatch(toggleCommentListView(commentsVisisble));
+  };
+};
+
+exports.setVideoCommentsListView = setVideoCommentsListView;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_COMMENTS_REQUEST, "GRAB_VIDEOS_COMMENTS_REQUEST", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_COMMENTS_SUCCESS, "GRAB_VIDEOS_COMMENTS_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_COMMENTS_FAILURE, "GRAB_VIDEOS_COMMENTS_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(GRAB_COMMENT_COMMENTS_REQUEST, "GRAB_COMMENT_COMMENTS_REQUEST", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(GRAB_COMMENT_COMMENTS_SUCCESS, "GRAB_COMMENT_COMMENTS_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(GRAB_COMMENT_COMMENT_FAILURE, "GRAB_COMMENT_COMMENT_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(TOGGLE_COMMENT_LIST_VIEW, "TOGGLE_COMMENT_LIST_VIEW", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(toggleCommentListView, "toggleCommentListView", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(setVideoCommentsListView, "setVideoCommentsListView", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+}();
+
+;
 
 /***/ }),
 
@@ -84813,7 +84888,7 @@ var updateVidFailure = function updateVidFailure(videoListErrorMessage) {
 var updateVidList = function updateVidList(videos) {
   return {
     type: "GRAB_VIDEOS_SUCCESS",
-    videos: JSON.parse(videos)
+    videos: videos
   };
 };
 
@@ -84832,7 +84907,7 @@ var updateVideoFailure = function updateVideoFailure(videoListErrorMessage) {
 var grabVideos = function grabVideos(history) {
   return function (dispatch) {
     dispatch(updateVideoRequest());
-    _axios2.default.get("/api/videos").then(function (response) {
+    _axios2.default.get("/api/videos/" + localStorage.getItem("token")).then(function (response) {
       if (response.data.videos.length < 1) {
         return Promise.reject(response.data.videos);
         dispatch(updateVideoFailure("COULDN'T GRAB VIDEOS"));
@@ -84857,23 +84932,23 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_REQUEST, "GRAB_VIDEOS_REQUEST", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_REQUEST, "GRAB_VIDEOS_REQUEST", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_SUCCESS, "GRAB_VIDEOS_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_SUCCESS, "GRAB_VIDEOS_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_FAILURE, "GRAB_VIDEOS_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(GRAB_VIDEOS_FAILURE, "GRAB_VIDEOS_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(updateVidRequest, "updateVidRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(updateVidRequest, "updateVidRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(updateVidFailure, "updateVidFailure", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(updateVidFailure, "updateVidFailure", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(updateVidList, "updateVidList", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(updateVidList, "updateVidList", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoRequest, "updateVideoRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(updateVideoRequest, "updateVideoRequest", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(updateVideoFailure, "updateVideoFailure", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(updateVideoFailure, "updateVideoFailure", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 
-  __REACT_HOT_LOADER__.register(grabVideos, "grabVideos", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/actions/videoList.js");
+  __REACT_HOT_LOADER__.register(grabVideos, "grabVideos", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoList.js");
 }();
 
 ;
@@ -84958,9 +85033,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(GuestNav, 'GuestNav', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/GuestNav.jsx');
+  __REACT_HOT_LOADER__.register(GuestNav, 'GuestNav', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/GuestNav.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/GuestNav.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/GuestNav.jsx');
 }();
 
 ;
@@ -85027,9 +85102,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Topic, 'Topic', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/Topic.jsx');
+  __REACT_HOT_LOADER__.register(Topic, 'Topic', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/Topic.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/Topic.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/Topic.jsx');
 }();
 
 ;
@@ -85134,9 +85209,138 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(UserNav, 'UserNav', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/UserNav.jsx');
+  __REACT_HOT_LOADER__.register(UserNav, 'UserNav', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/UserNav.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/UserNav.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/UserNav.jsx');
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/components/Video.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _VideoPlayer = __webpack_require__("./public/src/components/VideoPlayer.jsx");
+
+var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
+
+var _VideoCommentsList = __webpack_require__("./public/src/containers/VideoCommentsList.jsx");
+
+var _VideoCommentsList2 = _interopRequireDefault(_VideoCommentsList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Video = function Video(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_VideoPlayer2.default, {
+      video: props.video
+    }),
+    _react2.default.createElement(
+      'div',
+      {
+        className: 'video-likes-container' },
+      _react2.default.createElement(
+        'p',
+        null,
+        props.video.likes,
+        ' ',
+        props.video.likes < 1 || props.video.likes > 1 ? "Likes" : "Like"
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      {
+        className: 'video-comments-container' },
+      _react2.default.createElement(_VideoCommentsList2.default, {
+        dispatch: props.dispatch,
+        history: props.history,
+        comment: props.comment,
+        user: props.user
+      })
+    )
+  );
+};
+
+var _default = Video;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Video, 'Video', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/Video.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/Video.jsx');
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/components/VideoComment.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var VideoComment = function VideoComment(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      props.comment.body
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'commented by: ',
+      props.user,
+      ' at ',
+      props.comment.created_at
+    )
+  );
+};
+
+var _default = VideoComment;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(VideoComment, 'VideoComment', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoComment.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoComment.jsx');
 }();
 
 ;
@@ -85201,9 +85405,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(VideoPlayer, "VideoPlayer", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/VideoPlayer.jsx");
+  __REACT_HOT_LOADER__.register(VideoPlayer, "VideoPlayer", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPlayer.jsx");
 
-  __REACT_HOT_LOADER__.register(_default, "default", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/VideoPlayer.jsx");
+  __REACT_HOT_LOADER__.register(_default, "default", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPlayer.jsx");
 }();
 
 ;
@@ -85280,9 +85484,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(VideoPreview, 'VideoPreview', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/VideoPreview.jsx');
+  __REACT_HOT_LOADER__.register(VideoPreview, 'VideoPreview', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPreview.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/components/VideoPreview.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPreview.jsx');
 }();
 
 ;
@@ -85536,11 +85740,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Login, 'Login', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Login.jsx');
+  __REACT_HOT_LOADER__.register(Login, 'Login', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Login.jsx');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Login.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Login.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Login.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Login.jsx');
 }();
 
 ;
@@ -85595,7 +85799,7 @@ var _VideoList = __webpack_require__("./public/src/containers/VideoList.jsx");
 
 var _VideoList2 = _interopRequireDefault(_VideoList);
 
-var _Video = __webpack_require__("./public/src/containers/Video.jsx");
+var _Video = __webpack_require__("./public/src/components/Video.jsx");
 
 var _Video2 = _interopRequireDefault(_Video);
 
@@ -85815,11 +86019,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Router, 'Router', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Router.jsx');
+  __REACT_HOT_LOADER__.register(Router, 'Router', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Router.jsx');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Router.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Router.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Router.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Router.jsx');
 }();
 
 ;
@@ -86008,11 +86212,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(SearchBar, 'SearchBar', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/SearchBar.jsx');
+  __REACT_HOT_LOADER__.register(SearchBar, 'SearchBar', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SearchBar.jsx');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/SearchBar.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SearchBar.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/SearchBar.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SearchBar.jsx');
 }();
 
 ;
@@ -86246,11 +86450,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Signup, 'Signup', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Signup.jsx');
+  __REACT_HOT_LOADER__.register(Signup, 'Signup', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Signup.jsx');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Signup.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Signup.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Signup.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/Signup.jsx');
 }();
 
 ;
@@ -86517,18 +86721,18 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(TopicsList, "TopicsList", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/TopicList.jsx");
+  __REACT_HOT_LOADER__.register(TopicsList, "TopicsList", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/TopicList.jsx");
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, "mapStateToProps", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/TopicList.jsx");
+  __REACT_HOT_LOADER__.register(mapStateToProps, "mapStateToProps", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/TopicList.jsx");
 
-  __REACT_HOT_LOADER__.register(_default, "default", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/TopicList.jsx");
+  __REACT_HOT_LOADER__.register(_default, "default", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/TopicList.jsx");
 }();
 
 ;
 
 /***/ }),
 
-/***/ "./public/src/containers/Video.jsx":
+/***/ "./public/src/containers/VideoCommentsList.jsx":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86544,9 +86748,13 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _VideoPlayer = __webpack_require__("./public/src/components/VideoPlayer.jsx");
+var _VideoComment = __webpack_require__("./public/src/components/VideoComment.jsx");
 
-var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
+var _VideoComment2 = _interopRequireDefault(_VideoComment);
+
+var _videoComment = __webpack_require__("./public/src/actions/videoComment.js");
+
+var _reactRedux = __webpack_require__("./node_modules/react-redux/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -86556,52 +86764,140 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Video = function (_Component) {
-  _inherits(Video, _Component);
+var VideoCommentsList = function (_Component) {
+  _inherits(VideoCommentsList, _Component);
 
-  function Video(props) {
-    _classCallCheck(this, Video);
+  function VideoCommentsList(props) {
+    _classCallCheck(this, VideoCommentsList);
 
-    return _possibleConstructorReturn(this, (Video.__proto__ || Object.getPrototypeOf(Video)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (VideoCommentsList.__proto__ || Object.getPrototypeOf(VideoCommentsList)).call(this, props));
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.toggleView = _this.toggleView.bind(_this);
+    return _this;
   }
 
-  _createClass(Video, [{
+  _createClass(VideoCommentsList, [{
+    key: 'handleChange',
+    value: function handleChange(e) {
+      var dispatch = this.props.dispatch;
+
+      dispatch(updateCommentInput(e.target.value));
+    }
+  }, {
+    key: 'toggleView',
+    value: function toggleView() {
+      this.props.dispatch((0, _videoComment.setVideoCommentsListView)());
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var video = this.props.video;
+      var _this2 = this;
 
-      return _react2.default.createElement(
+      var _props = this.props,
+          comments = _props.comments,
+          dispatch = _props.dispatch,
+          history = _props.history,
+          user = _props.user,
+          commentsVisible = _props.commentsVisible;
+
+
+      return commentsVisible ? _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_VideoPlayer2.default, { video: props.video }),
         _react2.default.createElement(
           'div',
-          { className: 'video-likes-container' },
+          {
+            className: 'video-comments-substition' },
+          _react2.default.createElement('input', {
+            type: 'text',
+            name: 'newComment',
+            onChange: function onChange(e) {
+              e.preventDefault();
+              _this2.handleChange(e);
+            }
+          }),
+          _react2.default.createElement(
+            'button',
+            {
+              className: 'video-comment-submit' },
+            'Add Comment'
+          )
+        ),
+        comments.map(function (comment, wi) {
+          return _react2.default.createElement(_VideoComment2.default, {
+            key: wi.toString(),
+            dispatch: dispatch,
+            history: history,
+            comment: comment,
+            user: user
+          });
+        }),
+        _react2.default.createElement(
+          'div',
+          null,
           _react2.default.createElement(
             'p',
-            null,
-            'Likes go here'
+            { onClick: function onClick(e) {
+                return _this2.toggleView(e);
+              } },
+            'Hide Comments'
+          )
+        )
+      ) : _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          {
+            className: 'video-comments-substition' },
+          _react2.default.createElement('input', {
+            type: 'text',
+            name: 'newComment',
+            onChange: function onChange(e) {
+              e.preventDefault();
+              _this2.handleChange(e);
+            }
+          }),
+          _react2.default.createElement(
+            'button',
+            {
+              className: 'video-comment-submit' },
+            'Add Comment'
           )
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'video-comments-container' },
-          _react2.default.createElement(
-            'p',
-            null,
-            'Comments go here'
-          )
+          'p',
+          { onClick: function onClick(e) {
+              return _this2.toggleView(e);
+            } },
+          'Show Comments'
         )
       );
     }
   }]);
 
-  return Video;
+  return VideoCommentsList;
 }(_react.Component);
 
-;
+var mapStateToProps = function mapStateToProps(state) {
+  var videoCommentsData = state.videoCommentsData;
+  var newComment = videoCommentsData.newComment,
+      commentsVisible = videoCommentsData.commentsVisible,
+      selectedComment = videoCommentsData.selectedComment,
+      commentErrorMessage = videoCommentsData.commentErrorMessage;
 
-var _default = Video;
+
+  return {
+    newComment: newComment,
+    selectedComment: selectedComment,
+    commentsVisible: commentsVisible,
+    commentErrorMessage: commentErrorMessage
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(VideoCommentsList);
+
 exports.default = _default;
 ;
 
@@ -86610,9 +86906,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Video, 'Video', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Video.jsx');
+  __REACT_HOT_LOADER__.register(VideoCommentsList, 'VideoCommentsList', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoCommentsList.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/Video.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoCommentsList.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoCommentsList.jsx');
 }();
 
 ;
@@ -86730,11 +87028,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(VideoList, 'VideoList', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/VideoList.jsx');
+  __REACT_HOT_LOADER__.register(VideoList, 'VideoList', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoList.jsx');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/VideoList.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoList.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/VideoList.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoList.jsx');
 }();
 
 ;
@@ -87078,11 +87376,11 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(VideoRecorder, 'VideoRecorder', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/VideoRecorder.jsx');
+  __REACT_HOT_LOADER__.register(VideoRecorder, 'VideoRecorder', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoRecorder.jsx');
 
-  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/VideoRecorder.jsx');
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoRecorder.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/containers/VideoRecorder.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoRecorder.jsx');
 }();
 
 ;
@@ -87197,23 +87495,23 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(loggerMiddleware, 'loggerMiddleware', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(loggerMiddleware, 'loggerMiddleware', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(middleware, 'middleware', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(middleware, 'middleware', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(composeEnhancers, 'composeEnhancers', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(composeEnhancers, 'composeEnhancers', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(configureStore, 'configureStore', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(configureStore, 'configureStore', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(config, 'config', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(config, 'config', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(combinedReducer, 'combinedReducer', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(combinedReducer, 'combinedReducer', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(createAppStore, 'createAppStore', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(createAppStore, 'createAppStore', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(persistor, 'persistor', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(persistor, 'persistor', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 
-  __REACT_HOT_LOADER__.register(store, 'store', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/index.js');
+  __REACT_HOT_LOADER__.register(store, 'store', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/index.js');
 }();
 
 ;
@@ -87324,9 +87622,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(auth, 'auth', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/auth.js');
+  __REACT_HOT_LOADER__.register(auth, 'auth', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/auth.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/auth.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/auth.js');
 }();
 
 ;
@@ -87373,6 +87671,10 @@ var _videoList = __webpack_require__("./public/src/reducers/videoList.js");
 
 var _videoList2 = _interopRequireDefault(_videoList);
 
+var _videoComments = __webpack_require__("./public/src/reducers/videoComments.js");
+
+var _videoComments2 = _interopRequireDefault(_videoComments);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RootReducer = (0, _redux.combineReducers)({
@@ -87382,7 +87684,8 @@ var RootReducer = (0, _redux.combineReducers)({
   topicsData: _topic2.default,
   search: _search2.default,
   videoData: _video2.default,
-  videoListData: _videoList2.default
+  videoListData: _videoList2.default,
+  videoCommentsData: _videoComments2.default
 });
 
 var _default = RootReducer;
@@ -87394,9 +87697,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(RootReducer, 'RootReducer', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/index.js');
+  __REACT_HOT_LOADER__.register(RootReducer, 'RootReducer', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/index.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/index.js');
 }();
 
 ;
@@ -87456,9 +87759,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(login, 'login', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/login.js');
+  __REACT_HOT_LOADER__.register(login, 'login', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/login.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/login.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/login.js');
 }();
 
 ;
@@ -87514,9 +87817,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(search, 'search', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/search.js');
+  __REACT_HOT_LOADER__.register(search, 'search', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/search.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/search.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/search.js');
 }();
 
 ;
@@ -87576,9 +87879,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(signup, 'signup', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/signup.js');
+  __REACT_HOT_LOADER__.register(signup, 'signup', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/signup.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/signup.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/signup.js');
 }();
 
 ;
@@ -87640,9 +87943,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(topicsData, 'topicsData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/topic.js');
+  __REACT_HOT_LOADER__.register(topicsData, 'topicsData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/topic.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/topic.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/topic.js');
 }();
 
 ;
@@ -87737,9 +88040,60 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(videoData, 'videoData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/video.js');
+  __REACT_HOT_LOADER__.register(videoData, 'videoData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/video.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/video.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/video.js');
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/reducers/videoComments.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _videoComment = __webpack_require__("./public/src/actions/videoComment.js");
+
+var videoCommentsData = function videoCommentsData() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    newComment: [],
+    commentsVisisble: false,
+    selectedComment: false,
+    commentErrorMessage: ''
+  };
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _videoComment.TOGGLE_COMMENT_LIST_VIEW:
+      return _extends({}, state, {
+        commentsVisisble: action.commentsVisisble
+      });
+    default:
+      return state;
+  }
+};
+
+var _default = videoCommentsData;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(videoCommentsData, 'videoCommentsData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/videoComments.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/videoComments.js');
 }();
 
 ;
@@ -87801,9 +88155,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(videoListData, 'videoListData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/videoList.js');
+  __REACT_HOT_LOADER__.register(videoListData, 'videoListData', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/videoList.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/reducers/videoList.js');
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/videoList.js');
 }();
 
 ;
@@ -87827,7 +88181,7 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(emailRegX, "emailRegX", "/Users/Alex/code/lambda-school-prep-review/personal-projects/webrtc-practice/public/src/utils/index.js");
+  __REACT_HOT_LOADER__.register(emailRegX, "emailRegX", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/utils/index.js");
 }();
 
 ;

@@ -20,11 +20,11 @@ router.get("/topics/:token", isAuthenticated, topicsController.getTopics);
 router.post("/donate", [isAuthenticated, sendEth], videosController.getInfo);
 
 router.post("/upload", isAuthenticated, videosController.addVideo);
-router.get("/videos", isAuthenticated, videosController.grabVideos);
+router.get("/videos/:token", isAuthenticated, videosController.grabVideos);
 
 router.get("/comments", isAuthenticated, commentsController.grabVideoComments)
 router.post("/comment", isAuthenticated, commentsController.addComment);
-router.delete("/comment", isAuthenticated, commentsController.deleteController);
+router.delete("/comment", isAuthenticated, commentsController.deleteComment);
 
 
 module.exports = router;

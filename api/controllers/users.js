@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 const User = require('../models/user').User;
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 
 
 const signup = async (req, res) => {
@@ -19,6 +20,19 @@ const signup = async (req, res) => {
       res.status(409).send({ errorMessage: message });
     } else {
       const user = await User.create({ username, email, password: hash });
+      const uploadUserURL = `${process.env.RAILS_MICROSERVICE}/users`;
+
+      const axiosBod = {
+        username
+      }
+
+      const axiosConfig = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+
+      const uploadedUser = await axios.post(uploadUserURL, axiosBod, axiosConfig);
+
       const payload = {
         username: user.username,
       };

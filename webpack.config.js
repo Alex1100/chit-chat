@@ -105,6 +105,7 @@ module.exports = {
     new webpack.DefinePlugin({
       WEBRTC_API_KEY: JSON.stringify(process.env.WEBRTC_API_KEY),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      RAILS_MICROSERVICE: JSON.stringify(process.env.RAILS_MICROSERVICE),
     }),
     new webpack.NamedModulesPlugin(),
   ]

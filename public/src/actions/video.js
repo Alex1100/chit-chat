@@ -126,9 +126,19 @@ const uploadVideo = (props) => {
 };
 
 
-const playVideo = (info) => (dispatch) => {
-  dispatch(setCurrentVideo(info.currentVideo));
-  info.history.push("video-player");
+const playVideo = (info) => {
+  return (dispatch) => {
+    axios.get(`${RAILS_MICROSERVICE}/video/${info.currentVideo.videoId}/comments`)
+      .then(response => {
+        console.log("COMMENTS ARE: ", repsonse);
+        info.currentVideo["comments"] = response.data.comments
+        dispatch(setCurrentVideo(info.currentVideo));
+        info.history.push("video-player");
+      })
+      .catch(err => {
+        console.log("COULDN'T RETRIEVE COMMENTS: ", err);
+      })
+  }
 }
 
 

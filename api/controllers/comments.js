@@ -13,12 +13,12 @@ const deleteComment = async (req, res) => {
     console.log("COULDN'T DELETE THE VIDEO: ", e);
     res.status(422).send({ errorMessage: e});
   }
-}
+};
 
 const grabVideoComments = async (req, res) => {
   try {
     const { videoId } = req.body;
-    const commentsURL = `${process.env.RAILS_MICROSERVICE}/${videoId}/comments`
+    const commentsURL = `${process.env.RAILS_MICROSERVICE}/${videoId}/comments`;
     const videoComments = await axios.get(commentsURL);
     res.status(200).send({ videoComments });
   } catch (e) {
@@ -41,14 +41,16 @@ const addComment = async (req, res) => {
       commentable_id: commentableId,
       body: content,
       user_id: userId
-    }
+    };
 
     const axiosConfig = {
       "Content-Type": "application/json",
       "Accept": "application/json"
-    }
+    };
 
-    const uploadedComment = await axios.post(`${process.env.RAILS_MICROSERVICE}/comments`, axiosBod, axiosConfig)
+    const uploadCommentURL = `${process.env.RAILS_MICROSERVICE}/comments`;
+
+    const uploadedComment = await axios.post(uploadCommentURL, axiosBod, axiosConfig);
 
     if (!uploadedComment) {
       throw new Error("COULDN'T UPLOAD COMMENT...");
@@ -64,5 +66,6 @@ const addComment = async (req, res) => {
 
 module.exports = {
   grabVideoComments,
-  addComment
+  addComment,
+  deleteComment
 };

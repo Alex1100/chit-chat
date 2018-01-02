@@ -13,7 +13,7 @@ import Signup from './Signup';
 import TopicList from './TopicList';
 import VideoRecorder from './VideoRecorder';
 import VideoList from './VideoList';
-import Video from './Video';
+import Video from '../components/Video';
 
 
 class Router extends Component {
