@@ -9,6 +9,7 @@ environment({
   type: 'ini'
 });
 
+
 gulp.task('reinitdb', (cb) => {
   User.sync({ force: true })
     .then(() => Topic.sync({ force: true }))
