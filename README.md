@@ -17,7 +17,7 @@
 - JWT
 - Sequelize
 - PostgreSQL
-- Ruby on Rails Microservice API for Polymorphic Comments
+- <a href="https://github.com/Alex1100/chit_chat_api">Ruby on Rails Microservice API for Polymorphic Comments</a>
 - WebRTC API via RecordRTC for creating videos
 
 
