@@ -22,6 +22,8 @@ const Video = (props) => (
         history={props.history}
         comment={props.comment}
         user={props.user}
+        video={props.video}
+        userId={props.userId}
       />
     </div>
   </div>

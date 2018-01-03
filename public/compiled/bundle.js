@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f784fd7fd4356ed45d75"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "18c4ba274e22c2234c3a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -84785,12 +84785,12 @@ var _temp = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setVideoCommentsListView = exports.TOGGLE_COMMENT_LIST_VIEW = exports.GRAB_COMMENT_COMMENT_FAILURE = exports.GRAB_COMMENT_COMMENTS_SUCCESS = exports.GRAB_COMMENT_COMMENTS_REQUEST = exports.GRAB_VIDEOS_COMMENTS_FAILURE = exports.GRAB_VIDEOS_COMMENTS_SUCCESS = exports.GRAB_VIDEOS_COMMENTS_REQUEST = undefined;
+exports.addNewVideoComment = exports.updateCommentInput = exports.setVideoCommentsListView = exports.RESET_CURRENT_VIDEO = exports.ADD_VIDEO_COMMENT = exports.UPDATE_COMMENT = exports.TOGGLE_COMMENT_LIST_VIEW = exports.GRAB_COMMENT_COMMENT_FAILURE = exports.GRAB_COMMENT_COMMENTS_SUCCESS = exports.GRAB_COMMENT_COMMENTS_REQUEST = exports.GRAB_VIDEOS_COMMENTS_FAILURE = exports.GRAB_VIDEOS_COMMENTS_SUCCESS = exports.GRAB_VIDEOS_COMMENTS_REQUEST = undefined;
 
 var _axios = __webpack_require__("./node_modules/axios/index.js");
 
@@ -84805,11 +84805,66 @@ var GRAB_COMMENT_COMMENTS_REQUEST = exports.GRAB_COMMENT_COMMENTS_REQUEST = "GRA
 var GRAB_COMMENT_COMMENTS_SUCCESS = exports.GRAB_COMMENT_COMMENTS_SUCCESS = "GRAB_COMMENT_COMMENTS_SUCCESS";
 var GRAB_COMMENT_COMMENT_FAILURE = exports.GRAB_COMMENT_COMMENT_FAILURE = "GRAB_COMMENT_COMMENT_FAILURE";
 var TOGGLE_COMMENT_LIST_VIEW = exports.TOGGLE_COMMENT_LIST_VIEW = "TOGGLE_COMMENT_LIST_VIEW";
+var UPDATE_COMMENT = exports.UPDATE_COMMENT = "UPDATE_COMMENT";
+var ADD_VIDEO_COMMENT = exports.ADD_VIDEO_COMMENT = "ADD_VIDEO_COMMENT";
+var RESET_CURRENT_VIDEO = exports.RESET_CURRENT_VIDEO = "SET_CURRENT_VIDEO";
 
 var toggleCommentListView = function toggleCommentListView(commentsVisible) {
   return {
     type: "TOGGLE_COMMENT_LIST_VIEW",
     commentsVisible: commentsVisible
+  };
+};
+
+var updateComment = function updateComment(newComment) {
+  return {
+    type: "UPDATE_COMMENT",
+    newComment: newComment
+  };
+};
+
+var setCurrentVideo = function setCurrentVideo(currentVideo) {
+  return {
+    type: "RESET_CURRENT_VIDEO",
+    currentVideo: currentVideo
+  };
+};
+
+var playVideo = function playVideo(info) {
+  return function (dispatch) {
+    _axios2.default.get("http://localhost:3000" + "/videos/" + info.currentVideo.videoId + "/comments").then(function (response) {
+      console.log("COMMENTS ARE: ", response);
+      console.log("VID LIKES ARE: ", info.currentVideo);
+      info.currentVideo["comments"] = response.data.comments;
+      dispatch(setCurrentVideo(info.currentVideo));
+      info.history.push("video-player");
+    }).catch(function (err) {
+      console.log("COULDN'T RETRIEVE COMMENTS: ", err);
+    });
+  };
+};
+
+var addNewVideoComment = function addNewVideoComment(info) {
+  return function (dispatch) {
+    console.log("INFO IS : ", info.content);
+    var axiosBod = {
+      body: info.content,
+      commentable_type: "Video",
+      commentable_id: info.currentVideo.videoId,
+      user_id: info.user_id,
+      token: localStorage.getItem("token"),
+      video_id: info.currentVideo.videoId
+    };
+
+    _axios2.default.post("/api/comment", axiosBod).then(function (response) {
+      playVideo({ currentVideo: info.currentVideo, history: info.history });
+    });
+  };
+};
+
+var updateCommentInput = function updateCommentInput(comment) {
+  return function (dispatch) {
+    dispatch(updateComment(comment));
   };
 };
 
@@ -84821,6 +84876,8 @@ var setVideoCommentsListView = function setVideoCommentsListView(commentsVisible
 };
 
 exports.setVideoCommentsListView = setVideoCommentsListView;
+exports.updateCommentInput = updateCommentInput;
+exports.addNewVideoComment = addNewVideoComment;
 ;
 
 var _temp = function () {
@@ -84842,12 +84899,29 @@ var _temp = function () {
 
   __REACT_HOT_LOADER__.register(TOGGLE_COMMENT_LIST_VIEW, "TOGGLE_COMMENT_LIST_VIEW", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
 
+  __REACT_HOT_LOADER__.register(UPDATE_COMMENT, "UPDATE_COMMENT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(ADD_VIDEO_COMMENT, "ADD_VIDEO_COMMENT", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(RESET_CURRENT_VIDEO, "RESET_CURRENT_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
   __REACT_HOT_LOADER__.register(toggleCommentListView, "toggleCommentListView", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(updateComment, "updateComment", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(setCurrentVideo, "setCurrentVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(playVideo, "playVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(addNewVideoComment, "addNewVideoComment", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
+
+  __REACT_HOT_LOADER__.register(updateCommentInput, "updateCommentInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
 
   __REACT_HOT_LOADER__.register(setVideoCommentsListView, "setVideoCommentsListView", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/videoComment.js");
 }();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
 
 /***/ }),
 
@@ -85276,7 +85350,9 @@ var Video = function Video(props) {
         dispatch: props.dispatch,
         history: props.history,
         comment: props.comment,
-        user: props.user
+        user: props.user,
+        video: props.video,
+        userId: props.userId
       })
     )
   );
@@ -85844,7 +85920,7 @@ var Router = function (_Component) {
           videos = _props.videos;
 
 
-      console.log("CURRENT VIDEO IS: ", currentVideo);
+      console.log("CURRENT VIDEO IS: ", currentVideo, id);
 
       return isAuthenticated ? _react2.default.createElement(
         _reactRouterDom.Switch,
@@ -86747,7 +86823,7 @@ var _temp = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -86785,6 +86861,7 @@ var VideoCommentsList = function (_Component) {
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.toggleView = _this.toggleView.bind(_this);
+    _this.addComment = _this.addComment.bind(_this);
     return _this;
   }
 
@@ -86793,7 +86870,8 @@ var VideoCommentsList = function (_Component) {
     value: function handleChange(e) {
       var dispatch = this.props.dispatch;
 
-      dispatch(updateCommentInput(e.target.value));
+      console.log("NEW COMMENT INPUT IS: ", e.target.value);
+      dispatch((0, _videoComment.updateCommentInput)(e.target.value));
     }
   }, {
     key: 'toggleView',
@@ -86815,16 +86893,44 @@ var VideoCommentsList = function (_Component) {
       dispatch((0, _videoComment.setVideoCommentsListView)(isDisplayed, history));
     }
   }, {
+    key: 'addComment',
+    value: function addComment() {
+      var _props2 = this.props,
+          dispatch = _props2.dispatch,
+          history = _props2.history,
+          newComment = _props2.newComment,
+          video = _props2.video,
+          userId = _props2.userId;
+
+
+      console.log("I GOT HERE!!!!: ", this.props);
+
+      if (newComment.length > 0) {
+        dispatch((0, _videoComment.addNewVideoComment)({
+          content: newComment,
+          user_id: userId,
+          currentVideo: {
+            videoId: video.videoId,
+            title: video.title,
+            description: video.description,
+            videoURL: video.videoURL,
+            likes: video.likes
+          },
+          history: history
+        }));
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
-      var _props2 = this.props,
-          comments = _props2.comments,
-          dispatch = _props2.dispatch,
-          history = _props2.history,
-          user = _props2.user,
-          commentsVisible = _props2.commentsVisible;
+      var _props3 = this.props,
+          comments = _props3.comments,
+          dispatch = _props3.dispatch,
+          history = _props3.history,
+          user = _props3.user,
+          commentsVisible = _props3.commentsVisible;
 
 
       return commentsVisible ? comments && comments.length > 0 ? _react2.default.createElement(
@@ -86845,7 +86951,10 @@ var VideoCommentsList = function (_Component) {
           _react2.default.createElement(
             'button',
             {
-              className: 'video-comment-submit' },
+              className: 'video-comment-submit',
+              onClick: function onClick() {
+                return _this2.addComment(e);
+              } },
             'Add Comment'
           )
         ),
@@ -86887,7 +86996,10 @@ var VideoCommentsList = function (_Component) {
           _react2.default.createElement(
             'button',
             {
-              className: 'video-comment-submit' },
+              className: 'video-comment-submit',
+              onClick: function onClick(e) {
+                return _this2.addComment(e);
+              } },
             'Add Comment'
           )
         ),
@@ -86920,7 +87032,10 @@ var VideoCommentsList = function (_Component) {
           _react2.default.createElement(
             'button',
             {
-              className: 'video-comment-submit' },
+              className: 'video-comment-submit',
+              onClick: function onClick(e) {
+                return _this2.addComment();
+              } },
             'Add Comment'
           )
         ),
@@ -86972,6 +87087,7 @@ var _temp = function () {
 }();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
 
 /***/ }),
 
@@ -88124,7 +88240,7 @@ var _videoComment = __webpack_require__("./public/src/actions/videoComment.js");
 
 var videoCommentsData = function videoCommentsData() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-    newComment: [],
+    newComment: '',
     commentsVisible: false,
     selectedComment: '',
     commentErrorMessage: ''
@@ -88132,6 +88248,10 @@ var videoCommentsData = function videoCommentsData() {
   var action = arguments[1];
 
   switch (action.type) {
+    case _videoComment.UPDATE_COMMENT:
+      return _extends({}, state, {
+        newComment: action.newComment
+      });
     case _videoComment.TOGGLE_COMMENT_LIST_VIEW:
       return _extends({}, state, {
         commentsVisible: action.commentsVisible

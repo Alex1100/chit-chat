@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import VideoComment from '../components/VideoComment';
-import { setVideoCommentsListView } from '../actions/videoComment';
+import {
+  setVideoCommentsListView,
+  updateCommentInput,
+  addNewVideoComment
+} from '../actions/videoComment';
 import { connect } from 'react-redux';
 
 
@@ -10,10 +14,12 @@ class VideoCommentsList extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.toggleView = this.toggleView.bind(this);
+    this.addComment = this.addComment.bind(this);
   }
 
   handleChange(e) {
     const { dispatch } = this.props;
+    console.log("NEW COMMENT INPUT IS: ", e.target.value);
     dispatch(updateCommentInput(e.target.value));
   }
 
@@ -33,6 +39,36 @@ class VideoCommentsList extends Component {
     }
 
     dispatch(setVideoCommentsListView(isDisplayed, history));
+  }
+
+  addComment() {
+    const {
+      dispatch,
+      history,
+      newComment,
+      video,
+      userId
+    } = this.props;
+
+    console.log("I GOT HERE!!!!: ", this.props);
+
+    if (newComment.length > 0) {
+      dispatch(addNewVideoComment(
+        {
+          content: newComment,
+          user_id: userId,
+          currentVideo:
+            {
+              videoId: video.videoId,
+              title: video.title,
+              description: video.description,
+              videoURL: video.videoURL,
+              likes: video.likes
+            },
+          history
+        })
+      );
+    }
   }
 
   render() {
@@ -57,7 +93,8 @@ class VideoCommentsList extends Component {
             }}
           />
           <button
-            className="video-comment-submit">
+            className="video-comment-submit"
+            onClick={() => this.addComment(e)}>
             Add Comment
           </button>
         </div>
@@ -89,7 +126,8 @@ class VideoCommentsList extends Component {
             }}
           />
           <button
-            className="video-comment-submit">
+            className="video-comment-submit"
+            onClick={(e) => this.addComment(e)}>
             Add Comment
           </button>
         </div>
@@ -110,7 +148,8 @@ class VideoCommentsList extends Component {
             }}
           />
           <button
-            className="video-comment-submit">
+            className="video-comment-submit"
+            onClick={(e) => this.addComment()}>
             Add Comment
           </button>
         </div>

@@ -5,17 +5,23 @@ import {
   GRAB_COMMENT_COMMENTS_REQUEST,
   GRAB_COMMENT_COMMENTS_SUCCESS,
   GRAB_COMMENT_COMMENT_FAILURE,
-  TOGGLE_COMMENT_LIST_VIEW
+  TOGGLE_COMMENT_LIST_VIEW,
+  RESET_CURRENT_VIDEO,
+  UPDATE_COMMENT
 } from '../actions/videoComment';
 
-
 const videoCommentsData = (state = {
-  newComment: [],
+  newComment: '',
   commentsVisible: false,
   selectedComment: '',
   commentErrorMessage: '',
 }, action) => {
   switch (action.type) {
+    case UPDATE_COMMENT:
+      return {
+        ...state,
+        newComment: action.newComment
+      };
     case TOGGLE_COMMENT_LIST_VIEW:
       return {
         ...state,

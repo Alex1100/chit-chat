@@ -29,19 +29,7 @@ const grabVideoComments = async (req, res) => {
 
 const addComment = async (req, res) => {
   try {
-    const {
-      commentableType,
-      commentableId,
-      content,
-      userId
-    } = req.body;
-
-    const axiosBod = {
-      commentable_type: commentableType,
-      commentable_id: commentableId,
-      body: content,
-      user_id: userId
-    };
+    let axiosBod = req.body;
 
     const axiosConfig = {
       "Content-Type": "application/json",
@@ -51,12 +39,7 @@ const addComment = async (req, res) => {
     const uploadCommentURL = `${process.env.RAILS_MICROSERVICE}/comments`;
 
     const uploadedComment = await axios.post(uploadCommentURL, axiosBod, axiosConfig);
-
-    if (!uploadedComment) {
-      throw new Error("COULDN'T UPLOAD COMMENT...");
-    } else {
-      res.status(201).send({uploadedComment});
-    }
+    res.sendStatus(201);
   } catch (e) {
     console.log("COUDLN'T UPLOAD COMMENT: ", e);
     res.status(422).send({errorMessage: e});
