@@ -9,13 +9,14 @@ export const GRAB_COMMENT_COMMENT_FAILURE = "GRAB_COMMENT_COMMENT_FAILURE";
 export const TOGGLE_COMMENT_LIST_VIEW = "TOGGLE_COMMENT_LIST_VIEW";
 
 
-const toggleCommentListView = (commentsVisisble) => ({
+const toggleCommentListView = (commentsVisible) => ({
   type: "TOGGLE_COMMENT_LIST_VIEW",
-  commentsVisisble
+  commentsVisible
 });
 
-const setVideoCommentsListView = (commentsVisisble) => (dispatch) => {
-  dispatch(toggleCommentListView(commentsVisisble));
+const setVideoCommentsListView = (commentsVisible, history) => (dispatch) => {
+  dispatch(toggleCommentListView(commentsVisible));
+  history.push("/video-player");
 };
 
 

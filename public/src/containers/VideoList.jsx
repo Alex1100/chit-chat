@@ -28,6 +28,7 @@ class VideoList extends Component {
               thumbnail={vid.thumbnail}
               description={vid.description}
               videoURL={vid.content}
+              likes={vid.likes}
             />
           ))
         }

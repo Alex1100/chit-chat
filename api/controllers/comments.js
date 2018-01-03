@@ -18,7 +18,7 @@ const deleteComment = async (req, res) => {
 const grabVideoComments = async (req, res) => {
   try {
     const { videoId } = req.body;
-    const commentsURL = `${process.env.RAILS_MICROSERVICE}/${videoId}/comments`;
+    const commentsURL = `${process.env.RAILS_MICROSERVICE}/videos/${videoId}/comments`;
     const videoComments = await axios.get(commentsURL);
     res.status(200).send({ videoComments });
   } catch (e) {

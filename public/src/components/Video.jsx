@@ -7,11 +7,12 @@ const Video = (props) => (
   <div>
     <VideoPlayer
       video={props.video}
+      user={props.user}
     />
     <div
       className="video-likes-container">
       <p>
-        {props.video.likes} {(props.video.likes < 1 || props.video.likes > 1) ? "Likes" : "Like"}
+        <span>{props.video.likes}</span> {(props.video.likes < 1 || props.video.likes > 1) ? "Likes" : "Like"}
       </p>
     </div>
     <div

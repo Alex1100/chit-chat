@@ -11,15 +11,15 @@ import {
 
 const videoCommentsData = (state = {
   newComment: [],
-  commentsVisisble: false,
-  selectedComment: false,
+  commentsVisible: false,
+  selectedComment: '',
   commentErrorMessage: '',
 }, action) => {
   switch (action.type) {
     case TOGGLE_COMMENT_LIST_VIEW:
       return {
         ...state,
-        commentsVisisble: action.commentsVisisble
+        commentsVisible: action.commentsVisible
       }
     default:
       return state;

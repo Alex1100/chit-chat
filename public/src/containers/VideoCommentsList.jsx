@@ -18,7 +18,21 @@ class VideoCommentsList extends Component {
   }
 
   toggleView() {
-    this.props.dispatch(setVideoCommentsListView());
+    const {
+      dispatch,
+      commentsVisible,
+      history
+    } = this.props;
+
+    let isDisplayed;
+
+    if (commentsVisible === undefined || commentsVisible === false) {
+      isDisplayed = true;
+    } else if (commentsVisible === true) {
+      isDisplayed = false;
+    }
+
+    dispatch(setVideoCommentsListView(isDisplayed, history));
   }
 
   render() {
@@ -30,7 +44,7 @@ class VideoCommentsList extends Component {
       commentsVisible
     } = this.props;
 
-    return commentsVisible ? (
+    return commentsVisible ? comments && comments.length > 0 ? (
       <div>
         <div
           className="video-comments-substition">
@@ -58,6 +72,27 @@ class VideoCommentsList extends Component {
             />
           ))
         }
+        <div>
+          <p onClick={(e) => this.toggleView(e)}>Hide Comments</p>
+        </div>
+      </div>
+    ) : (
+      <div>
+        <div
+          className="video-comments-substition">
+          <input
+            type="text"
+            name="newComment"
+            onChange={(e) => {
+              e.preventDefault();
+              this.handleChange(e);
+            }}
+          />
+          <button
+            className="video-comment-submit">
+            Add Comment
+          </button>
+        </div>
         <div>
           <p onClick={(e) => this.toggleView(e)}>Hide Comments</p>
         </div>

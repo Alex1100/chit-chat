@@ -5,6 +5,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 const debug = require('debug')('app:http');
+const cors = require('cors');
 
 const db = require('./api/config/database');
 const routes = require('./api/config/routes');
@@ -32,7 +33,29 @@ function debugReq(req, res, next){
   next();
 };
 
+var whitelist = [
+  "http://localhost:3005",
+  "http://0.0.0.0:3005",
+  "http://localhost:3000",
+  "http://0.0.0.0:3000",
+];
 
+var corsOptions = {
+    origin: function(origin, callback){
+        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Request-Method", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Max-Age", "1728000");
+  res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+  next();
+});
 
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: "10500mb"}));

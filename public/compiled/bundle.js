@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "410710bab8b495eb5a57"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f784fd7fd4356ed45d75"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -84686,8 +84686,9 @@ var uploadVideo = function uploadVideo(props) {
 
 var playVideo = function playVideo(info) {
   return function (dispatch) {
-    _axios2.default.get("http://localhost:3000" + "/video/" + info.currentVideo.videoId + "/comments").then(function (response) {
-      console.log("COMMENTS ARE: ", repsonse);
+    _axios2.default.get("http://localhost:3000" + "/videos/" + info.currentVideo.videoId + "/comments").then(function (response) {
+      console.log("COMMENTS ARE: ", response);
+      console.log("VID LIKES ARE: ", info.currentVideo);
       info.currentVideo["comments"] = response.data.comments;
       dispatch(setCurrentVideo(info.currentVideo));
       info.history.push("video-player");
@@ -84805,16 +84806,17 @@ var GRAB_COMMENT_COMMENTS_SUCCESS = exports.GRAB_COMMENT_COMMENTS_SUCCESS = "GRA
 var GRAB_COMMENT_COMMENT_FAILURE = exports.GRAB_COMMENT_COMMENT_FAILURE = "GRAB_COMMENT_COMMENT_FAILURE";
 var TOGGLE_COMMENT_LIST_VIEW = exports.TOGGLE_COMMENT_LIST_VIEW = "TOGGLE_COMMENT_LIST_VIEW";
 
-var toggleCommentListView = function toggleCommentListView(commentsVisisble) {
+var toggleCommentListView = function toggleCommentListView(commentsVisible) {
   return {
     type: "TOGGLE_COMMENT_LIST_VIEW",
-    commentsVisisble: commentsVisisble
+    commentsVisible: commentsVisible
   };
 };
 
-var setVideoCommentsListView = function setVideoCommentsListView(commentsVisisble) {
+var setVideoCommentsListView = function setVideoCommentsListView(commentsVisible, history) {
   return function (dispatch) {
-    dispatch(toggleCommentListView(commentsVisisble));
+    dispatch(toggleCommentListView(commentsVisible));
+    history.push("/video-player");
   };
 };
 
@@ -85247,7 +85249,8 @@ var Video = function Video(props) {
     'div',
     null,
     _react2.default.createElement(_VideoPlayer2.default, {
-      video: props.video
+      video: props.video,
+      user: props.user
     }),
     _react2.default.createElement(
       'div',
@@ -85256,7 +85259,11 @@ var Video = function Video(props) {
       _react2.default.createElement(
         'p',
         null,
-        props.video.likes,
+        _react2.default.createElement(
+          'span',
+          null,
+          props.video.likes
+        ),
         ' ',
         props.video.likes < 1 || props.video.likes > 1 ? "Likes" : "Like"
       )
@@ -85443,7 +85450,8 @@ var VideoPreview = function VideoPreview(props) {
             videoId: props.videoId,
             title: props.title,
             description: props.description,
-            videoURL: props.videoURL
+            videoURL: props.videoURL,
+            likes: props.likes
           },
           history: props.history
         }));
@@ -85755,7 +85763,7 @@ var _temp = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -85835,6 +85843,8 @@ var Router = function (_Component) {
           currentVideo = _props.currentVideo,
           videos = _props.videos;
 
+
+      console.log("CURRENT VIDEO IS: ", currentVideo);
 
       return isAuthenticated ? _react2.default.createElement(
         _reactRouterDom.Switch,
@@ -86027,6 +86037,7 @@ var _temp = function () {
 }();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
 
 /***/ }),
 
@@ -86787,22 +86798,36 @@ var VideoCommentsList = function (_Component) {
   }, {
     key: 'toggleView',
     value: function toggleView() {
-      this.props.dispatch((0, _videoComment.setVideoCommentsListView)());
+      var _props = this.props,
+          dispatch = _props.dispatch,
+          commentsVisible = _props.commentsVisible,
+          history = _props.history;
+
+
+      var isDisplayed = void 0;
+
+      if (commentsVisible === undefined || commentsVisible === false) {
+        isDisplayed = true;
+      } else if (commentsVisible === true) {
+        isDisplayed = false;
+      }
+
+      dispatch((0, _videoComment.setVideoCommentsListView)(isDisplayed, history));
     }
   }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
-      var _props = this.props,
-          comments = _props.comments,
-          dispatch = _props.dispatch,
-          history = _props.history,
-          user = _props.user,
-          commentsVisible = _props.commentsVisible;
+      var _props2 = this.props,
+          comments = _props2.comments,
+          dispatch = _props2.dispatch,
+          history = _props2.history,
+          user = _props2.user,
+          commentsVisible = _props2.commentsVisible;
 
 
-      return commentsVisible ? _react2.default.createElement(
+      return commentsVisible ? comments && comments.length > 0 ? _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
@@ -86833,6 +86858,39 @@ var VideoCommentsList = function (_Component) {
             user: user
           });
         }),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'p',
+            { onClick: function onClick(e) {
+                return _this2.toggleView(e);
+              } },
+            'Hide Comments'
+          )
+        )
+      ) : _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          {
+            className: 'video-comments-substition' },
+          _react2.default.createElement('input', {
+            type: 'text',
+            name: 'newComment',
+            onChange: function onChange(e) {
+              e.preventDefault();
+              _this2.handleChange(e);
+            }
+          }),
+          _react2.default.createElement(
+            'button',
+            {
+              className: 'video-comment-submit' },
+            'Add Comment'
+          )
+        ),
         _react2.default.createElement(
           'div',
           null,
@@ -86976,7 +87034,8 @@ var VideoList = function (_Component) {
             title: vid.title,
             thumbnail: vid.thumbnail,
             description: vid.description,
-            videoURL: vid.content
+            videoURL: vid.content,
+            likes: vid.likes
           });
         })
       ) : _react2.default.createElement(
@@ -88066,8 +88125,8 @@ var _videoComment = __webpack_require__("./public/src/actions/videoComment.js");
 var videoCommentsData = function videoCommentsData() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     newComment: [],
-    commentsVisisble: false,
-    selectedComment: false,
+    commentsVisible: false,
+    selectedComment: '',
     commentErrorMessage: ''
   };
   var action = arguments[1];
@@ -88075,7 +88134,7 @@ var videoCommentsData = function videoCommentsData() {
   switch (action.type) {
     case _videoComment.TOGGLE_COMMENT_LIST_VIEW:
       return _extends({}, state, {
-        commentsVisisble: action.commentsVisisble
+        commentsVisible: action.commentsVisible
       });
     default:
       return state;
