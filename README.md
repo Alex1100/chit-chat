@@ -26,4 +26,3 @@
 - Ethereum donations via Infura API and Web3
 - Likes Feature
 - User following/subscribing
-- 
