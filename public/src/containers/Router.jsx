@@ -32,8 +32,6 @@ class Router extends Component {
       videos,
     } = this.props;
 
-    console.log("CURRENT VIDEO IS: ", currentVideo, id);
-
     return isAuthenticated ? (
       <Switch>
         <Route

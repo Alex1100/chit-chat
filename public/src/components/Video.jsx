@@ -20,7 +20,7 @@ const Video = (props) => (
       <VideoCommentsList
         dispatch={props.dispatch}
         history={props.history}
-        comment={props.comment}
+        comments={props.video.comments}
         user={props.user}
         video={props.video}
         userId={props.userId}

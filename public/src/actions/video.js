@@ -130,8 +130,6 @@ const playVideo = (info) => {
   return (dispatch) => {
     axios.get(`${RAILS_MICROSERVICE}/videos/${info.currentVideo.videoId}/comments`)
       .then(response => {
-        console.log("COMMENTS ARE: ", response);
-        console.log("VID LIKES ARE: ", info.currentVideo);
         info.currentVideo["comments"] = response.data.comments
         dispatch(setCurrentVideo(info.currentVideo));
         info.history.push("video-player");

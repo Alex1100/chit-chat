@@ -3,7 +3,8 @@ import VideoComment from '../components/VideoComment';
 import {
   setVideoCommentsListView,
   updateCommentInput,
-  addNewVideoComment
+  addNewVideoComment,
+  resetCommentInput
 } from '../actions/videoComment';
 import { connect } from 'react-redux';
 
@@ -19,7 +20,6 @@ class VideoCommentsList extends Component {
 
   handleChange(e) {
     const { dispatch } = this.props;
-    console.log("NEW COMMENT INPUT IS: ", e.target.value);
     dispatch(updateCommentInput(e.target.value));
   }
 
@@ -41,7 +41,7 @@ class VideoCommentsList extends Component {
     dispatch(setVideoCommentsListView(isDisplayed, history));
   }
 
-  addComment() {
+  addComment(e) {
     const {
       dispatch,
       history,
@@ -49,8 +49,6 @@ class VideoCommentsList extends Component {
       video,
       userId
     } = this.props;
-
-    console.log("I GOT HERE!!!!: ", this.props);
 
     if (newComment.length > 0) {
       dispatch(addNewVideoComment(
@@ -68,6 +66,9 @@ class VideoCommentsList extends Component {
           history
         })
       );
+
+    const commentInput = document.getElementsByClassName('comment-input');
+    commentInput[0].value = '';
     }
   }
 
@@ -85,6 +86,7 @@ class VideoCommentsList extends Component {
         <div
           className="video-comments-substition">
           <input
+            className="comment-input"
             type="text"
             name="newComment"
             onChange={(e) => {
@@ -94,7 +96,7 @@ class VideoCommentsList extends Component {
           />
           <button
             className="video-comment-submit"
-            onClick={() => this.addComment(e)}>
+            onClick={(e) => this.addComment(e)}>
             Add Comment
           </button>
         </div>
@@ -118,6 +120,7 @@ class VideoCommentsList extends Component {
         <div
           className="video-comments-substition">
           <input
+            className="comment-input"
             type="text"
             name="newComment"
             onChange={(e) => {
@@ -140,6 +143,7 @@ class VideoCommentsList extends Component {
         <div
           className="video-comments-substition">
           <input
+            className="comment-input"
             type="text"
             name="newComment"
             onChange={(e) => {
@@ -149,7 +153,7 @@ class VideoCommentsList extends Component {
           />
           <button
             className="video-comment-submit"
-            onClick={(e) => this.addComment()}>
+            onClick={(e) => this.addComment(e)}>
             Add Comment
           </button>
         </div>

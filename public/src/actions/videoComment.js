@@ -9,7 +9,8 @@ export const GRAB_COMMENT_COMMENT_FAILURE = "GRAB_COMMENT_COMMENT_FAILURE";
 export const TOGGLE_COMMENT_LIST_VIEW = "TOGGLE_COMMENT_LIST_VIEW";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const ADD_VIDEO_COMMENT = "ADD_VIDEO_COMMENT";
-export const RESET_CURRENT_VIDEO = "SET_CURRENT_VIDEO";
+export const RESET_CURRENT_VIDEO = "RESET_CURRENT_VIDEO";
+export const RESET_COMMENT_INPUT = "RESET_COMMENT_INPUT";
 
 
 const toggleCommentListView = (commentsVisible) => ({
@@ -22,30 +23,24 @@ const updateComment = (newComment) => ({
   newComment
 });
 
-const setCurrentVideo = (currentVideo) => ({
+const resetCurrentVideo = (currentVideo) => ({
   type: "RESET_CURRENT_VIDEO",
   currentVideo
 });
 
+const resetCommentInput = () => ({
+  type: 'RESET_COMMENT_INPUT',
+  newComment: ''
+});
+
 const playVideo = (info) => {
   return (dispatch) => {
-    axios.get(`${RAILS_MICROSERVICE}/videos/${info.currentVideo.videoId}/comments`)
-      .then(response => {
-        console.log("COMMENTS ARE: ", response);
-        console.log("VID LIKES ARE: ", info.currentVideo);
-        info.currentVideo["comments"] = response.data.comments
-        dispatch(setCurrentVideo(info.currentVideo));
-        info.history.push("video-player");
-      })
-      .catch(err => {
-        console.log("COULDN'T RETRIEVE COMMENTS: ", err);
-      })
+
   }
 }
 
 const addNewVideoComment = (info) => {
   return (dispatch) => {
-    console.log("INFO IS : ", info.content)
     const axiosBod = {
       body: info.content,
       commentable_type: "Video",
@@ -57,7 +52,15 @@ const addNewVideoComment = (info) => {
 
     axios.post(`/api/comment`, axiosBod)
       .then(response => {
-        playVideo({ currentVideo: info.currentVideo, history: info.history });
+        axios.get(`${RAILS_MICROSERVICE}/videos/${info.currentVideo.videoId}/comments`)
+          .then(success => {
+            info.currentVideo["comments"] = success.data.comments
+            dispatch(resetCurrentVideo(info.currentVideo));
+            dispatch(resetCommentInput());
+          })
+          .catch(err => {
+            console.log("COULDN'T RETRIEVE COMMENTS: ", err);
+          })
       });
   }
 };

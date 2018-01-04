@@ -11,6 +11,11 @@ import {
   SET_CURRENT_VIDEO
 } from '../actions/video';
 
+import {
+  RESET_CURRENT_VIDEO,
+  RESET_COMMENT_INPUT
+} from '../actions/videoComment';
+
 
 const videoData = (state = {
   video: '',
@@ -24,6 +29,16 @@ const videoData = (state = {
   currentVideo: '',
 }, action) => {
   switch (action.type) {
+    case RESET_COMMENT_INPUT:
+      return {
+        ...state,
+        newComment: action.newComment
+      }
+    case RESET_CURRENT_VIDEO:
+      return {
+        ...state,
+        currentVideo: action.currentVideo
+      }
     case SET_CURRENT_VIDEO:
       return {
         ...state,
