@@ -27,8 +27,8 @@ const Video = db.define('video', {
     defaultValue: "0.00",
   },
   likes: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0,
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    defaultValue: [],
   },
   createdAt: {
     type: Sequelize.DATE,

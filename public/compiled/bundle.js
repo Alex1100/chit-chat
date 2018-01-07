@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "147b6faa6c351587fbd2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "07ca69e0328f696a82f8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -84121,6 +84121,93 @@ var _temp = function () {
 
 /***/ }),
 
+/***/ "./public/src/actions/likes.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(console) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.startLikeAction = exports.RESET_VIDEO = exports.DECREMENT_LIKES_FAILURE = exports.INCREMENT_LIKES_FAILURE = exports.DECREMENT_LIKES = exports.INCREMENT_LIKES = undefined;
+
+var _axios = __webpack_require__("./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var INCREMENT_LIKES = exports.INCREMENT_LIKES = "INCREMENT_LIKES";
+var DECREMENT_LIKES = exports.DECREMENT_LIKES = "DECREMENT_LIKES";
+var INCREMENT_LIKES_FAILURE = exports.INCREMENT_LIKES_FAILURE = "INCREMENT_LIKES_FAILURE";
+var DECREMENT_LIKES_FAILURE = exports.DECREMENT_LIKES_FAILURE = "DECREMENT_LIKES_FAILURE";
+var RESET_VIDEO = exports.RESET_VIDEO = "RESET_VIDEO";
+
+var resetVideo = function resetVideo(currentVideo) {
+  return {
+    type: "RESET_VIDEO",
+    currentVideo: currentVideo
+  };
+};
+
+var startLikeAction = function startLikeAction(info) {
+  return function (dispatch) {
+    var axiosBod = {
+      videoId: info.videoId,
+      userId: info.userId,
+      token: localStorage.getItem("token")
+    };
+
+    _axios2.default.post("/api/likes", axiosBod).then(function (response) {
+      console.log("RESPONSE IS: ", response);
+      if (response.status !== 201 && response.status !== 208) {
+        return Promise.reject({ likesErrorMessage: "Failed to increment or decrement Like..." });
+      }
+
+      if (response.status === 201) {
+        info.video["likes"].push(info.userId);
+        dispatch(resetVideo(info.video));
+        info.history.push("/video-player");
+      } else if (response.status === 208) {
+        info.video["likes"] = info.video["likes"].filter(function (el) {
+          return el !== info.userId;
+        });
+        dispatch(resetVideo(info.video));
+        info.history.push("/video-player");
+      }
+    });
+  };
+};
+
+exports.startLikeAction = startLikeAction;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(INCREMENT_LIKES, "INCREMENT_LIKES", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+
+  __REACT_HOT_LOADER__.register(DECREMENT_LIKES, "DECREMENT_LIKES", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+
+  __REACT_HOT_LOADER__.register(INCREMENT_LIKES_FAILURE, "INCREMENT_LIKES_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+
+  __REACT_HOT_LOADER__.register(DECREMENT_LIKES_FAILURE, "DECREMENT_LIKES_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+
+  __REACT_HOT_LOADER__.register(RESET_VIDEO, "RESET_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+
+  __REACT_HOT_LOADER__.register(resetVideo, "resetVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+
+  __REACT_HOT_LOADER__.register(startLikeAction, "startLikeAction", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/likes.js");
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
+
+/***/ }),
+
 /***/ "./public/src/actions/login.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -85321,6 +85408,10 @@ var _VideoCommentsList = __webpack_require__("./public/src/containers/VideoComme
 
 var _VideoCommentsList2 = _interopRequireDefault(_VideoCommentsList);
 
+var _LikesContainer = __webpack_require__("./public/src/containers/LikesContainer.jsx");
+
+var _LikesContainer2 = _interopRequireDefault(_LikesContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Video = function Video(props) {
@@ -85341,12 +85432,21 @@ var Video = function Video(props) {
         _react2.default.createElement(
           'span',
           null,
-          props.video.likes
+          props.video.likes.length
         ),
         ' ',
-        props.video.likes < 1 || props.video.likes > 1 ? "Likes" : "Like"
+        props.video.likes.length < 1 || props.video.likes.length > 1 ? "likes" : "like"
       )
     ),
+    _react2.default.createElement(_LikesContainer2.default, {
+      user: props.user,
+      userId: props.userId,
+      dispatch: props.dispatch,
+      history: props.history,
+      videoId: props.video.videoId,
+      likes: props.video.likes,
+      video: props.video
+    }),
     _react2.default.createElement(
       'div',
       {
@@ -85454,12 +85554,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var VideoPlayer = function VideoPlayer(props) {
   return _react2.default.createElement(
     "div",
-    null,
+    { className: "video-wrapper" },
     _react2.default.createElement(
       "video",
-      { controls: true, played: true, poster: true },
+      { controls: true, played: true, className: "video" },
       _react2.default.createElement("source", { type: "video/webm", src: props.video.videoURL })
     ),
+    _react2.default.createElement("div", { className: "playpause" }),
     _react2.default.createElement("br", null),
     _react2.default.createElement(
       "div",
@@ -85576,6 +85677,116 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(VideoPreview, 'VideoPreview', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPreview.jsx');
 
   __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPreview.jsx');
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/containers/LikesContainer.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _likes = __webpack_require__("./public/src/actions/likes.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LikesContainer = function (_Component) {
+  _inherits(LikesContainer, _Component);
+
+  function LikesContainer(props) {
+    _classCallCheck(this, LikesContainer);
+
+    var _this = _possibleConstructorReturn(this, (LikesContainer.__proto__ || Object.getPrototypeOf(LikesContainer)).call(this, props));
+
+    _this.handleLike = _this.handleLike.bind(_this);
+    return _this;
+  }
+
+  _createClass(LikesContainer, [{
+    key: 'handleLike',
+    value: function handleLike(e) {
+      var _props = this.props,
+          dispatch = _props.dispatch,
+          history = _props.history,
+          user = _props.user,
+          userId = _props.userId,
+          videoId = _props.videoId,
+          video = _props.video;
+
+
+      dispatch((0, _likes.startLikeAction)({
+        dispatch: dispatch,
+        history: history,
+        user: user,
+        userId: userId,
+        videoId: videoId,
+        video: video
+      }));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props2 = this.props,
+          userId = _props2.userId,
+          likes = _props2.likes;
+
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'div',
+            { onClick: function onClick(e) {
+                e.preventDefault();_this2.handleLike(e);
+              }, 'class': 'btn btn-info btn-lg' },
+            _react2.default.createElement('span', { 'class': 'glyphicon glyphicon-thumbs-up' }),
+            ' ',
+            likes.includes(userId) ? "Unlike" : "Like"
+          )
+        )
+      );
+    }
+  }]);
+
+  return LikesContainer;
+}(_react.Component);
+
+var _default = LikesContainer;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(LikesContainer, 'LikesContainer', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/LikesContainer.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/LikesContainer.jsx');
 }();
 
 ;
@@ -87665,7 +87876,15 @@ document.addEventListener('DOMContentLoaded', function () {
         _react3.default.createElement(_Router2.default, null)
       )
     )
-  ), document.body.appendChild(document.createElement('div')));
+  ), document.body.appendChild(document.createElement('div'))), $('.video').parent().click(function () {
+    if ($(this).children(".video").get(0).paused) {
+      $(this).children(".video").get(0).play();
+      $(this).children(".playpause").fadeOut();
+    } else {
+      $(this).children(".video").get(0).pause();
+      $(this).children(".playpause").fadeIn();
+    }
+  });
 });
 ;
 
@@ -88135,7 +88354,7 @@ var _temp = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -88146,6 +88365,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _video = __webpack_require__("./public/src/actions/video.js");
 
 var _videoComment = __webpack_require__("./public/src/actions/videoComment.js");
+
+var _likes = __webpack_require__("./public/src/actions/likes.js");
 
 var videoData = function videoData() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
@@ -88162,6 +88383,11 @@ var videoData = function videoData() {
   var action = arguments[1];
 
   switch (action.type) {
+    case _likes.RESET_VIDEO:
+      console.log("FIRED OFF RESET VIDEO");
+      return _extends({}, state, {
+        currentVideo: action.currentVideo
+      });
     case _videoComment.RESET_COMMENT_INPUT:
       return _extends({}, state, {
         newComment: action.newComment
@@ -88235,6 +88461,7 @@ var _temp = function () {
 }();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
 
 /***/ }),
 

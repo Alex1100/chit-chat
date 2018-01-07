@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import VideoPlayer from './VideoPlayer';
 import VideoCommentsList  from '../containers/VideoCommentsList';
+import LikesContainer from '../containers/LikesContainer';
 
 
 const Video = (props) => (
@@ -12,9 +13,18 @@ const Video = (props) => (
     <div
       className="video-likes-container">
       <p>
-        <span>{props.video.likes}</span> {(props.video.likes < 1 || props.video.likes > 1) ? "Likes" : "Like"}
+        <span>{props.video.likes.length}</span> {(props.video.likes.length < 1 || props.video.likes.length > 1) ? "likes" : "like"}
       </p>
     </div>
+    <LikesContainer
+      user={props.user}
+      userId={props.userId}
+      dispatch={props.dispatch}
+      history={props.history}
+      videoId={props.video.videoId}
+      likes={props.video.likes}
+      video={props.video}
+    />
     <div
       className="video-comments-container">
       <VideoCommentsList

@@ -17,6 +17,10 @@ import {
 } from '../actions/videoComment';
 
 
+import {
+  RESET_VIDEO
+} from '../actions/likes';
+
 const videoData = (state = {
   video: '',
   recorder: '',
@@ -29,6 +33,12 @@ const videoData = (state = {
   currentVideo: '',
 }, action) => {
   switch (action.type) {
+    case RESET_VIDEO:
+    console.log("FIRED OFF RESET VIDEO")
+      return {
+        ...state,
+        currentVideo: action.currentVideo
+      };
     case RESET_COMMENT_INPUT:
       return {
         ...state,

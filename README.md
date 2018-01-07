@@ -24,5 +24,8 @@
 
 ## SOON TO INCORPORATE
 - Ethereum donations via Infura API and Web3
+- Bitcoin donations via npm modules
+- EOS donations once EOS mainnet is live in Summer/Fall 2018
+- Cryptocurrency donations for flagging malicsious or fraudulent users/user content
 - Likes Feature
 - User following/subscribing
