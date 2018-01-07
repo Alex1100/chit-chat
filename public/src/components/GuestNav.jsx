@@ -13,7 +13,7 @@ const GuestNav = (props) => (
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">
-              WEBRTC practice
+              Chit-Chat
             </Link>
           </Navbar.Brand>
         </Navbar.Header>

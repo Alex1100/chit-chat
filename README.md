@@ -29,3 +29,4 @@
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
 - Cryptocurrency donations for flagging malicsious or fraudulent users/user content
 - User following/subscribing
+- Update react code to fetch users who commented on a given comment too

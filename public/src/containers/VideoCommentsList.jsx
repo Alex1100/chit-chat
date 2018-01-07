@@ -111,7 +111,7 @@ class VideoCommentsList extends Component {
             />
           ))
         }
-        <div>
+        <div className="toggle-comment-container">
           <p onClick={(e) => this.toggleView(e)}>Hide Comments</p>
         </div>
       </div>
@@ -134,7 +134,7 @@ class VideoCommentsList extends Component {
             Add Comment
           </button>
         </div>
-        <div>
+        <div className="toggle-comment-container">
           <p onClick={(e) => this.toggleView(e)}>Hide Comments</p>
         </div>
       </div>
@@ -157,7 +157,9 @@ class VideoCommentsList extends Component {
             Add Comment
           </button>
         </div>
-        <p onClick={(e) => this.toggleView(e)}>Show Comments</p>
+        <div className="toggle-comment-container">
+          <p onClick={(e) => this.toggleView(e)}>Show Comments</p>
+        </div>
       </div>
     )
   }

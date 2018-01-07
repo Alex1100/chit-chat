@@ -14,7 +14,8 @@ import TopicList from './TopicList';
 import VideoRecorder from './VideoRecorder';
 import VideoList from './VideoList';
 import Video from '../components/Video';
-
+import LandingPageCarousel from '../components/LandingPageCarousel';
+import LandingPageInformation from '../components/LandingPageInformation';
 
 class Router extends Component {
 
@@ -85,6 +86,11 @@ class Router extends Component {
           path="/video-player">
           <div
             className="video-page">
+            <UserNav
+              dispatch={dispatch}
+              history={history}
+              user={user}
+            />
             <Video
               dispatch={dispatch}
               history={history}
@@ -106,6 +112,8 @@ class Router extends Component {
               errorMessage={errorMessage}
               history={history}
             />
+            <LandingPageCarousel />
+            <LandingPageInformation />
           </div>
         </Route>
         <Route

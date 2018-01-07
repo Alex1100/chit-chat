@@ -39,7 +39,7 @@ class LikesContainer extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="like-btn-container">
         <p>
           <div onClick={(e) => {e.preventDefault(); this.handleLike(e)}} class="btn btn-info btn-lg">
             <span class="glyphicon glyphicon-thumbs-up"></span> {likes.includes(userId) ? "Unlike" : "Like" }
