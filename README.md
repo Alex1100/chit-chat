@@ -18,6 +18,7 @@
 - Sequelize
 - PostgreSQL
 - <a href="https://github.com/Alex1100/chit_chat_api">Ruby on Rails Microservice API for Polymorphic Comments</a>
+- Content Liking/Unliking
 - WebRTC API via RecordRTC for creating videos
 
 
@@ -27,5 +28,4 @@
 - Bitcoin donations via npm modules
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
 - Cryptocurrency donations for flagging malicsious or fraudulent users/user content
-- Likes Feature
 - User following/subscribing
