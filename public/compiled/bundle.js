@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f378ad6dd654fab1ed2f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fe1312b6d5ed3973aa9c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -88315,6 +88315,7 @@ var UserNav = function UserNav(props) {
           _react2.default.createElement(
             _reactBootstrap.Button,
             {
+              className: 'clear-search-btn',
               onClick: function onClick(e) {
                 e.preventDefault();
                 props.dispatch((0, _search.clearSearch)());
@@ -89405,6 +89406,11 @@ var SearchBar = function (_Component) {
           'div',
           {
             className: 'search-input' },
+          _react2.default.createElement(
+            'label',
+            null,
+            'Search videos or topics'
+          ),
           _react2.default.createElement('input', {
             className: 'search-input-text',
             type: 'text',
@@ -89454,8 +89460,9 @@ var SearchBar = function (_Component) {
             mdOffset: 0,
             md: 2 },
           _react2.default.createElement(
-            'button',
+            _reactBootstrap.Button,
             {
+              className: 'search-btn',
               onClick: function onClick(e) {
                 e.preventDefault();
                 _this2.search(e);

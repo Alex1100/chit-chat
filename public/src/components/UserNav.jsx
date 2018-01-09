@@ -41,6 +41,7 @@ const UserNav = (props) => (
         <NavItem
           className="clearSearch">
           <Button
+            className="clear-search-btn"
             onClick={(e) => {
               e.preventDefault();
               props.dispatch(

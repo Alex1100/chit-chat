@@ -154,8 +154,6 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   display: block;
   position: relative;
   margin: 0 auto;
-  /*border: solid 3px #67727c;
-  border-radius: 6px;*/
 }
 
 .video-player-info-container {
@@ -164,6 +162,7 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   margin: 0 auto;
   top: 70px;
   width: 50%;
+  left: 6%;
   text-align: center;
   border: groove 3px #2eebb9;
   border-radius: 6px;
@@ -172,20 +171,22 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
 }
 
 .video-likes-container {
-  display: block;
+  display: inline-block;
   position: relative;
   left: 25%;
   top: -70px;
+  height: 30px;
   margin: 0 auto;
   color: ghostwhite ;
   text-shadow: 0px 0px 3px #3deaba;
 }
 
 .like-btn-container {
-  display: block;
+  display: inline-block;
   position: relative;
   left: 30%;
-  top: -105px;
+  height: 30px;
+  top: -70px;
   margin: 0 auto;
 }
 
@@ -207,6 +208,8 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   margin: 0 auto;
   width: 50%;
   margin-bottom: 15px;
+  top: 25px;
+  left: 6%;
 }
 
 .comment-input {
@@ -217,12 +220,14 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
 }
 
 .video-comment-submit {
-  display: block;
+  display: inline-block;
   position: relative;
   margin-top: 10px;
   left: 35%;
-  width: 30%;
-  margin: 0 aut;
+  width: 130px;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: 'Bungee', cursive;
 }
 
 .video-comment-container {
@@ -236,4 +241,106 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   border: dashed 2px ghostwhite;
   border-radius: 4px;
   text-align: center;
+}
+
+
+.search-input-container {
+  display: block;
+  position: relative;
+  top: 10px;
+  left: 150%;
+  text-align: center;
+  background-color: rgba(38, 150, 119, 0.2);
+  width: 304px;
+  height: 90px;
+  border: solid #1e2a50;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-radius: 5px;
+}
+
+.search-input {
+  display: inline-block;
+  position: relative;
+  background-color: rgba(38, 150, 119, 0.2);
+  width: 304px;
+  height: 90px;
+  border: solid #1e2a50;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-radius: 5px;
+  top: -50px;
+  left: 0%;
+}
+
+.search-input-text {
+  display: block;
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  border: transparent;
+  background-color: rgba(255, 255, 240, 0.8);
+}
+
+.radio-btn {
+  display: inline;
+  position: relative;
+  margin-right: 30px;
+  top: -20px;
+  color: ghostwhite;
+  text-shadow: rgba(0,0,0,0.5) 0px 3px 3px;
+}
+
+.search-input > label {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Bungee', cursive;
+  color: #1e2a50;
+}
+
+.search-btn {
+  display: inline-block;
+  position: relative;
+  background-color: #1f2b4f;
+  color: #eff6e9;
+  width: 130px;
+  left: 70px;
+  top: -50px;
+  height: 30px;
+  font-size: 90%;
+  font-family: 'Bungee', cursive;
+}
+
+.clear-search-btn {
+  display: block;
+  position: relative;
+  background-color: #1f2b4f;
+  color: #eff6e9;
+  width: 130px;
+  top: 15px;
+  height: 30px;
+  left: 465px;
+  font-size: 90%;
+  text-align: center;
+  font-family: 'Bungee', cursive;
+}
+
+.like-btn-container > p {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  text-align: center;
+}
+
+.btn.btn-info.btn-lg {
+  height: 35px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  left: -20px;
+  border-radius: 20px;
+  font-family: 'Bungee', cursive;
+  font-size: 75%;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Col,
+  Button
 } from 'react-bootstrap';
 
 import {
@@ -67,6 +68,7 @@ class SearchBar extends Component {
         className="search-input-container">
         <div
           className="search-input">
+          <label>Search videos or topics</label>
           <input
             className="search-input-text"
             type="text"
@@ -105,13 +107,14 @@ class SearchBar extends Component {
         <Col
           mdOffset={0}
           md={2}>
-          <button
+          <Button
+          className="search-btn"
             onClick={(e) => {
               e.preventDefault();
               this.search(e);
             }}>
             Search
-          </button>
+          </Button>
         </Col>
       </div>
     );
