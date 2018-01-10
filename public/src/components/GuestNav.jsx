@@ -13,7 +13,7 @@ const GuestNav = (props) => (
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">
-              Chit-Chat
+              <img className="logo" src="../../images/logo.png" />
             </Link>
           </Navbar.Brand>
         </Navbar.Header>

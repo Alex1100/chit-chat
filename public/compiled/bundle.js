@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1ce32c01371a422d041d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "faac2f070f8e382bf730"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -87988,7 +87988,7 @@ var GuestNav = function GuestNav(props) {
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/' },
-            'Chit-Chat'
+            _react2.default.createElement('img', { className: 'logo', src: '../../images/logo.png' })
           )
         )
       ),

@@ -34,12 +34,34 @@ body {
   font-family: 'Bungee Shade', cursive;
 }
 
+.navbar-header {
+  width: 100px;
+}
+
+.navbar-brand {
+  width: 200px;
+  display: inline-block;
+}
+
+img.logo {
+  text-align: center;
+  margin: 0 auto;
+  width: 35%;
+  display: inline-block;
+  position: relative;
+}
+
+.nav.navbar-nav {
+  display: inline-block;
+  margin-top: 20px;
+}
+
 
 .carouzel {
   display: block;
   position: relative;
-  margin: 0 auto;
-  width: auto;
+  left: 17%;
+  width: 50%;
   border: solid 1px grey;
   border-radius: 1px;
   text-align: center;
