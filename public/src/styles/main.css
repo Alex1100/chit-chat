@@ -1,5 +1,5 @@
 body {
-  background-color: #a859b8;
+  background-color: #006D6F;
 }
 
 .welcome-font {
@@ -160,14 +160,15 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   display: block;
   position: relative;
   margin: 0 auto;
-  top: 70px;
+  top: 80px;
   width: 50%;
-  left: 6%;
   text-align: center;
-  border: groove 3px #2eebb9;
+  border: groove 3px ghostwhite;
   border-radius: 6px;
   color: ghostwhite;
   background-color: #1D2951;
+  font-family: 'Gruppo', cursive;
+  font-size: 130%;
 }
 
 .video-likes-container {
@@ -199,6 +200,8 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   color: ghostwhite;
   text-align: center;
   border: ridge 2px #8098c2;
+  margin-bottom: 50px;
+  font-family: 'Bungee', cursive;
   text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
 }
 
@@ -208,8 +211,7 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   margin: 0 auto;
   width: 50%;
   margin-bottom: 15px;
-  top: 25px;
-  left: 6%;
+  top: 55px;
 }
 
 .comment-input {
@@ -217,13 +219,16 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   position: relative;
   width: 80%;
   margin: 0 auto;
+  font-style: bold;
+  font-size: 120%;
+  font-family: 'Gruppo', cursive;
 }
 
 .video-comment-submit {
   display: inline-block;
   position: relative;
   margin-top: 10px;
-  left: 35%;
+  left: 250px;
   width: 130px;
   text-align: center;
   margin-bottom: 50px;
@@ -241,6 +246,8 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   border: dashed 2px ghostwhite;
   border-radius: 4px;
   text-align: center;
+  font-family: 'Gruppo', cursive;
+  font-size: 130%;
 }
 
 
@@ -248,7 +255,7 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   display: block;
   position: relative;
   top: 10px;
-  left: 150%;
+  left: 700px;
   text-align: center;
   background-color: rgba(38, 150, 119, 0.2);
   width: 304px;
@@ -269,7 +276,7 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   border-left-width: 1px;
   border-right-width: 1px;
   border-radius: 5px;
-  top: -50px;
+  top: -51px;
   left: 0%;
 }
 
@@ -279,6 +286,9 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   width: 300px;
   margin: 0 auto;
   border: transparent;
+  font-family: 'Gruppo', cursive;
+  font-style: bold;
+  font-size: 130%;
   background-color: rgba(255, 255, 240, 0.8);
 }
 
@@ -300,14 +310,43 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   color: #1e2a50;
 }
 
+nav.navbar.navbar-default {
+  height: 150px;
+  background-color: #777fd8;
+}
+
+ul.nav.navbar-nav > li:first-child {
+  font-family: 'Bungee', cursive;
+  background-color: #202c4e;
+  border: solid 1px #cccccc;
+  border-radius: 3px;
+  color: #eff6ea;
+}
+
+ul.nav.navbar-nav > li:first-child:hover {
+  font-family: 'Bungee', cursive;
+  background-color: #eff6ea;
+  border: solid 1px black;
+  border-radius: 3px;
+  color: #eff6ea;
+}
+
+ul.nav.navbar-nav > li:first-child > a > a{
+  color: #eff6ea;
+}
+
+ul.nav.navbar-nav > li:first-child > a > a:hover {
+  color: #202c4e;
+}
+
 .search-btn {
   display: inline-block;
   position: relative;
   background-color: #1f2b4f;
   color: #eff6e9;
   width: 130px;
-  left: 70px;
-  top: -50px;
+  left: 138.5px;
+  top: -60px;
   height: 30px;
   font-size: 90%;
   font-family: 'Bungee', cursive;
@@ -319,9 +358,9 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   background-color: #1f2b4f;
   color: #eff6e9;
   width: 130px;
-  top: 15px;
+  top: -65px;
   height: 30px;
-  left: 465px;
+  left: 652.5px;
   font-size: 90%;
   text-align: center;
   font-family: 'Bungee', cursive;
