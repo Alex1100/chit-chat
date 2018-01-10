@@ -24,7 +24,7 @@ const GuestNav = (props) => (
               Login
             </Link>
           </NavItem>
-          <NavItem>
+          <NavItem className="guest-signup">
             <Link
               to="/signup">
               Signup

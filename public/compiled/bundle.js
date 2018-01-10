@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fe1312b6d5ed3973aa9c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1ce32c01371a422d041d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -88007,7 +88007,7 @@ var GuestNav = function GuestNav(props) {
         ),
         _react2.default.createElement(
           _reactBootstrap.NavItem,
-          null,
+          { className: 'guest-signup' },
           _react2.default.createElement(
             _reactRouterDom.Link,
             {
