@@ -509,6 +509,64 @@ ul.nav.navbar-nav > li:first-child > a > a:hover {
   font-size: 75%;
 }
 
+.video-list-container {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  background-color: ghostwhite;
+  text-align: center;
+  border: solid 2px grey;
+  border-radius: 12px;
+}
+
+.container {
+  display: inline-block;
+}
+
+
+.video-list-container:hover {
+  display: block;
+  position: relative;
+  background-color: ghostwhite;
+  text-align: center;
+  border: solid 3px #7783d4;
+  border-radius: 12px;
+}
+
+.vid-preview-title {
+  font-family: 'Bungee', cursive;
+}
+
+.vid-preview-thumnail {
+  width: 30%;
+  height: 30%;
+}
+
+.vid-preview-topic {
+  font-family: 'Bungee';
+  font-size: 100%;
+  font-style: italic;
+}
+
+.vid-preview-description {
+  font-family: 'Gruppo', cursive;
+  font-size: 150%;
+}
+
+.vid-preview-title:hover {
+  font-family: 'Bungee', cursive;
+  text-decoration: underline;
+  color: #7783d4;
+  cursor: pointer;
+}
+
+.show-grid.row {
+  margin-bottom: 20px;
+  margin-left: 75px;
+}
+
+
+
 
 
 

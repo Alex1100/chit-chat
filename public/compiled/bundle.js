@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1bb253ac4448f74b29a5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fba046d3152bc06e084d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -90941,6 +90941,11 @@ var Router = function (_Component) {
             'div',
             {
               className: 'video-list-page' },
+            _react2.default.createElement(_UserNav2.default, {
+              dispatch: dispatch,
+              history: history,
+              user: user
+            }),
             _react2.default.createElement(_VideoList2.default, {
               dispatch: dispatch,
               history: history,
@@ -92156,6 +92161,8 @@ var _VideoPreview = __webpack_require__("./public/src/components/VideoPreview.js
 
 var _VideoPreview2 = _interopRequireDefault(_VideoPreview);
 
+var _reactBootstrap = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -92182,21 +92189,145 @@ var VideoList = function (_Component) {
           history = _props.history;
 
 
+      var videoBatches = [];
+
+      for (var i = 0; i < videos.length; i += 3) {
+        videoBatches.push([videos[i], videos[i + 1], videos[i + 2]]);
+      }
+
+      videoBatches = videoBatches.map(function (el) {
+        return el.filter(function (z) {
+          return z !== undefined;
+        });
+      });
+
       return videos.length > 0 ? _react2.default.createElement(
         'div',
-        { className: 'video-list-container' },
-        videos.map(function (vid, wi) {
-          return _react2.default.createElement(_VideoPreview2.default, {
-            dispatch: dispatch,
-            history: history,
-            videoId: vid.id,
-            title: vid.title,
-            thumbnail: vid.thumbnail,
-            description: vid.description,
-            videoURL: vid.content,
-            likes: vid.likes
-          });
-        })
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Grid,
+          null,
+          videoBatches.map(function (vid, wi) {
+            return vid.length === 3 ? _react2.default.createElement(
+              _reactBootstrap.Row,
+              { className: 'show-grid' },
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'video-list-container' },
+                  _react2.default.createElement(_VideoPreview2.default, {
+                    dispatch: dispatch,
+                    history: history,
+                    videoId: vid[0].id,
+                    title: vid[0].title,
+                    thumbnail: vid[0].thumbnail,
+                    description: vid[0].description,
+                    videoURL: vid[0].content,
+                    likes: vid[0].likes
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'video-list-container' },
+                  _react2.default.createElement(_VideoPreview2.default, {
+                    dispatch: dispatch,
+                    history: history,
+                    videoId: vid[1].id,
+                    title: vid[1].title,
+                    thumbnail: vid[1].thumbnail,
+                    description: vid[1].description,
+                    videoURL: vid[1].content,
+                    likes: vid[1].likes
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'video-list-container' },
+                  _react2.default.createElement(_VideoPreview2.default, {
+                    dispatch: dispatch,
+                    history: history,
+                    videoId: vid[2].id,
+                    title: vid[2].title,
+                    thumbnail: vid[2].thumbnail,
+                    description: vid[2].description,
+                    videoURL: vid[2].content,
+                    likes: vid[2].likes
+                  })
+                )
+              )
+            ) : vid.length === 2 ? _react2.default.createElement(
+              _reactBootstrap.Row,
+              { className: 'show-grid' },
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'video-list-container' },
+                  _react2.default.createElement(_VideoPreview2.default, {
+                    dispatch: dispatch,
+                    history: history,
+                    videoId: vid[0].id,
+                    title: vid[0].title,
+                    thumbnail: vid[0].thumbnail,
+                    description: vid[0].description,
+                    videoURL: vid[0].content,
+                    likes: vid[0].likes
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'video-list-container' },
+                  _react2.default.createElement(_VideoPreview2.default, {
+                    dispatch: dispatch,
+                    history: history,
+                    videoId: vid[1].id,
+                    title: vid[1].title,
+                    thumbnail: vid[1].thumbnail,
+                    description: vid[1].description,
+                    videoURL: vid[1].content,
+                    likes: vid[1].likes
+                  })
+                )
+              )
+            ) : vid.length === 1 ? _react2.default.createElement(
+              _reactBootstrap.Row,
+              { className: 'show-grid' },
+              _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'video-list-container' },
+                  _react2.default.createElement(_VideoPreview2.default, {
+                    dispatch: dispatch,
+                    history: history,
+                    videoId: vid[0].id,
+                    title: vid[0].title,
+                    thumbnail: vid[0].thumbnail,
+                    description: vid[0].description,
+                    videoURL: vid[0].content,
+                    likes: vid[0].likes
+                  })
+                )
+              )
+            ) : null;
+          })
+        )
       ) : _react2.default.createElement(
         'div',
         null,

@@ -72,6 +72,11 @@ class Router extends Component {
           path="/videos">
           <div
             className="video-list-page">
+            <UserNav
+              dispatch={dispatch}
+              history={history}
+              user={user}
+            />
             <VideoList
               dispatch={dispatch}
               history={history}
