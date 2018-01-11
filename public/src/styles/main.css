@@ -351,7 +351,7 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
 .search-input-container {
   display: block;
   position: relative;
-  top: 10px;
+  top: -10px;
   left: 700px;
   text-align: center;
   background-color: rgba(38, 150, 119, 0.2);
@@ -483,7 +483,7 @@ ul.nav.navbar-nav > li:first-child > a > a:hover {
   background-color: #1f2b4f;
   color: #eff6e9;
   width: 130px;
-  top: -65px;
+  top: -85px;
   height: 30px;
   left: 652.5px;
   font-size: 90%;
