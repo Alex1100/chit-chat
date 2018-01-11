@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "695b40f80b2adc09e908"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7cea69879744b7e9a050"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -90655,7 +90655,7 @@ var Login = function (_Component) {
             ),
             _react2.default.createElement('input', {
               className: 'login-password-input',
-              type: 'text',
+              type: 'password',
               name: 'password',
               onChange: function onChange(e) {
                 e.preventDefault();
@@ -90733,7 +90733,7 @@ var Login = function (_Component) {
             ),
             _react2.default.createElement('input', {
               className: 'login-password-input',
-              type: 'text',
+              type: 'password',
               name: 'password',
               onChange: function onChange(e) {
                 e.preventDefault();

@@ -107,7 +107,7 @@ class Login extends Component {
               </label>
               <input
                 className="login-password-input"
-                type='text'
+                type='password'
                 name='password'
                 onChange={(e) => {
                   e.preventDefault();
@@ -172,7 +172,7 @@ class Login extends Component {
               </label>
               <input
                 className="login-password-input"
-                type='text'
+                type='password'
                 name='password'
                 onChange={(e) => {
                   e.preventDefault();

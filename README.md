@@ -9,6 +9,9 @@
 
 ![screenshot](public/images/landingpage_b.png)
 
+## LOGIN PAGE
+![screenshot](public/images/loginpage.png)
+
 
 ## VIDEO PLAYER PAGE
 ![screenshot](public/images/videoplayer_a.png)
