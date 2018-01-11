@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { signupUser } from '../actions/auth';
 import { inputUsername, inputEmail, inputPassword } from '../actions/login';
 import { connect } from 'react-redux';
+import Particles from 'reactparticles.js';
 
 
 class Signup extends Component {
@@ -12,6 +13,11 @@ class Signup extends Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.SignupUser = this.SignupUser.bind(this);
+  }
+
+  componentDidMount() {
+    let el = document.getElementById("particles-js-tile-1-particles");
+    el.style['top'] = "180px"
   }
 
   handleUsername(e) {
@@ -62,91 +68,129 @@ class Signup extends Component {
     return errorMessage === undefined ||
      errorMessage.length < 0 ? (
       <div>
-        <form>
-          Username:<input
-            type='text'
-            name='username'
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleUsername(e);
-            }}
-            value={username}
-          />
-          <br />
-          Email:<input
-            type='text'
-            name='email'
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleEmail(e);
-            }}
-            value={email}
-          />
-          <br />
-          Password:<input
-            type='text'
-            name='password'
-            onChange={(e) => {
-              e.preventDefault();
-              this.handlePassword(e);
-            }}
-            value={password}
-          />
-          <br />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              this.SignupUser();
-            }}>
-            Submit
-          </button>
-        </form>
+        <Particles
+          id="tile-1-particles"
+          config="../../../src/utils/particles.json"
+        />
+          <div className="login-container">
+            <form>
+              <label className="login-username-label">
+                Username
+              </label>
+              <input
+                className="login-username-input"
+                type='text'
+                name='username'
+                onChange={(e) => {
+                  e.preventDefault();
+                  this.handleUsername(e);
+                }}
+                value={username}
+              />
+              <br/>
+              <label className="login-email-label">
+                Email
+              </label>
+              <input
+                className="login-email-input"
+                type="text"
+                name="email"
+                onChange={(e) => {
+                  e.preventDefault();
+                  this.handleEmail(e);
+                }}
+                value={email}
+              />
+              <br/>
+              <label className="login-password-label">
+                Password
+              </label>
+              <input
+                className="login-password-input"
+                type='password'
+                name='password'
+                onChange={(e) => {
+                  e.preventDefault();
+                  this.handlePassword(e);
+                }}
+                value={password}
+              />
+              <br/>
+              <button
+                className="login-submit-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.SignupUser();
+                }}>
+                Submit
+              </button>
+            </form>
+          </div>
       </div>
     ) :
     (
       <div>
-        <h1>
-          {errorMessage}
-        </h1>
-        <form>
-          Username:<input
-            type='text'
-            name='username'
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleUsername(e);
-            }}
-            value={username}
-          />
-          <br />
-          Email:<input
-            type='text'
-            name='email'
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleEmail(e);
-            }}
-            value={email}
-          />
-          <br />
-          Password:<input
-            type='text'
-            name='password'
-            onChange={(e) => {
-              e.preventDefault();
-              this.handlePassword(e);
-            }}
-            value={password}
-          />
-          <br />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              this.SignupUser();
-            }}>
-            Submit
-          </button>
-        </form>
+        <Particles
+          id="tile-1-particles"
+          config="../../../src/utils/particles.json"
+        />
+          <div className="login-container">
+            <h1 className="login-error-message">
+              {errorMessage}
+            </h1>
+            <form>
+              <label className="login-username-label">
+                Username
+              </label>
+              <input
+                className="login-username-input"
+                type='text'
+                name='username'
+                onChange={(e) => {
+                  e.preventDefault();
+                  this.handleUsername(e);
+                }}
+                value={username}
+              />
+              <br/>
+              <label className="login-email-label">
+                Email
+              </label>
+              <input
+                className="login-email-input"
+                type="text"
+                name="email"
+                onChange={(e) => {
+                  e.preventDefault();
+                  this.handleEmail(e);
+                }}
+                value={email}
+              />
+              <br/>
+              <label className="login-password-label">
+                Password
+              </label>
+              <input
+                className="login-password-input"
+                type='password'
+                name='password'
+                onChange={(e) => {
+                  e.preventDefault();
+                  this.handlePassword(e);
+                }}
+                value={password}
+              />
+              <br/>
+              <button
+                className="login-submit-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  this.SignupUser();
+                }}>
+                Submit
+              </button>
+            </form>
+          </div>
       </div>
     );
   }

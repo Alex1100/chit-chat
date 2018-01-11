@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7cea69879744b7e9a050"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1bb253ac4448f74b29a5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -91311,6 +91311,10 @@ var _login = __webpack_require__("./public/src/actions/login.js");
 
 var _reactRedux = __webpack_require__("./node_modules/react-redux/es/index.js");
 
+var _reactparticles = __webpack_require__("./node_modules/reactparticles.js/lib/Particles.js");
+
+var _reactparticles2 = _interopRequireDefault(_reactparticles);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -91335,6 +91339,12 @@ var Signup = function (_Component) {
   }
 
   _createClass(Signup, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var el = document.getElementById("particles-js-tile-1-particles");
+      el.style['top'] = "180px";
+    }
+  }, {
     key: 'handleUsername',
     value: function handleUsername(e) {
       this.props.dispatch((0, _login.inputUsername)(e.target.value));
@@ -91385,104 +91395,152 @@ var Signup = function (_Component) {
       return errorMessage === undefined || errorMessage.length < 0 ? _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(_reactparticles2.default, {
+          id: 'tile-1-particles',
+          config: '../../../src/utils/particles.json'
+        }),
         _react2.default.createElement(
-          'form',
-          null,
-          'Username:',
-          _react2.default.createElement('input', {
-            type: 'text',
-            name: 'username',
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handleUsername(e);
-            },
-            value: username
-          }),
-          _react2.default.createElement('br', null),
-          'Email:',
-          _react2.default.createElement('input', {
-            type: 'text',
-            name: 'email',
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handleEmail(e);
-            },
-            value: email
-          }),
-          _react2.default.createElement('br', null),
-          'Password:',
-          _react2.default.createElement('input', {
-            type: 'text',
-            name: 'password',
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handlePassword(e);
-            },
-            value: password
-          }),
-          _react2.default.createElement('br', null),
+          'div',
+          { className: 'login-container' },
           _react2.default.createElement(
-            'button',
-            {
-              onClick: function onClick(e) {
+            'form',
+            null,
+            _react2.default.createElement(
+              'label',
+              { className: 'login-username-label' },
+              'Username'
+            ),
+            _react2.default.createElement('input', {
+              className: 'login-username-input',
+              type: 'text',
+              name: 'username',
+              onChange: function onChange(e) {
                 e.preventDefault();
-                _this2.SignupUser();
-              } },
-            'Submit'
+                _this2.handleUsername(e);
+              },
+              value: username
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'label',
+              { className: 'login-email-label' },
+              'Email'
+            ),
+            _react2.default.createElement('input', {
+              className: 'login-email-input',
+              type: 'text',
+              name: 'email',
+              onChange: function onChange(e) {
+                e.preventDefault();
+                _this2.handleEmail(e);
+              },
+              value: email
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'label',
+              { className: 'login-password-label' },
+              'Password'
+            ),
+            _react2.default.createElement('input', {
+              className: 'login-password-input',
+              type: 'password',
+              name: 'password',
+              onChange: function onChange(e) {
+                e.preventDefault();
+                _this2.handlePassword(e);
+              },
+              value: password
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              {
+                className: 'login-submit-btn',
+                onClick: function onClick(e) {
+                  e.preventDefault();
+                  _this2.SignupUser();
+                } },
+              'Submit'
+            )
           )
         )
       ) : _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(_reactparticles2.default, {
+          id: 'tile-1-particles',
+          config: '../../../src/utils/particles.json'
+        }),
         _react2.default.createElement(
-          'h1',
-          null,
-          errorMessage
-        ),
-        _react2.default.createElement(
-          'form',
-          null,
-          'Username:',
-          _react2.default.createElement('input', {
-            type: 'text',
-            name: 'username',
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handleUsername(e);
-            },
-            value: username
-          }),
-          _react2.default.createElement('br', null),
-          'Email:',
-          _react2.default.createElement('input', {
-            type: 'text',
-            name: 'email',
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handleEmail(e);
-            },
-            value: email
-          }),
-          _react2.default.createElement('br', null),
-          'Password:',
-          _react2.default.createElement('input', {
-            type: 'text',
-            name: 'password',
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handlePassword(e);
-            },
-            value: password
-          }),
-          _react2.default.createElement('br', null),
+          'div',
+          { className: 'login-container' },
           _react2.default.createElement(
-            'button',
-            {
-              onClick: function onClick(e) {
+            'h1',
+            { className: 'login-error-message' },
+            errorMessage
+          ),
+          _react2.default.createElement(
+            'form',
+            null,
+            _react2.default.createElement(
+              'label',
+              { className: 'login-username-label' },
+              'Username'
+            ),
+            _react2.default.createElement('input', {
+              className: 'login-username-input',
+              type: 'text',
+              name: 'username',
+              onChange: function onChange(e) {
                 e.preventDefault();
-                _this2.SignupUser();
-              } },
-            'Submit'
+                _this2.handleUsername(e);
+              },
+              value: username
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'label',
+              { className: 'login-email-label' },
+              'Email'
+            ),
+            _react2.default.createElement('input', {
+              className: 'login-email-input',
+              type: 'text',
+              name: 'email',
+              onChange: function onChange(e) {
+                e.preventDefault();
+                _this2.handleEmail(e);
+              },
+              value: email
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'label',
+              { className: 'login-password-label' },
+              'Password'
+            ),
+            _react2.default.createElement('input', {
+              className: 'login-password-input',
+              type: 'password',
+              name: 'password',
+              onChange: function onChange(e) {
+                e.preventDefault();
+                _this2.handlePassword(e);
+              },
+              value: password
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              {
+                className: 'login-submit-btn',
+                onClick: function onClick(e) {
+                  e.preventDefault();
+                  _this2.SignupUser();
+                } },
+              'Submit'
+            )
           )
         )
       );
