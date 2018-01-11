@@ -9,7 +9,7 @@
 
 ![screenshot](public/images/landingpage_b.png)
 
-## LOGIN PAGE
+## LOGIN PAGE / SIGNUP PAGE
 ![screenshot](public/images/loginpage.png)
 
 
