@@ -55,5 +55,5 @@
 - Edit Profile Page for User
 - Edit Video Page for editing description/title/topic
 - Random Video Feature
-- Finish Search Feature (already tracking wether user searched for videos or topics)
+- Finish Search Feature (already tracking whether user searched for videos or topics)
 - Style Add Topic and Topic Component
