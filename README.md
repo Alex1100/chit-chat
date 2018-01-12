@@ -52,3 +52,8 @@
 - Cryptocurrency donations for flagging malicious or fraudulent users/user content
 - User following/subscribing
 - Update react code to fetch users who commented on a given comment too
+- Edit Profile Page for User
+- Edit Video Page for editing description/title/topic
+- Random Video Feature
+- Finish Search Feature (already tracking wether user searched for videos or topics)
+- Style Add Topic and Topic Component

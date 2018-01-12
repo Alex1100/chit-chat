@@ -17,13 +17,8 @@ const Topic = (props) => (
           )
         }}>
         <span
-          className="topic-id">
-          #{props.id}
-        </span>
-        :
-        <span
           className="topic-name">
-          {props.name}
+          {' ' + props.name}
         </span>
       </p>
     </div>

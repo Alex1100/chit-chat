@@ -18,8 +18,10 @@ const UserNav = (props) => (
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            Hey {props.user}!
+            <img className="logo" src="../../images/logo.png" />
           </Link>
+          <br/>
+          <h3>{props.user} <span className="glyphicon glyphicon-user"></span></h3>
         </Navbar.Brand>
       </Navbar.Header>
       <Nav>

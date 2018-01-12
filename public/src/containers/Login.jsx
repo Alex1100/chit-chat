@@ -122,7 +122,7 @@ class Login extends Component {
                   e.preventDefault();
                   this.LoginUser();
                 }}>
-                Submit
+                Login
               </button>
             </form>
           </div>
@@ -187,7 +187,7 @@ class Login extends Component {
                   e.preventDefault();
                   this.LoginUser();
                 }}>
-                Submit
+                Login
               </button>
             </form>
           </div>

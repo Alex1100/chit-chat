@@ -101,6 +101,7 @@ const grabAllTopics = (dispatch) => {
         return Promise.reject(response);
       }
 
+
       dispatch(grabAllTopicsSuccess(response.data));
     })
     .catch(err => console.log("ERROR GRABBING ALL TOPICS: ", err));

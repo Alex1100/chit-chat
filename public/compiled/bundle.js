@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fba046d3152bc06e084d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5446d228ab7a85156c92"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -89947,16 +89947,8 @@ var Topic = function Topic(props) {
         _react2.default.createElement(
           'span',
           {
-            className: 'topic-id' },
-          '#',
-          props.id
-        ),
-        ':',
-        _react2.default.createElement(
-          'span',
-          {
             className: 'topic-name' },
-          props.name
+          ' ' + props.name
         )
       )
     )
@@ -90025,9 +90017,15 @@ var UserNav = function UserNav(props) {
           _react2.default.createElement(
             _reactRouterDom.Link,
             { to: '/' },
-            'Hey ',
+            _react2.default.createElement('img', { className: 'logo', src: '../../images/logo.png' })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'h3',
+            null,
             props.user,
-            '!'
+            ' ',
+            _react2.default.createElement('span', { className: 'glyphicon glyphicon-user' })
           )
         )
       ),
@@ -90672,7 +90670,7 @@ var Login = function (_Component) {
                   e.preventDefault();
                   _this2.LoginUser();
                 } },
-              'Submit'
+              'Login'
             )
           )
         )
@@ -90750,7 +90748,7 @@ var Login = function (_Component) {
                   e.preventDefault();
                   _this2.LoginUser();
                 } },
-              'Submit'
+              'Login'
             )
           )
         )
@@ -91466,7 +91464,7 @@ var Signup = function (_Component) {
                   e.preventDefault();
                   _this2.SignupUser();
                 } },
-              'Submit'
+              'Signup'
             )
           )
         )
@@ -91544,7 +91542,7 @@ var Signup = function (_Component) {
                   e.preventDefault();
                   _this2.SignupUser();
                 } },
-              'Submit'
+              'Signup'
             )
           )
         )
@@ -91595,7 +91593,7 @@ var _temp = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(console) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -91648,10 +91646,38 @@ var TopicsList = function (_Component) {
     _this.handleTopicChange = _this.handleTopicChange.bind(_this);
     _this.addNewTopic = _this.addNewTopic.bind(_this);
     _this.getVideos = _this.getVideos.bind(_this);
+    _this.splitUp = _this.splitUp.bind(_this);
     return _this;
   }
 
   _createClass(TopicsList, [{
+    key: "splitUp",
+    value: function splitUp(arr, n) {
+      var rest = arr.length % n,
+          restUsed = rest,
+          partLength = Math.floor(arr.length / n),
+          result = [];
+
+      for (var i = 0; i < arr.length; i += partLength) {
+        var end = partLength + i,
+            add = false;
+
+        if (rest !== 0 && restUsed) {
+          end++;
+          restUsed--;
+          add = true;
+        }
+
+        result.push(arr.slice(i, end));
+
+        if (add) {
+          i++;
+        }
+      }
+
+      return result;
+    }
+  }, {
     key: "getVideos",
     value: function getVideos() {
       var _props = this.props,
@@ -91691,6 +91717,12 @@ var TopicsList = function (_Component) {
           dispatch = _props3.dispatch,
           history = _props3.history;
 
+
+      var splitTopics = this.splitUp(topics.map(function (el) {
+        return el.name;
+      }), 4);
+
+      console.log("SPLIT TOPICS ARE: ", splitTopics);
 
       return topics ? _react2.default.createElement(
         "div",
@@ -91744,7 +91776,7 @@ var TopicsList = function (_Component) {
                 _reactRouterDom.Link,
                 {
                   to: "/add-video" },
-                "Add Video"
+                "+Video"
               )
             ),
             _react2.default.createElement(
@@ -91754,7 +91786,7 @@ var TopicsList = function (_Component) {
                 _reactRouterDom.Link,
                 {
                   to: "/random-topic" },
-                "Random Topic"
+                "RND Topic"
               )
             ),
             _react2.default.createElement(
@@ -91768,7 +91800,21 @@ var TopicsList = function (_Component) {
                     _this2.getVideos();
                   },
                   to: "/videos" },
-                "All Videos"
+                "Videos"
+              )
+            ),
+            _react2.default.createElement(
+              _reactBootstrap.NavItem,
+              null,
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                {
+                  onClick: function onClick(e) {
+                    e.preventDefault();
+                    _this2.getVideos();
+                  },
+                  to: "/videos" },
+                "RND Video"
               )
             )
           )
@@ -91779,16 +91825,37 @@ var TopicsList = function (_Component) {
             className: "topics-header" },
           "All Topics"
         ),
-        topics.map(function (el, wi) {
-          return _react2.default.createElement(_Topic2.default, {
-            className: "topic-item",
-            dispatch: dispatch,
-            history: history,
-            key: wi.toString(),
-            id: el.id,
-            name: el.name
-          });
-        })
+        _react2.default.createElement(
+          _reactBootstrap.Grid,
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Row,
+            null,
+            splitTopics.map(function (el, wi) {
+              return _react2.default.createElement(
+                _reactBootstrap.Col,
+                { xs: 3, md: 3 },
+                el.map(function (z, gi) {
+                  return _react2.default.createElement(
+                    _reactBootstrap.Row,
+                    { key: 'row_' + wi.toString() + gi.toString() },
+                    _react2.default.createElement(
+                      _reactBootstrap.Col,
+                      { key: 'col_' + wi.toString() + gi.toString(), xs: 3, md: 3 },
+                      _react2.default.createElement(_Topic2.default, {
+                        className: "topic-item",
+                        dispatch: dispatch,
+                        history: history,
+                        key: 'topic_' + wi.toString() + gi.toString(),
+                        name: z
+                      })
+                    )
+                  );
+                })
+              );
+            })
+          )
+        )
       ) : _react2.default.createElement(
         "div",
         {
@@ -91858,6 +91925,7 @@ var _temp = function () {
 }();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
 
 /***/ }),
 
@@ -92218,6 +92286,7 @@ var VideoList = function (_Component) {
                   'div',
                   { className: 'video-list-container' },
                   _react2.default.createElement(_VideoPreview2.default, {
+                    key: 'vid_' + wi.toString() + '_0',
                     dispatch: dispatch,
                     history: history,
                     videoId: vid[0].id,
@@ -92236,6 +92305,7 @@ var VideoList = function (_Component) {
                   'div',
                   { className: 'video-list-container' },
                   _react2.default.createElement(_VideoPreview2.default, {
+                    key: 'vid_' + wi.toString() + '_1',
                     dispatch: dispatch,
                     history: history,
                     videoId: vid[1].id,
@@ -92254,6 +92324,7 @@ var VideoList = function (_Component) {
                   'div',
                   { className: 'video-list-container' },
                   _react2.default.createElement(_VideoPreview2.default, {
+                    key: 'vid_' + wi.toString() + '_2',
                     dispatch: dispatch,
                     history: history,
                     videoId: vid[2].id,
@@ -92275,6 +92346,7 @@ var VideoList = function (_Component) {
                   'div',
                   { className: 'video-list-container' },
                   _react2.default.createElement(_VideoPreview2.default, {
+                    key: 'vid_' + wi.toString() + '_0',
                     dispatch: dispatch,
                     history: history,
                     videoId: vid[0].id,
@@ -92293,6 +92365,7 @@ var VideoList = function (_Component) {
                   'div',
                   { className: 'video-list-container' },
                   _react2.default.createElement(_VideoPreview2.default, {
+                    key: 'vid_' + wi.toString() + '_1',
                     dispatch: dispatch,
                     history: history,
                     videoId: vid[1].id,
@@ -92314,6 +92387,7 @@ var VideoList = function (_Component) {
                   'div',
                   { className: 'video-list-container' },
                   _react2.default.createElement(_VideoPreview2.default, {
+                    key: 'vid_' + wi.toString() + '_0',
                     dispatch: dispatch,
                     history: history,
                     videoId: vid[0].id,

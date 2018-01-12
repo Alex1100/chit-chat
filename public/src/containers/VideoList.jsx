@@ -38,6 +38,7 @@ class VideoList extends Component {
                 <Col xs={4}>
                   <div className="video-list-container">
                     <VideoPreview
+                      key={'vid_' + wi.toString() + '_0'}
                       dispatch={dispatch}
                       history={history}
                       videoId={vid[0].id}
@@ -52,6 +53,7 @@ class VideoList extends Component {
                 <Col xs={4}>
                   <div className="video-list-container">
                     <VideoPreview
+                      key={'vid_' + wi.toString() + '_1'}
                       dispatch={dispatch}
                       history={history}
                       videoId={vid[1].id}
@@ -66,6 +68,7 @@ class VideoList extends Component {
                 <Col xs={4}>
                   <div className="video-list-container">
                     <VideoPreview
+                      key={'vid_' + wi.toString() + '_2'}
                       dispatch={dispatch}
                       history={history}
                       videoId={vid[2].id}
@@ -83,6 +86,7 @@ class VideoList extends Component {
                 <Col xs={4}>
                   <div className="video-list-container">
                     <VideoPreview
+                      key={'vid_' + wi.toString() + '_0'}
                       dispatch={dispatch}
                       history={history}
                       videoId={vid[0].id}
@@ -97,6 +101,7 @@ class VideoList extends Component {
                 <Col xs={4}>
                   <div className="video-list-container">
                     <VideoPreview
+                      key={'vid_' + wi.toString() + '_1'}
                       dispatch={dispatch}
                       history={history}
                       videoId={vid[1].id}
@@ -114,6 +119,7 @@ class VideoList extends Component {
                 <Col xs={4}>
                   <div className="video-list-container">
                     <VideoPreview
+                      key={'vid_' + wi.toString() + '_0'}
                       dispatch={dispatch}
                       history={history}
                       videoId={vid[0].id}

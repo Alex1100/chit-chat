@@ -30,7 +30,7 @@ const addTopic = async (req, res) => {
 const getTopics = async (req, res) => {
   try {
     if (req.decoded) {
-      const topics = await Topic.findAll({});
+      const topics = await Topic.findAll({order: Sequelize.col('name')});
       res.status(200).json(topics);
     } else {
       throw new Error("Invalid JWT Token");
