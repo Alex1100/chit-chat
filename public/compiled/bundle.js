@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5446d228ab7a85156c92"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "44af15cb8cf8f9f623ed"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -68089,7 +68089,7 @@ var Particles = function (_Component) {
           config = await response.json();
         } catch (e) {
           alert("[ERROR] Couldn't load the assigned config file for your <Particles/> component.\n\n" + "Check your console or the README for examples.");
-
+          console.log("CONFIG IS: ", response);
           console.error("[ERROR] Couldn't load assigned config file.\n\n" + "\tExamples:\n" + "\t-> <Particles id=\"bacon\" config=\"bacon-particles-config.json\"/>\n" + "\t-> <Particles id=\"bacon\" config=\"particles/bacon-particles-config.json\"/>\n\n" + "\t* Path to config file is relative to your index.html *\n\n");
         }
 
@@ -91613,6 +91613,10 @@ var _Topic2 = _interopRequireDefault(_Topic);
 
 var _topic = __webpack_require__("./public/src/actions/topic.js");
 
+var _reactparticles = __webpack_require__("./node_modules/reactparticles.js/lib/Particles.js");
+
+var _reactparticles2 = _interopRequireDefault(_reactparticles);
+
 var _videoList = __webpack_require__("./public/src/actions/videoList.js");
 
 var _axios = __webpack_require__("./node_modules/axios/index.js");
@@ -91651,6 +91655,13 @@ var TopicsList = function (_Component) {
   }
 
   _createClass(TopicsList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var el = document.getElementById("particles-js-tile-2-particles");
+      el.style['top'] = "180px";
+      el.style['height'] = "24%";
+    }
+  }, {
     key: "splitUp",
     value: function splitUp(arr, n) {
       var rest = arr.length % n,
@@ -91726,166 +91737,182 @@ var TopicsList = function (_Component) {
 
       return topics ? _react2.default.createElement(
         "div",
-        {
-          className: "topics-list" },
+        null,
+        _react2.default.createElement(_reactparticles2.default, {
+          id: "tile-2-particles",
+          config: "../../../src/utils/particles-two.json"
+        }),
         _react2.default.createElement(
           "div",
           {
-            className: "topics-add-container" },
+            className: "topics-list" },
           _react2.default.createElement(
-            "label",
+            "div",
             {
-              className: "topics-add-label" },
-            "Add New Topic"
+              className: "topics-add-container" },
+            _react2.default.createElement(
+              "label",
+              {
+                className: "topics-add-label" },
+              "Add New Topic"
+            ),
+            _react2.default.createElement("input", {
+              className: "topics-add-input",
+              type: "text",
+              onChange: function onChange(e) {
+                e.preventDefault();
+                _this2.handleTopicChange(e);
+              },
+              name: "newTopic",
+              value: newTopic
+            }),
+            _react2.default.createElement(
+              "button",
+              {
+                className: "topics-add-btn",
+                type: "submit",
+                onClick: function onClick(e) {
+                  e.preventDefault;
+                  _this2.addNewTopic();
+                } },
+              "Add Topic"
+            )
           ),
-          _react2.default.createElement("input", {
-            className: "topics-add-input",
-            type: "text",
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handleTopicChange(e);
-            },
-            name: "newTopic",
-            value: newTopic
-          }),
+          _react2.default.createElement("br", null),
           _react2.default.createElement(
-            "button",
+            "div",
             {
-              className: "topics-add-btn",
-              type: "submit",
-              onClick: function onClick(e) {
-                e.preventDefault;
-                _this2.addNewTopic();
-              } },
-            "Add Topic"
-          )
-        ),
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "div",
-          {
-            className: "add-video-link" },
-          _react2.default.createElement(
-            _reactBootstrap.Nav,
-            {
-              bsStyle: "tabs" },
+              className: "add-video-link" },
             _react2.default.createElement(
-              _reactBootstrap.NavItem,
-              null,
+              _reactBootstrap.Nav,
+              {
+                bsStyle: "tabs" },
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                {
-                  to: "/add-video" },
-                "+Video"
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.NavItem,
-              null,
+                _reactBootstrap.NavItem,
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  {
+                    to: "/add-video" },
+                  "+Video"
+                )
+              ),
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                {
-                  to: "/random-topic" },
-                "RND Topic"
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.NavItem,
-              null,
+                _reactBootstrap.NavItem,
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  {
+                    to: "/random-topic" },
+                  "RND Topic"
+                )
+              ),
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                {
-                  onClick: function onClick(e) {
-                    e.preventDefault();
-                    _this2.getVideos();
-                  },
-                  to: "/videos" },
-                "Videos"
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.NavItem,
-              null,
+                _reactBootstrap.NavItem,
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      _this2.getVideos();
+                    },
+                    to: "/videos" },
+                  "Videos"
+                )
+              ),
               _react2.default.createElement(
-                _reactRouterDom.Link,
-                {
-                  onClick: function onClick(e) {
-                    e.preventDefault();
-                    _this2.getVideos();
-                  },
-                  to: "/videos" },
-                "RND Video"
+                _reactBootstrap.NavItem,
+                null,
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      _this2.getVideos();
+                    },
+                    to: "/videos" },
+                  "RND Video"
+                )
               )
             )
-          )
-        ),
-        _react2.default.createElement(
-          "h1",
-          {
-            className: "topics-header" },
-          "All Topics"
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Grid,
-          null,
+          ),
           _react2.default.createElement(
-            _reactBootstrap.Row,
+            "h1",
+            {
+              className: "topics-header" },
+            "All Topics"
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Grid,
             null,
-            splitTopics.map(function (el, wi) {
-              return _react2.default.createElement(
-                _reactBootstrap.Col,
-                { xs: 3, md: 3 },
-                el.map(function (z, gi) {
-                  return _react2.default.createElement(
-                    _reactBootstrap.Row,
-                    { key: 'row_' + wi.toString() + gi.toString() },
-                    _react2.default.createElement(
-                      _reactBootstrap.Col,
-                      { key: 'col_' + wi.toString() + gi.toString(), xs: 3, md: 3 },
-                      _react2.default.createElement(_Topic2.default, {
-                        className: "topic-item",
-                        dispatch: dispatch,
-                        history: history,
-                        key: 'topic_' + wi.toString() + gi.toString(),
-                        name: z
-                      })
-                    )
-                  );
-                })
-              );
-            })
+            _react2.default.createElement(
+              _reactBootstrap.Row,
+              null,
+              splitTopics.map(function (el, wi) {
+                return _react2.default.createElement(
+                  _reactBootstrap.Col,
+                  { xs: 3, md: 3 },
+                  el.map(function (z, gi) {
+                    return _react2.default.createElement(
+                      _reactBootstrap.Row,
+                      { key: 'row_' + wi.toString() + gi.toString() },
+                      _react2.default.createElement(
+                        _reactBootstrap.Col,
+                        { key: 'col_' + wi.toString() + gi.toString(), xs: 3, md: 3 },
+                        _react2.default.createElement(_Topic2.default, {
+                          className: "topic-item",
+                          dispatch: dispatch,
+                          history: history,
+                          key: 'topic_' + wi.toString() + gi.toString(),
+                          name: z
+                        })
+                      )
+                    );
+                  })
+                );
+              })
+            )
           )
         )
       ) : _react2.default.createElement(
         "div",
-        {
-          className: "topics-list" },
+        null,
+        _react2.default.createElement(_reactparticles2.default, {
+          id: "tile-2-particles",
+          config: "../../../src/utils/particles-two.json"
+        }),
         _react2.default.createElement(
           "div",
           {
-            className: "topics-add-container" },
+            className: "topics-list" },
           _react2.default.createElement(
-            "label",
-            null,
-            "Add New Topic"
+            "div",
+            {
+              className: "topics-add-container" },
+            _react2.default.createElement(
+              "label",
+              null,
+              "Add New Topic"
+            ),
+            _react2.default.createElement("input", {
+              type: "text",
+              onChange: function onChange(e) {
+                e.preventDefault();
+                _this2.handleTopicChange(e);
+              },
+              name: "newTopic",
+              value: newTopic
+            }),
+            _react2.default.createElement("button", {
+              type: "submit",
+              onClick: function onClick(e) {
+                e.preventDefault;
+                _this2.addNewTopic();
+              } })
           ),
-          _react2.default.createElement("input", {
-            type: "text",
-            onChange: function onChange(e) {
-              e.preventDefault();
-              _this2.handleTopicChange(e);
-            },
-            name: "newTopic",
-            value: newTopic
-          }),
-          _react2.default.createElement("button", {
-            type: "submit",
-            onClick: function onClick(e) {
-              e.preventDefault;
-              _this2.addNewTopic();
-            } })
-        ),
-        _react2.default.createElement("br", null)
+          _react2.default.createElement("br", null)
+        )
       );
     }
   }]);

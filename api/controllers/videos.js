@@ -3,11 +3,16 @@ const db = require('../config/database');
 const Video = require('../models/video').Video;
 const Topic = require('../models/topic').Topic;
 const axios = require('axios');
+const User = require('../models/user').User;
 
 
 const getInfo = async (req, res) => {
   try {
     if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
+      }
       const { title, amount } = req.body;
       const selectedVideo = await Video.findOne({ where: { title } });
       const donatedSoFar = (amount + parseFloat(selectedVideo.donatedSoFar)).toString();
@@ -35,6 +40,10 @@ const addVideo = async (req, res) => {
     } = req.body;
 
     if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
+      }
       let titleTaken = await Video.findOne({ where: { title: videoTitle } });
       if (!titleTaken) {
         const currentTopic = await Topic.findOne({ where: { name: videoTopic } });
@@ -89,8 +98,11 @@ const addVideo = async (req, res) => {
 const grabVideos = async (req, res) => {
   try {
     if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
+      }
       const zeVideos = await Video.findAll({});
-      console.log("VIDEOS ARE HERE: ", zeVideos);
       res.status(200).json({videos: zeVideos});
     } else {
       throw new Error("Invalid JWT Token...");

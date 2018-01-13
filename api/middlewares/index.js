@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const isAuthenticated = async (req, res, next) => {
   try {
     const token = req.body.token || req.params.token;
-    console.log("TOKEN IS: ", token);
     const decoded = await jwt.verify(token, process.env.jwtSecret);
     req.decoded = decoded;
     next();

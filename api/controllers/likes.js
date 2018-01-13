@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const Video = require("../models/video").Video;
+const User = require('../models/user').User;
 
 
 const toggleLike = async (req, res) => {
@@ -8,38 +9,43 @@ const toggleLike = async (req, res) => {
       videoId,
       userId
     } = req.body;
-
-    const currentVideo = await Video.findOne({ where: { id: videoId } });
-    const checkIfLiked = currentVideo.likes.includes(userId);
-    let tempLikes = currentVideo.likes.map(el => el);
-
-    if (checkIfLiked === true) {
-      tempLikes = tempLikes.filter(el => el !== userId);
-    } else {
-      tempLikes.push(userId);
-    }
-
-    Video.update({
-      title: currentVideo.title,
-      description: currentVideo.description,
-      thumbnail: currentVideo.thumbnail,
-      content: currentVideo.content,
-      donatedSoFar: currentVideo.donatedSoFar,
-      likes: tempLikes,
-      created_at: currentVideo.created_at,
-      updated_at: Sequelize.fn('NOW')
-    }, {
-      where: {
-        id: currentVideo.id
+    if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
       }
-    });
 
-    if (checkIfLiked) {
-      res.sendStatus(208);
-    } else {
-      res.sendStatus(201);
+      const currentVideo = await Video.findOne({ where: { id: videoId } });
+      const checkIfLiked = currentVideo.likes.includes(userId);
+      let tempLikes = currentVideo.likes.map(el => el);
+
+      if (checkIfLiked === true) {
+        tempLikes = tempLikes.filter(el => el !== userId);
+      } else {
+        tempLikes.push(userId);
+      }
+
+      Video.update({
+        title: currentVideo.title,
+        description: currentVideo.description,
+        thumbnail: currentVideo.thumbnail,
+        content: currentVideo.content,
+        donatedSoFar: currentVideo.donatedSoFar,
+        likes: tempLikes,
+        created_at: currentVideo.created_at,
+        updated_at: Sequelize.fn('NOW')
+      }, {
+        where: {
+          id: currentVideo.id
+        }
+      });
+
+      if (checkIfLiked) {
+        res.sendStatus(208);
+      } else {
+        res.sendStatus(201);
+      }
     }
-
   } catch (e) {
     console.log("COULDN'T LIKE/UNLIKE BECAUSE: ", e);
     res.sendStatus(422);

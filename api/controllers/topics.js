@@ -1,11 +1,16 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 const Topic = require('../models/topic').Topic;
+const User = require('../models/user').User;
 
 
 const addTopic = async (req, res) => {
   try {
     if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
+      }
       const { name } = req.body;
       const foundTopic = await Topic.findOne({ where: { name }});
 
@@ -30,6 +35,10 @@ const addTopic = async (req, res) => {
 const getTopics = async (req, res) => {
   try {
     if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
+      }
       const topics = await Topic.findAll({order: Sequelize.col('name')});
       res.status(200).json(topics);
     } else {

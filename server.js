@@ -57,6 +57,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: "10500mb"}));
 app.use(bodyParser.urlencoded({extended: true}));

@@ -6,6 +6,9 @@ import {
   inputTopic
 } from "../actions/topic";
 
+import Particles from 'reactparticles.js';
+
+
 import {
   updateVideoList,
   updateVideoRequest,
@@ -35,6 +38,12 @@ class TopicsList extends Component {
     this.addNewTopic = this.addNewTopic.bind(this);
     this.getVideos = this.getVideos.bind(this);
     this.splitUp = this.splitUp.bind(this);
+  }
+
+  componentDidMount() {
+    let el = document.getElementById("particles-js-tile-2-particles");
+    el.style['top'] = "180px";
+    el.style['height'] = "24%";
   }
 
   splitUp(arr, n) {
@@ -101,129 +110,141 @@ class TopicsList extends Component {
     console.log("SPLIT TOPICS ARE: ", splitTopics);
 
     return topics ? (
-      <div
-        className="topics-list">
+      <div>
+        <Particles
+          id="tile-2-particles"
+          config="../../../src/utils/particles-two.json"
+        />
         <div
-          className="topics-add-container">
-          <label
-            className="topics-add-label">
-            Add New Topic
-          </label>
-          <input
-            className="topics-add-input"
-            type="text"
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleTopicChange(e);
-            }}
-            name="newTopic"
-            value={newTopic}
-          />
-          <button
-            className="topics-add-btn"
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault;
-              this.addNewTopic();
-            }}>
-            Add Topic
-          </button>
+          className="topics-list">
+          <div
+            className="topics-add-container">
+            <label
+              className="topics-add-label">
+              Add New Topic
+            </label>
+            <input
+              className="topics-add-input"
+              type="text"
+              onChange={(e) => {
+                e.preventDefault();
+                this.handleTopicChange(e);
+              }}
+              name="newTopic"
+              value={newTopic}
+            />
+            <button
+              className="topics-add-btn"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault;
+                this.addNewTopic();
+              }}>
+              Add Topic
+            </button>
+          </div>
+          <br/>
+          <div
+            className="add-video-link">
+            <Nav
+              bsStyle="tabs">
+              <NavItem>
+                <Link
+                  to="/add-video">
+                  +Video
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link
+                  to="/random-topic">
+                  RND Topic
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.getVideos();
+                  }}
+                  to="/videos">
+                  Videos
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.getVideos();
+                  }}
+                  to="/videos">
+                  RND Video
+                </Link>
+              </NavItem>
+            </Nav>
+          </div>
+          <h1
+            className="topics-header">
+            All Topics
+          </h1>
+          <Grid>
+            <Row>
+              {
+                splitTopics.map((el, wi) => (
+                  <Col xs={3} md={3}>
+                  {
+                    el.map((z, gi) => (
+                      <Row key={'row_' + wi.toString() + gi.toString()}>
+                        <Col key={'col_' + wi.toString() + gi.toString()} xs={3} md={3}>
+                          <Topic
+                            className="topic-item"
+                            dispatch={dispatch}
+                            history={history}
+                            key={'topic_' + wi.toString() + gi.toString()}
+                            name={z}
+                          />
+                        </Col>
+                      </Row>
+                    ))
+                  }
+                  </Col>
+                ))
+              }
+            </Row>
+          </Grid>
         </div>
-        <br/>
-        <div
-          className="add-video-link">
-          <Nav
-            bsStyle="tabs">
-            <NavItem>
-              <Link
-                to="/add-video">
-                +Video
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link
-                to="/random-topic">
-                RND Topic
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.getVideos();
-                }}
-                to="/videos">
-                Videos
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.getVideos();
-                }}
-                to="/videos">
-                RND Video
-              </Link>
-            </NavItem>
-          </Nav>
-        </div>
-        <h1
-          className="topics-header">
-          All Topics
-        </h1>
-        <Grid>
-          <Row>
-            {
-              splitTopics.map((el, wi) => (
-                <Col xs={3} md={3}>
-                {
-                  el.map((z, gi) => (
-                    <Row key={'row_' + wi.toString() + gi.toString()}>
-                      <Col key={'col_' + wi.toString() + gi.toString()} xs={3} md={3}>
-                        <Topic
-                          className="topic-item"
-                          dispatch={dispatch}
-                          history={history}
-                          key={'topic_' + wi.toString() + gi.toString()}
-                          name={z}
-                        />
-                      </Col>
-                    </Row>
-                  ))
-                }
-                </Col>
-              ))
-            }
-          </Row>
-        </Grid>
       </div>
     ) : (
-      <div
-        className="topics-list">
+      <div>
+        <Particles
+          id="tile-2-particles"
+          config="../../../src/utils/particles-two.json"
+        />
         <div
-          className="topics-add-container">
-          <label>
-            Add New Topic
-          </label>
-          <input
-            type="text"
-            onChange={(e) => {
-              e.preventDefault();
-              this.handleTopicChange(e);
-            }}
-            name="newTopic"
-            value={newTopic}
-          />
-          <button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault;
-              this.addNewTopic();
-            }}>
-          </button>
+          className="topics-list">
+          <div
+            className="topics-add-container">
+            <label>
+              Add New Topic
+            </label>
+            <input
+              type="text"
+              onChange={(e) => {
+                e.preventDefault();
+                this.handleTopicChange(e);
+              }}
+              name="newTopic"
+              value={newTopic}
+            />
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault;
+                this.addNewTopic();
+              }}>
+            </button>
+          </div>
+          <br/>
         </div>
-        <br/>
       </div>
     );
   }

@@ -6,6 +6,11 @@ body {
   top: 180px;
 }
 
+#particles-js-tile-2-particles {
+  top: 180px;
+  height: 20%;
+}
+
 .welcome-font {
   display: block;
   position: relative;
@@ -151,6 +156,14 @@ div.topics-list > div.topics-add-container > button.topics-add-btn {
   border-radius: 15px;
 }
 
+.topics-add-container {
+  margin-top: 200px;
+}
+
+
+.topics-list {
+  margin-top: 150px;
+}
 
 
 .app-loading-container{
@@ -568,10 +581,29 @@ ul.nav.navbar-nav > li:first-child > a > a:hover {
 
 .topic-text {
   font-family: 'Gruppo', cursive;
+  color: ghostwhite;
+  width: 350px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.topic-text:hover {
+  font-family: 'Gruppo', cursive;
+  color: gold;
+  cursor: pointer;
 }
 
 
+div.add-video-link > ul > li > a {
+  border-color: #eee #eee #ddd;
+}
 
+div.add-video-link > ul > li {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  left: 35%;
+}
 
 
 
