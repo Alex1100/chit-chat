@@ -64,26 +64,13 @@ const {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Provider
-      store={store}>
-      <PersistGate
-        persistor={persistor}>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
         <BrowserRouter>
           <Router />
         </BrowserRouter>
       </PersistGate>
     </Provider>,
-    document.body.appendChild(
-      document.createElement('div')
-    )
-  ),
-  $('.video').parent().click(function () {
-    if($(this).children(".video").get(0).paused){
-      $(this).children(".video").get(0).play();
-      $(this).children(".playpause").fadeOut();
-    }else{
-      $(this).children(".video").get(0).pause();
-      $(this).children(".playpause").fadeIn();
-    }
-  });
+    document.body.appendChild(document.createElement('div'))
+  )
 })

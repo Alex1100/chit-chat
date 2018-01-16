@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VideoPlayer from './VideoPlayer';
+import VideoPlayer from '../containers/VideoPlayer';
 import VideoCommentsList  from '../containers/VideoCommentsList';
 import LikesContainer from '../containers/LikesContainer';
 

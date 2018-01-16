@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { grabAllTopics } from './auth';
 
 export const ADD_TO_RECORDER = "ADD_TO_RECORDER";
 export const SET_VIDEO = "SET_VIDEO";
@@ -118,6 +119,7 @@ const uploadVideo = (props) => {
           return Promise.reject(response.resCode);
         }
 
+        grabAllTopics(dispatch);
         dispatch(successVideoUpload());
         props.history.push('/');
       })

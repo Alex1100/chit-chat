@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6057915e6439c1706379"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "95b9fcf90a23115d3925"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -89180,6 +89180,8 @@ var _axios = __webpack_require__("./node_modules/axios/index.js");
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _auth = __webpack_require__("./public/src/actions/auth.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ADD_TO_RECORDER = exports.ADD_TO_RECORDER = "ADD_TO_RECORDER";
@@ -89334,6 +89336,7 @@ var uploadVideo = function uploadVideo(props) {
         return Promise.reject(response.resCode);
       }
 
+      (0, _auth.grabAllTopics)(dispatch);
       dispatch(successVideoUpload());
       props.history.push('/');
     }).catch(function (err) {
@@ -89344,7 +89347,7 @@ var uploadVideo = function uploadVideo(props) {
 
 var playVideo = function playVideo(info) {
   return function (dispatch) {
-    _axios2.default.get("http://localhost:3000" + "/videos/" + info.currentVideo.videoId + "/comments").then(function (response) {
+    _axios2.default.get("http://localhost:3000" + '/videos/' + info.currentVideo.videoId + '/comments').then(function (response) {
       info.currentVideo["comments"] = response.data.comments;
       dispatch(setCurrentVideo(info.currentVideo));
       info.history.push("video-player");
@@ -89371,65 +89374,65 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(ADD_TO_RECORDER, "ADD_TO_RECORDER", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(ADD_TO_RECORDER, 'ADD_TO_RECORDER', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(SET_VIDEO, "SET_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(SET_VIDEO, 'SET_VIDEO', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(UPDATE_DATAURL, "UPDATE_DATAURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_DATAURL, 'UPDATE_DATAURL', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(UPDATE_TITLE, "UPDATE_TITLE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_TITLE, 'UPDATE_TITLE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(UPDATE_DESCRIPTION, "UPDATE_DESCRIPTION", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_DESCRIPTION, 'UPDATE_DESCRIPTION', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(UPDATE_TOPIC, "UPDATE_TOPIC", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_TOPIC, 'UPDATE_TOPIC', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(UPDATE_IMAGE, "UPDATE_IMAGE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(UPDATE_IMAGE, 'UPDATE_IMAGE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_SUCCESS, "VIDEO_UPLOAD_SUCCESS", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_SUCCESS, 'VIDEO_UPLOAD_SUCCESS', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_FAILURE, "VIDEO_UPLOAD_FAILURE", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(VIDEO_UPLOAD_FAILURE, 'VIDEO_UPLOAD_FAILURE', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(SET_CURRENT_VIDEO, "SET_CURRENT_VIDEO", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(SET_CURRENT_VIDEO, 'SET_CURRENT_VIDEO', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(addToRecorderObject, "addToRecorderObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(addToRecorderObject, 'addToRecorderObject', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(setVideObject, "setVideObject", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(setVideObject, 'setVideObject', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateDataURL, "updateDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateDataURL, 'updateDataURL', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateVideoTitle, "updateVideoTitle", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoTitle, 'updateVideoTitle', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateVideoDescription, "updateVideoDescription", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoDescription, 'updateVideoDescription', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateVideoTopic, "updateVideoTopic", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoTopic, 'updateVideoTopic', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateVideoImageURL, "updateVideoImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoImageURL, 'updateVideoImageURL', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(failedVideoUpload, "failedVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(failedVideoUpload, 'failedVideoUpload', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(successVideoUpload, "successVideoUpload", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(successVideoUpload, 'successVideoUpload', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(setCurrentVideo, "setCurrentVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(setCurrentVideo, 'setCurrentVideo', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateRecorder, "updateRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateRecorder, 'updateRecorder', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(setVideo, "setVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(setVideo, 'setVideo', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateVideoDataURL, "updateVideoDataURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateVideoDataURL, 'updateVideoDataURL', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(clearRecorder, "clearRecorder", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(clearRecorder, 'clearRecorder', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateTitleInput, "updateTitleInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateTitleInput, 'updateTitleInput', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateDescriptionInput, "updateDescriptionInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateDescriptionInput, 'updateDescriptionInput', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateTopicInput, "updateTopicInput", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateTopicInput, 'updateTopicInput', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(updateImageURL, "updateImageURL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(updateImageURL, 'updateImageURL', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(uploadVideo, "uploadVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(uploadVideo, 'uploadVideo', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 
-  __REACT_HOT_LOADER__.register(playVideo, "playVideo", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js");
+  __REACT_HOT_LOADER__.register(playVideo, 'playVideo', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/video.js');
 }();
 
 ;
@@ -90101,7 +90104,7 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _VideoPlayer = __webpack_require__("./public/src/components/VideoPlayer.jsx");
+var _VideoPlayer = __webpack_require__("./public/src/containers/VideoPlayer.jsx");
 
 var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
 
@@ -90230,82 +90233,6 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(VideoComment, "VideoComment", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoComment.jsx");
 
   __REACT_HOT_LOADER__.register(_default, "default", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoComment.jsx");
-}();
-
-;
-
-/***/ }),
-
-/***/ "./public/src/components/VideoPlayer.jsx":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__("./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var VideoPlayer = function VideoPlayer(props) {
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "div",
-      { className: "video-comp-wrapper" },
-      _react2.default.createElement(
-        "div",
-        { className: "video-wrapper" },
-        _react2.default.createElement(
-          "video",
-          { controls: true, played: true, className: "video" },
-          _react2.default.createElement("source", { type: "video/webm", src: props.video.videoURL })
-        ),
-        _react2.default.createElement("div", { className: "playpause" })
-      )
-    ),
-    _react2.default.createElement("br", null),
-    _react2.default.createElement(
-      "div",
-      { className: "video-player-info-container" },
-      _react2.default.createElement(
-        "label",
-        { className: "video-player-info-title" },
-        props.video.title
-      ),
-      _react2.default.createElement(
-        "p",
-        { className: "video-player-info-description" },
-        props.video.description
-      ),
-      _react2.default.createElement(
-        "p",
-        null,
-        "Uploaded By: ",
-        props.user
-      )
-    )
-  );
-};
-
-var _default = VideoPlayer;
-exports.default = _default;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(VideoPlayer, "VideoPlayer", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPlayer.jsx");
-
-  __REACT_HOT_LOADER__.register(_default, "default", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/components/VideoPlayer.jsx");
 }();
 
 ;
@@ -92412,6 +92339,120 @@ var _temp = function () {
 
 /***/ }),
 
+/***/ "./public/src/containers/VideoPlayer.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VideoPlayer = function (_Component) {
+  _inherits(VideoPlayer, _Component);
+
+  function VideoPlayer(props) {
+    _classCallCheck(this, VideoPlayer);
+
+    return _possibleConstructorReturn(this, (VideoPlayer.__proto__ || Object.getPrototypeOf(VideoPlayer)).call(this, props));
+  }
+
+  _createClass(VideoPlayer, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $('.video').parent().click(function () {
+        if ($(this).children(".video").get(0).paused) {
+          $(this).children(".video").get(0).play();
+          $(this).children(".playpause").fadeOut();
+        } else {
+          $(this).children(".video").get(0).pause();
+          $(this).children(".playpause").fadeIn();
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'video-comp-wrapper' },
+          _react2.default.createElement(
+            'div',
+            { className: 'video-wrapper' },
+            _react2.default.createElement(
+              'video',
+              { controls: true, played: true, className: 'video' },
+              _react2.default.createElement('source', { type: 'video/webm', src: this.props.video.videoURL })
+            ),
+            _react2.default.createElement('div', { className: 'playpause' })
+          )
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          { className: 'video-player-info-container' },
+          _react2.default.createElement(
+            'label',
+            { className: 'video-player-info-title' },
+            this.props.video.title
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'video-player-info-description' },
+            this.props.video.description
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Uploaded By: ',
+            this.props.user
+          )
+        )
+      );
+    }
+  }]);
+
+  return VideoPlayer;
+}(_react.Component);
+
+;
+
+var _default = VideoPlayer;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(VideoPlayer, 'VideoPlayer', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoPlayer.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/VideoPlayer.jsx');
+}();
+
+;
+
+/***/ }),
+
 /***/ "./public/src/containers/VideoRecorder.jsx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -92847,27 +92888,17 @@ var _createAppStore = createAppStore(),
 document.addEventListener('DOMContentLoaded', function () {
   _reactDom2.default.render(_react3.default.createElement(
     _reactRedux.Provider,
-    {
-      store: store },
+    { store: store },
     _react3.default.createElement(
       _react.PersistGate,
-      {
-        persistor: persistor },
+      { persistor: persistor },
       _react3.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
         _react3.default.createElement(_Router2.default, null)
       )
     )
-  ), document.body.appendChild(document.createElement('div'))), $('.video').parent().click(function () {
-    if ($(this).children(".video").get(0).paused) {
-      $(this).children(".video").get(0).play();
-      $(this).children(".playpause").fadeOut();
-    } else {
-      $(this).children(".video").get(0).pause();
-      $(this).children(".playpause").fadeIn();
-    }
-  });
+  ), document.body.appendChild(document.createElement('div')));
 });
 ;
 
