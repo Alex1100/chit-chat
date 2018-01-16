@@ -56,6 +56,6 @@
 - Edit Video Page for editing description/title/topic
 - Random Video Feature
 - Finish Search Feature (already tracking whether user searched for videos or topics)
-- Implement Video Data cacheing with redis and by filtering with topic_id of selected topic
+- Implement Video Data caching with redis and by filtering with topic_id of selected topic
 
 
