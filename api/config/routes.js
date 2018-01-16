@@ -16,7 +16,7 @@ const createEthWallet = require('../middlewares/ethereum-transaction-middlewares
 
 
 //Auth
-router.post("/signup", usersController.signup);
+router.post("/signup", createEthWallet, usersController.signup);
 router.post("/login", usersController.login);
 
 
@@ -43,8 +43,5 @@ router.delete("/comment", isAuthenticated, commentsController.deleteComment);
 //LIKES
 router.post("/likes", isAuthenticated, likesController.toggleLike);
 
-
-//TEST-ETHER-WALLET-GENERATOR
-router.post('/tester', createEthWallet);
 
 module.exports = router;

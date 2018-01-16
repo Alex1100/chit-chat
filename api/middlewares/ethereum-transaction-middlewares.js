@@ -5,7 +5,7 @@ const ethers = require('ethers');
 const SHA3 = require('sha3');
 const web3 = new Web3(new Web3.providers.HttpProvider(infuraEndpoint));
 
-const findPrivateKey = async (req, res) => {
+const findPrivateKey = async (req, res, next) => {
   try {
     if (req.body.user_creds) {
       const {
@@ -27,12 +27,11 @@ const findPrivateKey = async (req, res) => {
 }
 
 
-const generateNewEtherWallet = async (req, res) => {
+const generateNewEtherWallet = async (req, res, next) => {
   try {
-    if (req.body.user_creds) {
-      const {
-        user_creds
-      } = req.body;
+    if (req.body.username, req.body.password) {
+    let { username, password } = req.body;
+      const user_creds = username + password;
 
       var d = new SHA3.SHA3Hash('256');
       d.update(user_creds);

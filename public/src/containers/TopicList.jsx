@@ -35,15 +35,14 @@ class TopicsList extends Component {
     super(props);
 
     this.handleTopicChange = this.handleTopicChange.bind(this);
-    this.addNewTopic = this.addNewTopic.bind(this);
     this.getVideos = this.getVideos.bind(this);
     this.splitUp = this.splitUp.bind(this);
   }
 
   componentDidMount() {
     let el = document.getElementById("particles-js-tile-2-particles");
-    el.style['top'] = "180px";
-    el.style['height'] = "24%";
+    el.style['top'] = "150px";
+    el.style['height'] = "25%";
   }
 
   splitUp(arr, n) {
@@ -85,29 +84,16 @@ class TopicsList extends Component {
     dispatch(inputTopic(e.target.value));
   }
 
-  addNewTopic() {
-    const {
-      dispatch,
-      history,
-      newTopic
-    } = this.props;
-
-    dispatch(addTopic(newTopic, history));
-  }
-
 
   render() {
     const {
       topics,
       selectedTopic,
-      newTopic,
       dispatch,
       history
     } = this.props;
 
     let splitTopics = this.splitUp(topics.map(el => el.name), 4);
-
-    console.log("SPLIT TOPICS ARE: ", splitTopics);
 
     return topics ? (
       <div>
@@ -118,46 +104,19 @@ class TopicsList extends Component {
         <div
           className="topics-list">
           <div
-            className="topics-add-container">
-            <label
-              className="topics-add-label">
-              Add New Topic
-            </label>
-            <input
-              className="topics-add-input"
-              type="text"
-              onChange={(e) => {
-                e.preventDefault();
-                this.handleTopicChange(e);
-              }}
-              name="newTopic"
-              value={newTopic}
-            />
-            <button
-              className="topics-add-btn"
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault;
-                this.addNewTopic();
-              }}>
-              Add Topic
-            </button>
-          </div>
-          <br/>
-          <div
             className="add-video-link">
             <Nav
               bsStyle="tabs">
               <NavItem>
                 <Link
                   to="/add-video">
-                  +Video
+                  Record <i class="fa fa-video-camera" aria-hidden="true"></i>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link
                   to="/random-topic">
-                  RND Topic
+                  <i class="fa fa-random" aria-hidden="true"></i> Topic
                 </Link>
               </NavItem>
               <NavItem>
@@ -177,7 +136,7 @@ class TopicsList extends Component {
                     this.getVideos();
                   }}
                   to="/videos">
-                  RND Video
+                  <i class="fa fa-random" aria-hidden="true"></i> Video
                 </Link>
               </NavItem>
             </Nav>
@@ -221,29 +180,6 @@ class TopicsList extends Component {
         />
         <div
           className="topics-list">
-          <div
-            className="topics-add-container">
-            <label>
-              Add New Topic
-            </label>
-            <input
-              type="text"
-              onChange={(e) => {
-                e.preventDefault();
-                this.handleTopicChange(e);
-              }}
-              name="newTopic"
-              value={newTopic}
-            />
-            <button
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault;
-                this.addNewTopic();
-              }}>
-            </button>
-          </div>
-          <br/>
         </div>
       </div>
     );
@@ -255,12 +191,10 @@ const mapStateToProps = (state) => {
   const { topicsData } = state;
   const {
     selectedTopic,
-    newTopic
   } = topicsData;
 
   return {
     selectedTopic,
-    newTopic,
   };
 }
 

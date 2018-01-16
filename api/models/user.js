@@ -13,6 +13,11 @@ const User = db.define('user', {
     allowNull: false,
     unique: true,
   },
+  walletAddress: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    unique: true
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,

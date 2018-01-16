@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "44af15cb8cf8f9f623ed"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6057915e6439c1706379"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -91593,7 +91593,7 @@ var _temp = function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(console) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -91648,7 +91648,6 @@ var TopicsList = function (_Component) {
     var _this = _possibleConstructorReturn(this, (TopicsList.__proto__ || Object.getPrototypeOf(TopicsList)).call(this, props));
 
     _this.handleTopicChange = _this.handleTopicChange.bind(_this);
-    _this.addNewTopic = _this.addNewTopic.bind(_this);
     _this.getVideos = _this.getVideos.bind(_this);
     _this.splitUp = _this.splitUp.bind(_this);
     return _this;
@@ -91658,8 +91657,8 @@ var TopicsList = function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var el = document.getElementById("particles-js-tile-2-particles");
-      el.style['top'] = "180px";
-      el.style['height'] = "24%";
+      el.style['top'] = "150px";
+      el.style['height'] = "25%";
     }
   }, {
     key: "splitUp",
@@ -91706,34 +91705,20 @@ var TopicsList = function (_Component) {
       dispatch((0, _topic.inputTopic)(e.target.value));
     }
   }, {
-    key: "addNewTopic",
-    value: function addNewTopic() {
-      var _props2 = this.props,
-          dispatch = _props2.dispatch,
-          history = _props2.history,
-          newTopic = _props2.newTopic;
-
-
-      dispatch((0, _topic.addTopic)(newTopic, history));
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _props3 = this.props,
-          topics = _props3.topics,
-          selectedTopic = _props3.selectedTopic,
-          newTopic = _props3.newTopic,
-          dispatch = _props3.dispatch,
-          history = _props3.history;
+      var _props2 = this.props,
+          topics = _props2.topics,
+          selectedTopic = _props2.selectedTopic,
+          dispatch = _props2.dispatch,
+          history = _props2.history;
 
 
       var splitTopics = this.splitUp(topics.map(function (el) {
         return el.name;
       }), 4);
-
-      console.log("SPLIT TOPICS ARE: ", splitTopics);
 
       return topics ? _react2.default.createElement(
         "div",
@@ -91749,39 +91734,6 @@ var TopicsList = function (_Component) {
           _react2.default.createElement(
             "div",
             {
-              className: "topics-add-container" },
-            _react2.default.createElement(
-              "label",
-              {
-                className: "topics-add-label" },
-              "Add New Topic"
-            ),
-            _react2.default.createElement("input", {
-              className: "topics-add-input",
-              type: "text",
-              onChange: function onChange(e) {
-                e.preventDefault();
-                _this2.handleTopicChange(e);
-              },
-              name: "newTopic",
-              value: newTopic
-            }),
-            _react2.default.createElement(
-              "button",
-              {
-                className: "topics-add-btn",
-                type: "submit",
-                onClick: function onClick(e) {
-                  e.preventDefault;
-                  _this2.addNewTopic();
-                } },
-              "Add Topic"
-            )
-          ),
-          _react2.default.createElement("br", null),
-          _react2.default.createElement(
-            "div",
-            {
               className: "add-video-link" },
             _react2.default.createElement(
               _reactBootstrap.Nav,
@@ -91794,7 +91746,8 @@ var TopicsList = function (_Component) {
                   _reactRouterDom.Link,
                   {
                     to: "/add-video" },
-                  "+Video"
+                  "Record ",
+                  _react2.default.createElement("i", { "class": "fa fa-video-camera", "aria-hidden": "true" })
                 )
               ),
               _react2.default.createElement(
@@ -91804,7 +91757,8 @@ var TopicsList = function (_Component) {
                   _reactRouterDom.Link,
                   {
                     to: "/random-topic" },
-                  "RND Topic"
+                  _react2.default.createElement("i", { "class": "fa fa-random", "aria-hidden": "true" }),
+                  " Topic"
                 )
               ),
               _react2.default.createElement(
@@ -91832,7 +91786,8 @@ var TopicsList = function (_Component) {
                       _this2.getVideos();
                     },
                     to: "/videos" },
-                  "RND Video"
+                  _react2.default.createElement("i", { "class": "fa fa-random", "aria-hidden": "true" }),
+                  " Video"
                 )
               )
             )
@@ -91882,37 +91837,8 @@ var TopicsList = function (_Component) {
           id: "tile-2-particles",
           config: "../../../src/utils/particles-two.json"
         }),
-        _react2.default.createElement(
-          "div",
-          {
-            className: "topics-list" },
-          _react2.default.createElement(
-            "div",
-            {
-              className: "topics-add-container" },
-            _react2.default.createElement(
-              "label",
-              null,
-              "Add New Topic"
-            ),
-            _react2.default.createElement("input", {
-              type: "text",
-              onChange: function onChange(e) {
-                e.preventDefault();
-                _this2.handleTopicChange(e);
-              },
-              name: "newTopic",
-              value: newTopic
-            }),
-            _react2.default.createElement("button", {
-              type: "submit",
-              onClick: function onClick(e) {
-                e.preventDefault;
-                _this2.addNewTopic();
-              } })
-          ),
-          _react2.default.createElement("br", null)
-        )
+        _react2.default.createElement("div", {
+          className: "topics-list" })
       );
     }
   }]);
@@ -91924,13 +91850,11 @@ var TopicsList = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   var topicsData = state.topicsData;
-  var selectedTopic = topicsData.selectedTopic,
-      newTopic = topicsData.newTopic;
+  var selectedTopic = topicsData.selectedTopic;
 
 
   return {
-    selectedTopic: selectedTopic,
-    newTopic: newTopic
+    selectedTopic: selectedTopic
   };
 };
 
@@ -91952,7 +91876,6 @@ var _temp = function () {
 }();
 
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("./node_modules/console-browserify/index.js")))
 
 /***/ }),
 
