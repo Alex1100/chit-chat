@@ -56,4 +56,4 @@
 - Edit Video Page for editing description/title/topic
 - Random Video Feature
 - Finish Search Feature (already tracking whether user searched for videos or topics)
-- Implement Video/Image cacheing by loading videos incrementally when users click on a given topic. For any selected topic, a get request would fetch the X most recently uploaded videos under that topic's umbrella. Then with pagination we could sort out videos to be showed only X at a time while a background worker fires off Y amount of requests from a queue to fetch every X amount of videos relative to Z amount of pages
+- Implement Video Data cacheing by loading videos incrementally when users click on a given topic. For any selected topic, a get request would fetch the X most recently uploaded videos under that topic's umbrella. Then with pagination we could sort out videos to be showed only X at a time while a background worker fires off Y amount of requests from a queue to fetch every X amount of videos relative to Z amount of pages
