@@ -3,6 +3,8 @@ require('dotenv').load();
 
 const Sequelize = require('sequelize');
 let db = null;
+const redis = require("redis");
+let client = redis.createClient();
 
 if (process.env.DATABASE_URL) {
   db = new Sequelize(process.env.DATABASE_URL, {
@@ -16,4 +18,7 @@ if (process.env.DATABASE_URL) {
   }, 100);
 }
 
-module.exports = db;
+module.exports = {
+  db: db,
+  client: client
+};

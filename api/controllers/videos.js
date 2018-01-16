@@ -4,6 +4,8 @@ const Video = require('../models/video').Video;
 const Topic = require('../models/topic').Topic;
 const axios = require('axios');
 const User = require('../models/user').User;
+const redis = require("redis");
+let client = require('../config/database').client;
 
 
 const getInfo = async (req, res) => {
@@ -51,6 +53,15 @@ const addVideo = async (req, res) => {
         const content = JSON.parse(videoURL);
         if (!currentTopic) {
           const newTopic = await Topic.create({ name: videoTopic });
+          client.get("topics", (err, allTopics) => {
+            if (err) {
+              console.log("error is: ", err);
+            }
+            console.log(JSON.parse(allTopics));
+            let cachedTopics = JSON.parse(allTopics);
+            cachedTopics.push(newTopic);
+            client.set("topics", JSON.stringify(cachedTopics), redis.print);
+          })
           const newVideo = await Video.create({
             title: videoTitle,
             description: videoDescription,
