@@ -1,8 +1,31 @@
 const infuraEndpoint = process.env.INFURA_ENDPOINT_MAIN_NETWORK;
 const Web3 = require('web3');
 const EthTx = require('ethereumjs-tx');
-
+const ethers = require('ethers');
+const SHA3 = require('sha3');
 const web3 = new Web3(new Web3.providers.HttpProvider(infuraEndpoint));
+
+const generateNewEtherWallet = async (req, res) => {
+  try {
+    if (req.body.user_creds) {
+      const {
+        user_creds
+      } = req.body;
+
+      var d = new SHA3.SHA3Hash('256');
+      d.update(user_creds);
+      const privateKey = `0x${d.digest('hex')}`;
+      const newWallet = new ethers.Wallet(privateKey);
+      req.newWallet = newWallet;
+      next();
+    } else {
+      throw new Error('Must pass in credentials');
+    }
+  } catch (e) {
+    console.log("ERROR IS: ", e);
+    res.status(422).send(e);
+  }
+}
 
 
 const sendEth = async (req, res, next) => {
@@ -39,4 +62,5 @@ const sendEth = async (req, res, next) => {
 
 module.exports = {
   sendEth,
+  generateNewEtherWallet
 };
