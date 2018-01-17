@@ -14,8 +14,8 @@ import TopicList from './TopicList';
 import VideoRecorder from './VideoRecorder';
 import VideoList from './VideoList';
 import Video from '../components/Video';
-import LandingPageCarousel from '../components/LandingPageCarousel';
-import LandingPageInformation from '../components/LandingPageInformation';
+import LandingPageParticles from './LandingPageParticles';
+
 
 class Router extends Component {
 
@@ -117,8 +117,7 @@ class Router extends Component {
               errorMessage={errorMessage}
               history={history}
             />
-            <LandingPageCarousel />
-            <LandingPageInformation />
+            <LandingPageParticles />
           </div>
         </Route>
         <Route

@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "95b9fcf90a23115d3925"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5fb776ac3e660d5bac4b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -90319,6 +90319,95 @@ var _temp = function () {
 
 /***/ }),
 
+/***/ "./public/src/containers/LandingPageParticles.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _LandingPageCarousel = __webpack_require__("./public/src/components/LandingPageCarousel.jsx");
+
+var _LandingPageCarousel2 = _interopRequireDefault(_LandingPageCarousel);
+
+var _LandingPageInformation = __webpack_require__("./public/src/components/LandingPageInformation.jsx");
+
+var _LandingPageInformation2 = _interopRequireDefault(_LandingPageInformation);
+
+var _reactparticles = __webpack_require__("./node_modules/reactparticles.js/lib/Particles.js");
+
+var _reactparticles2 = _interopRequireDefault(_reactparticles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LandingPageParticles = function (_Component) {
+  _inherits(LandingPageParticles, _Component);
+
+  function LandingPageParticles(props) {
+    _classCallCheck(this, LandingPageParticles);
+
+    return _possibleConstructorReturn(this, (LandingPageParticles.__proto__ || Object.getPrototypeOf(LandingPageParticles)).call(this, props));
+  }
+
+  _createClass(LandingPageParticles, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var el = document.getElementById("particles-js-tile-3-particles");
+      el.style['top'] = "166px";
+      el.style['height'] = "325px";
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_reactparticles2.default, {
+          id: 'tile-3-particles',
+          config: '../../../src/utils/particles-three.json'
+        }),
+        _react2.default.createElement(_LandingPageCarousel2.default, null),
+        _react2.default.createElement(_LandingPageInformation2.default, null)
+      );
+    }
+  }]);
+
+  return LandingPageParticles;
+}(_react.Component);
+
+var _default = LandingPageParticles;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(LandingPageParticles, 'LandingPageParticles', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/LandingPageParticles.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/LandingPageParticles.jsx');
+}();
+
+;
+
+/***/ }),
+
 /***/ "./public/src/containers/LikesContainer.jsx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -90773,13 +90862,9 @@ var _Video = __webpack_require__("./public/src/components/Video.jsx");
 
 var _Video2 = _interopRequireDefault(_Video);
 
-var _LandingPageCarousel = __webpack_require__("./public/src/components/LandingPageCarousel.jsx");
+var _LandingPageParticles = __webpack_require__("./public/src/containers/LandingPageParticles.jsx");
 
-var _LandingPageCarousel2 = _interopRequireDefault(_LandingPageCarousel);
-
-var _LandingPageInformation = __webpack_require__("./public/src/components/LandingPageInformation.jsx");
-
-var _LandingPageInformation2 = _interopRequireDefault(_LandingPageInformation);
+var _LandingPageParticles2 = _interopRequireDefault(_LandingPageParticles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -90919,8 +91004,7 @@ var Router = function (_Component) {
               errorMessage: errorMessage,
               history: history
             }),
-            _react2.default.createElement(_LandingPageCarousel2.default, null),
-            _react2.default.createElement(_LandingPageInformation2.default, null)
+            _react2.default.createElement(_LandingPageParticles2.default, null)
           )
         ),
         _react2.default.createElement(
@@ -92510,6 +92594,17 @@ var VideoRecorder = function (_Component) {
       var dispatch = this.props.dispatch;
 
       dispatch((0, _video.setVideo)(document.querySelector('video')));
+      $('#video').parent().click(function () {
+        if ($(this).children("#video").get(0).paused) {
+          $(this).children("#video").get(0).play();
+          $(this).children(".playpause").fadeOut();
+        } else {
+          $(this).children("#video").get(0).pause();
+          $(this).children(".playpause").fadeIn();
+        }
+      });
+      $(".video-comp-wrapper").css('display', 'none');
+      $(".video-comp-wrapper").css('visibility', 'hidden');
     }
   }, {
     key: 'handleImageChange',
@@ -92572,6 +92667,8 @@ var VideoRecorder = function (_Component) {
         var recordedBlob = recorder.getBlob();
         recorder.getDataURL(function (dataURL) {
           dispatch((0, _video.updateVideoDataURL)(dataURL));
+          $(".video-comp-wrapper").css('display', 'block');
+          $(".video-comp-wrapper").css('visibility', 'visible');
         });
       });
     }
@@ -92644,12 +92741,20 @@ var VideoRecorder = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('video', {
-          controls: true,
-          played: true,
-          poster: true,
-          id: 'video'
-        }),
+        _react2.default.createElement(
+          'div',
+          { className: 'video-comp-wrapper' },
+          _react2.default.createElement(
+            'div',
+            { className: 'video-wrapper' },
+            _react2.default.createElement('video', {
+              played: true,
+              poster: true,
+              id: 'video'
+            }),
+            _react2.default.createElement('div', { className: 'playpause' })
+          )
+        ),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'div',
@@ -92662,7 +92767,7 @@ var VideoRecorder = function (_Component) {
               onClick: function onClick(e) {
                 return _this3.initRecording(e);
               } },
-            'Start Recording'
+            _react2.default.createElement('i', { 'class': 'fa fa-play-circle', 'aria-hidden': 'true' })
           ),
           _react2.default.createElement(
             'button',
@@ -92671,7 +92776,7 @@ var VideoRecorder = function (_Component) {
               onClick: function onClick() {
                 return _this3.endRecording();
               } },
-            'Stop Recording'
+            _react2.default.createElement('i', { 'class': 'fa fa-stop-circle-o', 'aria-hidden': 'true' })
           )
         ),
         _react2.default.createElement(
@@ -92723,6 +92828,13 @@ var VideoRecorder = function (_Component) {
               return _this3.handleChange(e);
             }
           }),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            { className: 'file-upload-label' },
+            'Add Thumbnail ',
+            _react2.default.createElement('i', { 'class': 'fa fa-picture-o', 'aria-hidden': 'true' })
+          ),
           _react2.default.createElement('input', {
             className: 'image-upload',
             onChange: function onChange(e) {
@@ -92744,7 +92856,8 @@ var VideoRecorder = function (_Component) {
                 e.preventDefault();
                 _this3.uploadVideo(e);
               } },
-            'Upload'
+            'Upload ',
+            _react2.default.createElement('i', { 'class': 'fa fa-cloud-upload', 'aria-hidden': 'true' })
           )
         )
       );

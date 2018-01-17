@@ -31,6 +31,17 @@ class VideoRecorder extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(setVideo(document.querySelector('video')));
+    $('#video').parent().click(function() {
+      if ($(this).children("#video").get(0).paused) {
+        $(this).children("#video").get(0).play();
+        $(this).children(".playpause").fadeOut();
+      } else {
+        $(this).children("#video").get(0).pause();
+        $(this).children(".playpause").fadeIn();
+      }
+    })
+    $(".video-comp-wrapper").css('display', 'none');
+    $(".video-comp-wrapper").css('visibility', 'hidden');
   }
 
   handleImageChange(e) {
@@ -94,6 +105,8 @@ class VideoRecorder extends Component {
       const recordedBlob = recorder.getBlob();
       recorder.getDataURL(dataURL => {
         dispatch(updateVideoDataURL(dataURL));
+        $(".video-comp-wrapper").css('display', 'block');
+        $(".video-comp-wrapper").css('visibility', 'visible');
       });
     });
   }
@@ -168,24 +181,28 @@ class VideoRecorder extends Component {
 
     return (
       <div>
-        <video
-          controls
-          played
-          poster
-          id="video"
-        />
+        <div className="video-comp-wrapper">
+          <div className="video-wrapper">
+            <video
+              played
+              poster
+              id="video"
+            />
+            <div className="playpause"></div>
+          </div>
+        </div>
         <br/>
         <div
           className="video-controls">
           <button
             id="btn-start-recording"
             onClick={(e) => this.initRecording(e)}>
-            Start Recording
+            <i class="fa fa-play-circle" aria-hidden="true"></i>
           </button>
           <button
             id="btn-stop-recording"
             onClick={() => this.endRecording()}>
-            Stop Recording
+            <i class="fa fa-stop-circle-o" aria-hidden="true"></i>
           </button>
         </div>
         <div
@@ -223,6 +240,10 @@ class VideoRecorder extends Component {
             value={videoDescription}
             onChange={(e) => this.handleChange(e)}
           />
+          <br/>
+          <label className="file-upload-label">
+            Add Thumbnail <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </label>
           <input
             className="image-upload"
             onChange={(e) => {e.preventDefault(); this.handleImageChange(e)}}
@@ -238,7 +259,7 @@ class VideoRecorder extends Component {
               e.preventDefault();
               this.uploadVideo(e);
             }}>
-            Upload
+            Upload <i class="fa fa-cloud-upload" aria-hidden="true"></i>
           </button>
         </div>
       </div>

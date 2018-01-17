@@ -637,3 +637,72 @@ div.add-video-link > ul > li {
   color: #73a8c5;
 }
 
+.video-controls {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#btn-start-recording {
+  display: inline-block;
+  position: relative;
+  border: solid 2px grey;
+  border-radius: 12px;
+  width: 80px;
+  top: 25px;
+  font-size: 150%;
+  background-color: #5acfda;
+}
+
+#btn-stop-recording {
+  display: inline-block;
+  position: relative;
+  border: solid 2px grey;
+  border-radius: 12px;
+  width: 80px;
+  top: 25px;
+  font-size: 150%;
+  margin-left: 10px;
+  background-color: #c72eb5;
+}
+
+.submit-vid-btn {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 150px;
+  top: 50px;
+  font-size: 150%;
+  border: groove 2px grey;
+  border-radius: 12px;
+}
+
+.submit-vid-btn:hover {
+  color: ghostwhite;
+  background-color: black;
+  border: groove 2px grey;
+}
+
+.submit-vid-btn:hover > i {
+  color: gold;
+}
+
+.video-info {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  top: 50px;
+  text-align: center;
+}
+
+.image-upload {
+  display: block;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  width: 120px;
+  padding-left: 20px;
+  border: solid;
+  color: #222222;
+}

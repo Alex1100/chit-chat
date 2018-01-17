@@ -5,7 +5,7 @@ const User = require('../models/user').User;
 const redis = require("redis");
 let client = require('../config/database').client;
 
-
+//not used anymore
 const addTopic = async (req, res) => {
   try {
     if (req.decoded) {
@@ -14,14 +14,17 @@ const addTopic = async (req, res) => {
         throw new Error("Invalid JWT Token");
       }
       const { name } = req.body;
-      const foundTopic = await Topic.findOne({ where: { name }});
+      const allTopics = await Topic.findAll({});
 
-      if (foundTopic !== null) {
+      foundTopic = allTopics.some(el => el.name === name);
+
+      if (foundTopic !== null || foundTopic !== false) {
         console.log("TOPIC ALREADY EXISTS");
         res.status(209);
       } else {
         const newTopic = await Topic.create({name});
-
+        console.log("SETTING IN REDIS>>>");
+        client.set("topics", JSON.stringify(allTopics), redis.print);
         res.status(201).json(newTopic);
       }
     } else {
@@ -42,26 +45,21 @@ const getTopics = async (req, res) => {
         throw new Error("Invalid JWT Token");
       }
 
-      const topicsCount = await Topic.findAll({attributes: [[Sequelize.fn('COUNT', Sequelize.col('id')), "count"]]});
-      client.get("topics", (err, allTopics) => {
-        if (err) {
-          throw new Error("Invalid JWT Token");
-        }
-
-        if(
-            JSON.parse(allTopics) === undefined ||
-            JSON.parse(allTopics)[0].id.toString() !== topicsCount[0].dataValues.count
-        ){
-          Topic.findAll({order: Sequelize.col('name')})
-            .then(topics => {
-              client.set("topics", JSON.stringify(topics), redis.print);
-              res.status(200).json(topics);
-            })
-        } else {
-          client.get('topics', (error, topics) => {
-            res.status(200).json(JSON.parse(topics));
+      client.get('topics', (error, topics) => {
+        if (error || topics === null || topics === undefined) {
+          console.log("HELLOOOOOOOO");
+          Topic.findAll({}).then(topics => {
+            res.status(200).json(topics);
+          })
+          .catch(err => {
+            throw new Error(error);
           });
         }
+
+
+        console.log("IT WORKED FROM REDIS WOOOO")
+
+        res.status(200).json(JSON.parse(topics));
       });
     } else {
       throw new Error("Invalid JWT Token");
