@@ -2,9 +2,10 @@
 
 # A platform for content creators to bring up a topic of discussion, whether educational, political, or inquisitive in nature, in order for others to jump on the discussion board and give their two cents. Well, in the case of this platform, Users would donate ether if the content creator is deemed worthy of the Ethereum contribution. The difference between Steemit or Reddit and this site, would be that the content creator must always begin a thread with a Video. This promotes a healthy discussion since everyone will end up seeing their face.
 
-## LANDING PAGE
+## LANDING PAGE A
 ![screenshot](public/images/home_page_w_out_auth_a.png)
-<hr/>
+
+## LANDING PAGE B
 ![screenshot](public/images/home_page_w_out_auth_b.png)
 
 ## LOGIN PAGE / SIGNUP PAGE
@@ -16,9 +17,10 @@
 ## HOME PAGE LOGGED IN
 ![screenshot](public/images/home_page_logged_in.png)
 
-## VIDEO PLAYER PAGE
+## VIDEO PLAYER PAGE A
 ![screenshot](public/images/videoplayer_page_a.png)
-<hr/>
+
+## VIDEO PLAYER PAGE B
 ![screenshot](public/images/videoplayer_page_b.png)
 
 ## Technologies
