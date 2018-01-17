@@ -233,7 +233,7 @@ class VideoRecorder extends Component {
             className="video-description-label">
             Description
           </label>
-          <input
+          <textarea
             className="video-description-input"
             type="textarea"
             name="description"

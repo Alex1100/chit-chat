@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5fb776ac3e660d5bac4b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0ca6c12173e85f78ec6e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -90276,27 +90276,36 @@ var VideoPreview = function VideoPreview(props) {
       }
     },
     _react2.default.createElement(
-      'h3',
-      {
-        className: 'vid-preview-title' },
-      props.title
-    ),
-    _react2.default.createElement('img', {
-      className: 'vid-preview-thumnail',
-      src: props.thumbnail
-    }),
-    _react2.default.createElement(
-      'p',
-      {
-        className: 'vid-preview-topic' },
-      '#',
-      props.topic
-    ),
-    _react2.default.createElement(
-      'p',
-      {
-        className: 'vid-preview-description' },
-      props.description
+      'div',
+      { 'class': 'card-container' },
+      _react2.default.createElement(
+        'div',
+        { 'class': 'card' },
+        _react2.default.createElement(
+          'div',
+          { 'class': 'side' },
+          _react2.default.createElement('img', {
+            className: 'vid-preview-thumnail',
+            src: props.thumbnail
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { 'class': 'side back' },
+          _react2.default.createElement(
+            'h3',
+            {
+              className: 'vid-preview-title' },
+            props.title
+          ),
+          _react2.default.createElement(
+            'p',
+            {
+              className: 'vid-preview-description' },
+            props.description
+          )
+        )
+      )
     )
   );
 };
@@ -92819,7 +92828,7 @@ var VideoRecorder = function (_Component) {
               className: 'video-description-label' },
             'Description'
           ),
-          _react2.default.createElement('input', {
+          _react2.default.createElement('textarea', {
             className: 'video-description-input',
             type: 'textarea',
             name: 'description',

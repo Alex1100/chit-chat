@@ -11,11 +11,14 @@
 ## LOGIN PAGE / SIGNUP PAGE
 ![screenshot](public/images/loginpage.png)
 
-## ALL VIDEOS PAGE
-![screenshot](public/images/all_videos_page.png)
+## ALL VIDEOS PAGE A
+![screenshot](public/images/all_videos_page_a.png)
 
-## HOME PAGE LOGGED IN
-![screenshot](public/images/home_page_logged_in.png)
+## ALL VIDEOS PAGE B
+![screenshot](public/images/all_videos_page_b.png)
+
+## MAIN PAGE LOGGED IN
+![screenshot](public/images/main_page_logged_in.png)
 
 ## VIDEO PLAYER PAGE A
 ![screenshot](public/images/videoplayer_page_a.png)

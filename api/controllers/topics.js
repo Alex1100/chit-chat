@@ -46,20 +46,22 @@ const getTopics = async (req, res) => {
       }
 
       client.get('topics', (error, topics) => {
-        if (error || topics === null || topics === undefined) {
-          console.log("HELLOOOOOOOO");
-          Topic.findAll({}).then(topics => {
-            res.status(200).json(topics);
+        console.log("TOPICS LENGTH: ", topics.length)
+
+        if (topics === null || topics === undefined || topics === "[]") {
+          Topic.findAll({order: [['name', 'ASC']]}).then(orderedTopics => {
+            client.set("topics", JSON.stringify(orderedTopics), redis.print);
+            res.status(200).json(orderedTopics);
           })
           .catch(err => {
             throw new Error(error);
           });
         }
 
-
-        console.log("IT WORKED FROM REDIS WOOOO")
-
-        res.status(200).json(JSON.parse(topics));
+        console.log("TOPICS ARE: ", topics);
+        let sortedTopics = JSON.parse(topics);
+        console.log("SORTED TOPICS ARE: ", sortedTopics);
+        res.status(200).json(sortedTopics);
       });
     } else {
       throw new Error("Invalid JWT Token");

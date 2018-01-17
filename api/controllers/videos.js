@@ -48,16 +48,15 @@ const addVideo = async (req, res) => {
       }
       let titleTaken = await Video.findOne({ where: { title: videoTitle } });
       if (!titleTaken) {
-        let allTopics = await Topic.findAll({});
+        let allTopics = await Topic.findAll({order: [['name', 'ASC']]});
         let currentTopic = allTopics.some(el=> el.name === videoTopic);
         const thumbnail = JSON.parse(imageURL);
         const content = JSON.parse(videoURL);
 
         if (!currentTopic) {
           const newTopic = await Topic.create({ name: videoTopic });
-          let cachedTopics = allTopics;
-          cachedTopics.push(newTopic);
-          console.log("SETTING IN REDIS>>>");
+          let cachedTopics = await Topic.findAll({order: [['name', 'ASC']]});
+          console.log("SETTING IN REDIS>>>: ", cachedTopics);
           client.set("topics", JSON.stringify(cachedTopics), redis.print);
           const newVideo = await Video.create({
             title: videoTitle,

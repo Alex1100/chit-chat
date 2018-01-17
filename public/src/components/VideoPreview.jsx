@@ -22,22 +22,26 @@ const VideoPreview = (props) => (
       )
     }}
   >
-    <h3
-      className="vid-preview-title">
-      {props.title}
-    </h3>
-    <img
-      className="vid-preview-thumnail"
-      src={props.thumbnail}
-    />
-    <p
-      className="vid-preview-topic">
-      #{props.topic}
-    </p>
-    <p
-      className="vid-preview-description">
-      {props.description}
-    </p>
+    <div class="card-container">
+      <div class="card">
+        <div class="side">
+          <img
+            className="vid-preview-thumnail"
+            src={props.thumbnail}
+          />
+        </div>
+        <div class="side back">
+          <h3
+            className="vid-preview-title">
+            {props.title}
+          </h3>
+          <p
+            className="vid-preview-description">
+            {props.description}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 );
 
