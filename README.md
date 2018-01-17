@@ -31,6 +31,7 @@
 - React.js
 - Redux.js
 - Redux Persist
+- Redis Caching
 - Axios
 - Cors
 - Webpack
