@@ -48,7 +48,7 @@
 
 
 ## SOON TO INCORPORATE
-- Ethereum donations via Infura API and Web3
+- Ethereum donations via Infura API and Web3 (need to attempt connecting infura with Ethers.js npm mod instead of just web3)
 - Bitcoin donations via npm modules
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
 - Cryptocurrency donations for flagging malicious or fraudulent users/user content
@@ -60,4 +60,7 @@
 - Finish Search Feature (already tracking whether user searched for videos or topics)
 - Implement Video Data caching with redis and by filtering with topic_id of selected topic
 
+
+## OPEN SOURCE BUGS FOUND ALONG THE WAY
+- web3 sending transactions with small increments could lead to not being able to subscribe to the main blockchain due to insufficient gas, need to confirm it before 100% certain
 
