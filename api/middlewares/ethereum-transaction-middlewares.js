@@ -58,20 +58,33 @@ const sendEth = async (req, res, next) => {
     if (req.privateKey) {
       const { toAddr, fromAddr, amount } = req.body;
 
+      const currentBalance = await web3.eth.getBalance(fromAddr);
+      console.log("CURRENT ADDRESS BALANCE IS: ", currentBalance);
+
+      const currentGasPrice = await web3.eth.getGasPrice();
+      console.log("CURRENT GAS PRICE IS: ", currentGasPrice);
+
       const rawTx = {
         nonce: n(),
         to: toAddr,
-        gasPrice: web3.utils.toHex(56000000000),
-        gasLimit: web3.utils.toHex(52000),
+        gas: 21000,
+        gasPrice: web3.utils.toHex(currentGasPrice),
+        gasLimit: web3.utils.toHex(50000),
         value: web3.utils.toHex(web3.utils.toWei(amount, 'ether')),
         data: ""
       };
 
+      const estimatedGasAmount = await web3.eth.estimateGas(rawTx);
+      console.log("ESTIMATED GAS IS: ", estimatedGasAmount);
+
       const fromAddrPKey = req.privateKey.slice(2, req.privateKey.length);
       let fromAddrPKeyX = new Buffer(fromAddrPKey, 'hex');
+
       const tx = new EthTx(rawTx);
       tx.sign(fromAddrPKeyX);
+
       let serializedTx = `0x${tx.serialize().toString('hex')}`;
+
       web3.eth.sendSignedTransaction(serializedTx, (err, data) => {
         if (err) {
           throw new Error(err);
