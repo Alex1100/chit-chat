@@ -13,6 +13,7 @@ const likesController = require('../controllers/likes');
 const isAuthenticated = require('../middlewares/index').isAuthenticated;
 const sendEth = require('../middlewares/ethereum-transaction-middlewares').sendEth;
 const createEthWallet = require('../middlewares/ethereum-transaction-middlewares').generateNewEtherWallet;
+const findPrivateKey = require('../middlewares/ethereum-transaction-middlewares').findPrivateKey;
 
 
 //Auth
@@ -42,6 +43,10 @@ router.delete("/comment", isAuthenticated, commentsController.deleteComment);
 
 //LIKES
 router.post("/likes", isAuthenticated, likesController.toggleLike);
+
+
+//TEST SENDING ETHER
+router.post("/send-eth", findPrivateKey, sendEth);
 
 
 module.exports = router;
