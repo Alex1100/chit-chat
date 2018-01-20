@@ -61,6 +61,17 @@
 - Implement Video Data caching with redis and by filtering with topic_id of selected topic
 
 
-## OPEN SOURCE BUGS FOUND ALONG THE WAY
-- web3 sending transactions with small increments could lead to not being able to subscribe to the main blockchain due to insufficient gas, need to confirm it before 100% certain
+¯\_(ツ)_/¯
 
+## ETH TRANSACTION UPDATE/TROUBLES
+- ETH TRANSACTIONS ARE INCONSISTENTLY FOUND BY THE MAIN NET REGARDLESS OF GAS OR GAS_LIMITS
+
+## ETH-SEND RESPONSE OBJECT REGARDLESS IF FOUND BY MAIN NET OR NOT
+![screenshot](public/images/send-eth-test-response.png)
+
+
+## SAME FUNCTION IN MIDDLEWARES FOR SEND-ETH FULLY FUNCTIONAL AT TIMES
+![screenshot](public/images/send-eth-found.png)
+
+
+¯\_(ツ)_/¯

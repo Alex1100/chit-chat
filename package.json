@@ -7,6 +7,7 @@
   "scripts": {
     "reinitDB": "gulp reinitdb",
     "compile": "webpack -w",
+    "compileForProd": "webpack -p",
     "start": "node server.js"
   },
   "keywords": [],
@@ -31,6 +32,7 @@
     "dotenv": "^4.0.0",
     "ethereumjs-tx": "^1.3.3",
     "ethers": "^2.2.0",
+    "ethjs": "^0.3.3",
     "express": "^4.16.2",
     "font-loader": "^0.1.2",
     "gulp": "^3.9.1",
