@@ -60,10 +60,9 @@
 - Finish Search Feature (already tracking whether user searched for videos or topics)
 - Implement Video Data caching with redis and by filtering with topic_id of selected topic
 
-
-¯\_(ツ)_/¯
-## 
-
+<hr/>
+<p>¯\_(ツ)_/¯</p>
+<br/>
 ## ETH TRANSACTION UPDATE/TROUBLES
 - ETH TRANSACTIONS ARE INCONSISTENTLY FOUND BY THE MAIN NET REGARDLESS OF GAS OR GAS_LIMITS
 
@@ -74,5 +73,6 @@
 ## SAME FUNCTION IN MIDDLEWARES FOR SEND-ETH FULLY FUNCTIONAL AT TIMES
 ![screenshot](public/images/send-eth-found.png)
 
-## 
-¯\_(ツ)_/¯
+<hr/>
+<p>¯\_(ツ)_/¯</p>
+<br/>
