@@ -60,19 +60,22 @@
 - Finish Search Feature (already tracking whether user searched for videos or topics)
 - Implement Video Data caching with redis and by filtering with topic_id of selected topic
 
-<hr/>
-<p>¯\_(ツ)_/¯</p>
 <br/>
-<div>
 ## ETH TRANSACTION UPDATE/TROUBLES
 - ETH TRANSACTIONS ARE INCONSISTENTLY FOUND BY THE MAIN NET REGARDLESS OF GAS OR GAS_LIMITS
-<br/>
+
+<p>¯\_(ツ)_/¯</p>
+
+
 ## ETH-SEND RESPONSE OBJECT REGARDLESS IF FOUND BY MAIN NET OR NOT
 ![screenshot](public/images/send-eth-test-response-200.png)
-</div>
+
 <br/>
+
+
 ## SAME FUNCTION IN MIDDLEWARES FOR SEND-ETH FULLY FUNCTIONAL AT TIMES
 ![screenshot](public/images/send-eth-found.png)
+
 
 <br/>
 <p>¯\_(ツ)_/¯</p>
