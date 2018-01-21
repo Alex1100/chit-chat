@@ -1,17 +1,14 @@
-const infuraEndpoint = process.env.OLD_INFURA;
+const infuraEndpoint = process.env.INFURA_ENDPOINT_MAIN_NETWORK;
 const Web3 = require('web3');
 const EthTx = require('ethereumjs-tx');
 const ethers = require('ethers');
 const SHA3 = require('sha3');
-const metamask = require('metamascara')
 const web3 = new Web3(new Web3.providers.HttpProvider(infuraEndpoint));
 const axios = require('axios');
 const Eth = require('ethjs');
 const eth = new Eth(new Eth.HttpProvider(infuraEndpoint));
-const n = require('nonce')();
+let n = require('nonce')();
 let a = n();
-const secp256k1 = require('secp256k1');
-// const {sign} = require('@warren-bank/ethereumjs-tx-sign')
 
 const findPrivateKey = async (req, res, next) => {
   try {
