@@ -44,11 +44,11 @@
 - <a href="https://github.com/Alex1100/chit_chat_api">Ruby on Rails Microservice API for Polymorphic Comments</a>
 - Content Liking/Unliking
 - WebRTC API via RecordRTC for creating videos
+- Ethereum transactions for donating to content creator/platform participant contributions
 
 
 
 ## SOON TO INCORPORATE
-- Ethereum donations via Infura API and Web3 (need to attempt connecting infura with Ethers.js npm mod instead of just web3)
 - Bitcoin donations via npm modules
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
 - Cryptocurrency donations for flagging malicious or fraudulent users/user content
@@ -60,24 +60,9 @@
 - Finish Search Feature (already tracking whether user searched for videos or topics)
 - Implement Video Data caching with redis and by filtering with topic_id of selected topic
 
-<br/>
 
-<h1>ETH TRANSACTION UPDATE/TROUBLES</h1>
-<h3>ETH TRANSACTIONS ARE INCONSISTENTLY FOUND BY THE MAIN NET REGARDLESS OF GAS OR GAS_LIMITS</h3>
-
-<p>¯\_(ツ)_/¯</p>
-
-
-## ETH-SEND RESPONSE OBJECT REGARDLESS IF FOUND BY MAIN NET OR NOT
+## ETH-SEND WORKS 100%
 ![screenshot](public/images/send-eth-test-response-200.png)
 
 <br/>
-
-
-## SAME FUNCTION IN MIDDLEWARES FOR SEND-ETH FULLY FUNCTIONAL AT TIMES
 ![screenshot](public/images/send-eth-found.png)
-
-
-<br/>
-<p>¯\_(ツ)_/¯</p>
-<br/>

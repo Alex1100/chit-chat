@@ -75,20 +75,20 @@ const sendEth = async (req, res, next) => {
       const currentBalance = await web3.eth.getBalance(fromAddr);
       const currentGasPrice = await web3.eth.getGasPrice();
 
-      console.log("GAS PRICE IS: ", currentGasPrice);
-      console.log("GAS PRICE X10 IS: ", currentGasPrice * 10);
-      console.log(`PROVIDING 120000 GAS`);
+      // console.log("GAS PRICE IS: ", currentGasPrice);
+      // console.log("GAS PRICE X10 IS: ", currentGasPrice * 10);
+      // console.log(`PROVIDING 120000 GAS`);
       console.log("CURRENT BALANCE IS: ", currentBalance);
-      console.log("VALUE IS: ", web3.utils.toWei(amount, 'ether'))
-      console.log("INFURA?:::->>>: ", eth);
+      // console.log("VALUE IS: ", web3.utils.toWei(amount, 'ether'))
+      // console.log("INFURA?:::->>>: ", eth);
       let non = await web3.eth.getTransactionCount(fromAddr);
-
+      console.log("NON IS: ", non);
       const rawTx = {
-        nonce: a,
+        nonce: non,
         from: fromAddr,
         to: toAddr,
         gas: web3.utils.toHex(21000),
-        gasLimit: web3.utils.toHex(1500000000),
+        gasLimit: web3.utils.toHex(90000),
         gasPrice: web3.utils.toHex(100000000000),
         value: web3.utils.toHex(web3.utils.toWei(amount, 'ether')),
         data: ""
