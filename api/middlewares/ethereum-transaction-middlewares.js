@@ -98,7 +98,6 @@ const sendEth = async (req, res, next) => {
 
       req.transactionData = {
         transactionChecker: `https://etherscan.io/tx/${successTxHash}`,
-        serializedTx,
         successTxHash,
         from: fromAddr,
         to: toAddr
