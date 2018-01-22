@@ -47,9 +47,8 @@
 - Ethereum transactions for donating to content creator/platform participant contributions
 
 
-
 ## SOON TO INCORPORATE
-- Bitcoin donations via npm modules
+- Bitcoin donations via BlockCypher Wallets & Transactions API
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
 - Cryptocurrency donations for flagging malicious or fraudulent users/user content
 - User following/subscribing
