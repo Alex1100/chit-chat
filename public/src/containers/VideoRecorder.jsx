@@ -63,7 +63,7 @@ class VideoRecorder extends Component {
 
     const options = {
       mimeType: 'video/webm',
-      bitsPerSecond: 192000
+      bitsPerSecond: 20000000
     };
 
     recorder = RecordRTC(stream, options);

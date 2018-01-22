@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "aa58418d7be0d26c714f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b5f8b9b15e616717568a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -92647,7 +92647,7 @@ var VideoRecorder = function (_Component) {
 
       var options = {
         mimeType: 'video/webm',
-        bitsPerSecond: 192000
+        bitsPerSecond: 20000000
       };
 
       recorder = RecordRTC(stream, options);
