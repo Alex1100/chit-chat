@@ -27,7 +27,7 @@ router.get("/topics/:token", isAuthenticated, topicsController.getTopics);
 
 
 //ETH DONATION
-router.post("/donate", [isAuthenticated, sendEth], videosController.getInfo);
+router.post("/donate", [isAuthenticated, findPrivateKey, sendEth], videosController.getInfo);
 
 
 //VIDEO

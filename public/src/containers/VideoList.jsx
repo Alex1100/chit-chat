@@ -43,6 +43,7 @@ class VideoList extends Component {
                       history={history}
                       videoId={vid[0].id}
                       title={vid[0].title}
+                      uploadedBy={vid[0].uploadedBy}
                       thumbnail={vid[0].thumbnail}
                       description={vid[0].description}
                       videoURL={vid[0].content}
@@ -58,6 +59,7 @@ class VideoList extends Component {
                       history={history}
                       videoId={vid[1].id}
                       title={vid[1].title}
+                      uploadedBy={vid[1].uploadedBy}
                       thumbnail={vid[1].thumbnail}
                       description={vid[1].description}
                       videoURL={vid[1].content}
@@ -73,6 +75,7 @@ class VideoList extends Component {
                       history={history}
                       videoId={vid[2].id}
                       title={vid[2].title}
+                      uploadedBy={vid[2].uploadedBy}
                       thumbnail={vid[2].thumbnail}
                       description={vid[2].description}
                       videoURL={vid[2].content}
@@ -91,6 +94,7 @@ class VideoList extends Component {
                       history={history}
                       videoId={vid[0].id}
                       title={vid[0].title}
+                      uploadedBy={vid[0].uploadedBy}
                       thumbnail={vid[0].thumbnail}
                       description={vid[0].description}
                       videoURL={vid[0].content}
@@ -106,6 +110,7 @@ class VideoList extends Component {
                       history={history}
                       videoId={vid[1].id}
                       title={vid[1].title}
+                      uploadedBy={vid[1].uploadedBy}
                       thumbnail={vid[1].thumbnail}
                       description={vid[1].description}
                       videoURL={vid[1].content}
@@ -124,6 +129,7 @@ class VideoList extends Component {
                       history={history}
                       videoId={vid[0].id}
                       title={vid[0].title}
+                      uploadedBy={vid[0].uploadedBy}
                       thumbnail={vid[0].thumbnail}
                       description={vid[0].description}
                       videoURL={vid[0].content}

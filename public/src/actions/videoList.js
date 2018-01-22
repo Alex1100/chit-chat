@@ -32,12 +32,13 @@ const updateVideoFailure = (videoListErrorMessage) => (dispatch) => {
 const grabVideos = (history) => {
   return (dispatch) => {
     dispatch(updateVideoRequest());
-    axios.get(`/api/videos/${localStorage.getItem("token")}`)
+    return axios.get(`/api/videos/${localStorage.getItem("token")}`)
       .then(response => {
         if (response.data.videos.length < 1) {
           return Promise.reject(response.data.videos);
           dispatch(updateVideoFailure("COULDN'T GRAB VIDEOS"));
         }
+        console.log("RES IS: ", response.data);
 
         dispatch(updateVidList(response.data.videos));
         history.push("/videos");

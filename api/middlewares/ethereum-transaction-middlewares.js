@@ -7,23 +7,28 @@ const web3 = new Web3(new Web3.providers.HttpProvider(infuraEndpoint));
 const axios = require('axios');
 const Eth = require('ethjs');
 const eth = new Eth(new Eth.HttpProvider(infuraEndpoint));
-let n = require('nonce')();
-let a = n();
+const User = require('../models/user').User;
+
 
 const findPrivateKey = async (req, res, next) => {
   try {
-    if (req.body.password) {
+    if (req.decoded) {
+      const user = User.findOne({where: { username: req.decoded.username } });
+      if (!user) {
+        throw new Error("Invalid JWT Token");
+      }
+
       const {
         username,
         password
       } = req.body;
+
       let user_creds = username + password;
 
       var d = new SHA3.SHA3Hash('256');
       d.update(user_creds);
       const privateKey = `0x${d.digest('hex')}`;
       req.privateKey = privateKey;
-      console.log("PRIVATE KEY IS: ", req.privateKey);
       next();
     } else {
       throw new Error('Must pass in credentials');
@@ -91,15 +96,14 @@ const sendEth = async (req, res, next) => {
 
       const successTxHash = await eth.sendRawTransaction(serializedTx);
 
-      res.status(200)
-         .json({
-            transactionChecker: `https://etherscan.io/tx/${successTxHash}`,
-            serializedTx,
-            successTxHash,
-            from: fromAddr,
-            to: toAddr
-         });
-
+      req.transactionData = {
+        transactionChecker: `https://etherscan.io/tx/${successTxHash}`,
+        serializedTx,
+        successTxHash,
+        from: fromAddr,
+        to: toAddr
+      }
+      next();
     } else {
       throw new Error("PAYMENT DIDN'T GO THROUGH BECAUSE NO PRIVATE KEY FOUND");
     }

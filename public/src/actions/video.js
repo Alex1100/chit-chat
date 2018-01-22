@@ -109,7 +109,8 @@ const uploadVideo = (props) => {
       imageURL: JSON.stringify(props.imageURL),
       userId: props.userId,
       videoTopic: props.videoTopic,
-      token: localStorage.getItem("token")
+      token: localStorage.getItem("token"),
+      username: props.username
     };
 
     axios.post("/api/upload", axiosBod)

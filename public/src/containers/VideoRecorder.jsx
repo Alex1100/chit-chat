@@ -151,7 +151,8 @@ class VideoRecorder extends Component {
         imageURL,
         videoTitle,
         videoDescription,
-        videoTopic
+        videoTopic,
+        user
       } = this.props;
 
       dispatch(
@@ -164,7 +165,8 @@ class VideoRecorder extends Component {
             videoDescription,
             videoTopic,
             imageURL,
-            history
+            history,
+            username: user
           }
         )
       );

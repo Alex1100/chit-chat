@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 const Topic = require('../models/topic').Topic;
 const User = require('../models/user').User;
-const redis = require("redis");
 let client = require('../config/database').client;
+const redis = require('redis');
 
 //not used anymore
 const addTopic = async (req, res) => {
@@ -46,21 +46,19 @@ const getTopics = async (req, res) => {
       }
 
       client.get('topics', (error, topics) => {
-        console.log("TOPICS LENGTH: ", topics.length)
-
         if (topics === null || topics === undefined || topics === "[]") {
-          Topic.findAll({order: [['name', 'ASC']]}).then(orderedTopics => {
-            client.set("topics", JSON.stringify(orderedTopics), redis.print);
-            res.status(200).json(orderedTopics);
+          Topic.findAll({order: [['name', 'ASC']]}, (error, orderedTopics) => {
+            if (!error) {
+              client.set("topics", JSON.stringify(orderedTopics), redis.print);
+              res.status(200).json(orderedTopics);
+            } else {
+              client.set("topics", JSON.stringify([]), redis.print);
+              res.status(200).json([]);
+            }
           })
-          .catch(err => {
-            throw new Error(error);
-          });
         }
 
-        console.log("TOPICS ARE: ", topics);
         let sortedTopics = JSON.parse(topics);
-        console.log("SORTED TOPICS ARE: ", sortedTopics);
         res.status(200).json(sortedTopics);
       });
     } else {

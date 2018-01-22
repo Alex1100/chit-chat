@@ -22,6 +22,10 @@ const Video = db.define('video', {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  uploadedBy: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   donatedSoFar: {
     type: Sequelize.STRING,
     defaultValue: "0.00",

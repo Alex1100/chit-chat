@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0ca6c12173e85f78ec6e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aa58418d7be0d26c714f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -89327,7 +89327,8 @@ var uploadVideo = function uploadVideo(props) {
       imageURL: JSON.stringify(props.imageURL),
       userId: props.userId,
       videoTopic: props.videoTopic,
-      token: localStorage.getItem("token")
+      token: localStorage.getItem("token"),
+      username: props.username
     };
 
     _axios2.default.post("/api/upload", axiosBod).then(function (response) {
@@ -89649,11 +89650,12 @@ var updateVideoFailure = function updateVideoFailure(videoListErrorMessage) {
 var grabVideos = function grabVideos(history) {
   return function (dispatch) {
     dispatch(updateVideoRequest());
-    _axios2.default.get("/api/videos/" + localStorage.getItem("token")).then(function (response) {
+    return _axios2.default.get("/api/videos/" + localStorage.getItem("token")).then(function (response) {
       if (response.data.videos.length < 1) {
         return Promise.reject(response.data.videos);
         dispatch(updateVideoFailure("COULDN'T GRAB VIDEOS"));
       }
+      console.log("RES IS: ", response.data);
 
       dispatch(updateVidList(response.data.videos));
       history.push("/videos");
@@ -90268,6 +90270,7 @@ var VideoPreview = function VideoPreview(props) {
             videoId: props.videoId,
             title: props.title,
             description: props.description,
+            uploadedBy: props.uploadedBy,
             videoURL: props.videoURL,
             likes: props.likes
           },
@@ -92261,6 +92264,7 @@ var VideoList = function (_Component) {
                     history: history,
                     videoId: vid[0].id,
                     title: vid[0].title,
+                    uploadedBy: vid[0].uploadedBy,
                     thumbnail: vid[0].thumbnail,
                     description: vid[0].description,
                     videoURL: vid[0].content,
@@ -92280,6 +92284,7 @@ var VideoList = function (_Component) {
                     history: history,
                     videoId: vid[1].id,
                     title: vid[1].title,
+                    uploadedBy: vid[1].uploadedBy,
                     thumbnail: vid[1].thumbnail,
                     description: vid[1].description,
                     videoURL: vid[1].content,
@@ -92299,6 +92304,7 @@ var VideoList = function (_Component) {
                     history: history,
                     videoId: vid[2].id,
                     title: vid[2].title,
+                    uploadedBy: vid[2].uploadedBy,
                     thumbnail: vid[2].thumbnail,
                     description: vid[2].description,
                     videoURL: vid[2].content,
@@ -92321,6 +92327,7 @@ var VideoList = function (_Component) {
                     history: history,
                     videoId: vid[0].id,
                     title: vid[0].title,
+                    uploadedBy: vid[0].uploadedBy,
                     thumbnail: vid[0].thumbnail,
                     description: vid[0].description,
                     videoURL: vid[0].content,
@@ -92340,6 +92347,7 @@ var VideoList = function (_Component) {
                     history: history,
                     videoId: vid[1].id,
                     title: vid[1].title,
+                    uploadedBy: vid[1].uploadedBy,
                     thumbnail: vid[1].thumbnail,
                     description: vid[1].description,
                     videoURL: vid[1].content,
@@ -92362,6 +92370,7 @@ var VideoList = function (_Component) {
                     history: history,
                     videoId: vid[0].id,
                     title: vid[0].title,
+                    uploadedBy: vid[0].uploadedBy,
                     thumbnail: vid[0].thumbnail,
                     description: vid[0].description,
                     videoURL: vid[0].content,
@@ -92516,7 +92525,7 @@ var VideoPlayer = function (_Component) {
             'p',
             null,
             'Uploaded By: ',
-            this.props.user
+            this.props.video.uploadedBy
           )
         )
       );
@@ -92724,7 +92733,8 @@ var VideoRecorder = function (_Component) {
             imageURL = _props3.imageURL,
             videoTitle = _props3.videoTitle,
             videoDescription = _props3.videoDescription,
-            videoTopic = _props3.videoTopic;
+            videoTopic = _props3.videoTopic,
+            user = _props3.user;
 
 
         dispatch((0, _video.uploadVideo)((_uploadVideo2 = {
@@ -92733,7 +92743,7 @@ var VideoRecorder = function (_Component) {
           videoURL: videoURL,
           videoTitle: videoTitle,
           videoDescription: videoDescription
-        }, _defineProperty(_uploadVideo2, 'videoTopic', videoTopic), _defineProperty(_uploadVideo2, 'imageURL', imageURL), _defineProperty(_uploadVideo2, 'history', history), _uploadVideo2)));
+        }, _defineProperty(_uploadVideo2, 'videoTopic', videoTopic), _defineProperty(_uploadVideo2, 'imageURL', imageURL), _defineProperty(_uploadVideo2, 'history', history), _defineProperty(_uploadVideo2, 'username', user), _uploadVideo2)));
       }
     }
   }, {

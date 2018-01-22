@@ -13,6 +13,7 @@ const VideoPreview = (props) => (
               videoId: props.videoId,
               title: props.title,
               description: props.description,
+              uploadedBy: props.uploadedBy,
               videoURL: props.videoURL,
               likes: props.likes
             },

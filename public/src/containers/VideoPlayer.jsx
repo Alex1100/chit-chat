@@ -32,7 +32,7 @@ class VideoPlayer extends Component {
         <div className="video-player-info-container">
           <label className="video-player-info-title">{this.props.video.title}</label>
           <p className="video-player-info-description">{this.props.video.description}</p>
-          <p>Uploaded By: {this.props.user}</p>
+          <p>Uploaded By: {this.props.video.uploadedBy}</p>
         </div>
       </div>
     );
