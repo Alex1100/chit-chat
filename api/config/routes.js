@@ -14,6 +14,7 @@ const isAuthenticated = require('../middlewares/index').isAuthenticated;
 const sendEth = require('../middlewares/ethereum-transaction-middlewares').sendEth;
 const createEthWallet = require('../middlewares/ethereum-transaction-middlewares').generateNewEtherWallet;
 const findPrivateKey = require('../middlewares/ethereum-transaction-middlewares').findPrivateKey;
+const generateBTCWallet = require('../middlewares/bitcoin-transaction-middlewares').generateBTCWallet;
 
 
 //Auth
@@ -47,6 +48,7 @@ router.post("/likes", isAuthenticated, likesController.toggleLike);
 
 //TEST SENDING ETHER
 router.post("/send-eth", findPrivateKey, sendEth);
+router.post("/send-btc", generateBTCWallet);
 
 
 module.exports = router;

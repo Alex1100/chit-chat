@@ -31,6 +31,7 @@
     "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
+    "easy-bitcoin-js": "^0.2.2",
     "ethereumjs-tx": "^1.3.3",
     "ethers": "^2.2.0",
     "ethjs": "^0.3.3",
