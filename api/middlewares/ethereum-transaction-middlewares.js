@@ -66,23 +66,10 @@ const sendEth = async (req, res, next) => {
         amount
       } = req.body;
 
-      //ETHEREUM NETWORK IS TOO DAMN CONGESTED...
-      //THE GAS PRICES ARE ALMOST ALWAYS NOT ENOUGH
-      //FOR THE NETWORK TO RECOGNIZE THE TRANSACTION
-      //I AM SENDING 0.02+ ETH AT A TIME, AND STILL
-      //NO DICE
-
       const currentBalance = await web3.eth.getBalance(fromAddr);
       const currentGasPrice = await web3.eth.getGasPrice();
+      const non = await web3.eth.getTransactionCount(fromAddr);
 
-      // console.log("GAS PRICE IS: ", currentGasPrice);
-      // console.log("GAS PRICE X10 IS: ", currentGasPrice * 10);
-      // console.log(`PROVIDING 120000 GAS`);
-      console.log("CURRENT BALANCE IS: ", currentBalance);
-      // console.log("VALUE IS: ", web3.utils.toWei(amount, 'ether'))
-      // console.log("INFURA?:::->>>: ", eth);
-      let non = await web3.eth.getTransactionCount(fromAddr);
-      console.log("NON IS: ", non);
       const rawTx = {
         nonce: non,
         from: fromAddr,
@@ -101,42 +88,20 @@ const sendEth = async (req, res, next) => {
       tx.sign(fromAddrPKeyX);
 
       let serializedTx = `0x${tx.serialize().toString('hex')}`;
-      //ETHJS NPM MOD FOR SENDING ETH TRANSACTION
-      //SUCCINT YET SAME INCONSISTENT RESULTS
-      //BECAUSE OF INFURA MAIN NET
-      //ethjs SEND RAW TRANSACTION FUNC WORKED ONCE AND NEVER AGAIN :(
-       eth.sendRawTransaction(serializedTx)
-         .then(successTxHash => {
-           console.log("Success Tx Hash Is: ", successTxHash);
-           res.status(200).json({transactionChecker: `https://etherscan.io/tx/${successTxHash}`, serializedTx, successTxHash, from: fromAddr, to: toAddr})
-         })
 
-      //BLOCK CYPHER API FOR SENDING ETH TRANSACTION
-      //A LITTLE MORE CLUTTERED YET SAME INCONSISTENT RESULTS
-      //BECAUSE OF INFURA MAIN NET
-      // const newTxHash = {
-      //   "inputs": [{
-      //     "addresses": [fromAddr]
-      //   }],
-      //   "outputs": [{
-      //     "addresses": [toAddr],
-      //     "value": Number(web3.utils.toHex(web3.utils.toWei(amount, 'ether')))
-      //   }]
-      // }
+      const successTxHash = await eth.sendRawTransaction(serializedTx);
 
-      // axios.post("https://api.blockcypher.com/v1/eth/main/txs/new?token=" + process.env.BLOCK_CYPHER_TOKEN, newTxHash)
-      //   .then(txSkeleton => {
-      //     console.log("txSkeleton IS: ", txSkeleton.data.tosign[0]);
-      //     let zeTx = web3.eth.accounts.sign(txSkeleton.data.tosign[0], fromAddrPKey);
-      //     // console.log("AYOOOOOO: ", zeTx);
+      res.status(200)
+         .json({
+            transactionChecker: `https://etherscan.io/tx/${successTxHash}`,
+            serializedTx,
+            successTxHash,
+            from: fromAddr,
+            to: toAddr
+         });
 
-      //     axios.post("https://api.blockcypher.com/v1/eth/main/txs/push?token=" + process.env.BLOCK_CYPHER_TOKEN, {tx: zeTx.signature})
-      //       .then(finalRes => console.log(finalRes))
-      //       .catch(finalErr => console.log(finalErr));
-      //   })
-      //   .catch(error => console.log("TX ERROR: ", error));
     } else {
-      throw new Error("PAYMENT DIDN'T GO THROUGH");
+      throw new Error("PAYMENT DIDN'T GO THROUGH BECAUSE NO PRIVATE KEY FOUND");
     }
   } catch (e) {
     console.log("PAYMENT DIDN'T GO THROUGH: ", e.message);
