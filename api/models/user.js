@@ -13,7 +13,12 @@ const User = db.define('user', {
     allowNull: false,
     unique: true,
   },
-  walletAddress: {
+  ethWalletAddress: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    unique: true
+  },
+  btcWalletAddress: {
     type: Sequelize.TEXT,
     allowNull: false,
     unique: true
