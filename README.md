@@ -26,6 +26,14 @@
 ## VIDEO PLAYER PAGE B
 ![screenshot](public/images/videoplayer_page_b.png)
 
+## ETH-SEND WORKS 100%
+![screenshot](public/images/send-eth-test-response-200.png)
+
+## ETH-SEND WORKS 100%
+![screenshot](public/images/send-eth-found.png)
+
+
+
 ## Technologies
 - Node.js
 - React.js
@@ -44,11 +52,10 @@
 - <a href="https://github.com/Alex1100/chit_chat_api">Ruby on Rails Microservice API for Polymorphic Comments</a>
 - Content Liking/Unliking
 - WebRTC API via RecordRTC for creating videos
-- Ethereum transactions for donating to content creator/platform participant contributions
-
+- Ethereum transactions via INFURA API for donating to content creator/platform participant contributions
+- Bitcoin transactions via BlockCypher API for donating to content creator/platform participant contributions
 
 ## SOON TO INCORPORATE
-- Bitcoin donations via BlockCypher Wallets & Transactions API
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
 - Cryptocurrency donations for flagging malicious or fraudulent users/user content
 - User following/subscribing
@@ -58,10 +65,3 @@
 - Random Video Feature
 - Finish Search Feature (already tracking whether user searched for videos or topics)
 - Implement Video Data caching with redis and by filtering with topic_id of selected topic
-
-
-## ETH-SEND WORKS 100%
-![screenshot](public/images/send-eth-test-response-200.png)
-
-## ETH-SEND WORKS 100%
-![screenshot](public/images/send-eth-found.png)
