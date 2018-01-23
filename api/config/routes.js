@@ -12,13 +12,14 @@ const likesController = require('../controllers/likes');
 //middlewares
 const isAuthenticated = require('../middlewares/index').isAuthenticated;
 const sendEth = require('../middlewares/ethereum-transaction-middlewares').sendEth;
-const createEthWallet = require('../middlewares/ethereum-transaction-middlewares').generateNewEtherWallet;
+const instantiateEtherWallet = require('../middlewares/ethereum-transaction-middlewares').instantiateEtherWallet;
 const findPrivateKey = require('../middlewares/ethereum-transaction-middlewares').findPrivateKey;
-const generateBTCWallet = require('../middlewares/bitcoin-transaction-middlewares').generateBTCWallet;
+const instantiateBTCWallet = require('../middlewares/bitcoin-transaction-middlewares').instantiateBTCWallet;
+const sendBTC = require('../middlewares/bitcoin-transaction-middlewares').sendBTC;
 
 
 //Auth
-router.post("/signup", createEthWallet, usersController.signup);
+router.post("/signup", [instantiateEthWallet, instantiateBTCWallet], usersController.signup);
 router.post("/login", usersController.login);
 
 
@@ -48,7 +49,7 @@ router.post("/likes", isAuthenticated, likesController.toggleLike);
 
 //TEST SENDING ETHER
 router.post("/send-eth", findPrivateKey, sendEth);
-router.post("/send-btc", generateBTCWallet);
+router.post("/send-btc", instantiateBTCWallet);
 
 
 module.exports = router;

@@ -23,6 +23,21 @@ const User = db.define('user', {
     allowNull: false,
     unique: true
   },
+  btcWalletEncryptedPrivateKey: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    unique: true
+  },
+  btcWalletEncryptedPublicKey: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    unique: true
+  },
+  btcWalletEncryptedWIF: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    unique: true
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -9,8 +9,45 @@ const axios = require('axios');
 
 const signup = async (req, res) => {
   try {
-    if (req.newWallet) {
-      let { username, email, password } = req.body;
+    if (
+      req.newEtherWallet &&
+      req.btcWalletAddress &&
+      req.btcWalletEncryptedPrivateKey &&
+      req.btcWalletEncryptedPublicKey &&
+      req.btcWalletEncryptedWIF
+    ) {
+      const {
+        username,
+        email,
+        password
+      } = req.body;
+
+      const {
+        newEtherWallet,
+        btcWalletAddress,
+        btcWalletEncryptedPrivateKey,
+        btcWalletEncryptedPublicKey,
+        btcWalletEncryptedWIF
+      } = req;
+
+      const {
+        address
+      } = newEtherWallet;
+
+      console.log("INCOMING PARAMS IN REQ ARE: ",
+        newEtherWallet,
+        "\n\n",
+        btcWalletAddress,
+        "\n\n",
+        btcWalletEncryptedPrivateKey,
+        "\n\n",
+        btcWalletEncryptedPublicKey,
+        "\n\n",
+        btcWalletEncryptedWIF,
+        "\n\n",
+        address
+      )
+
       const salt = await bcrypt.genSalt(SALT_ROUNDS);
       const hash = await bcrypt.hash(password, salt)
       const person = await User.findOne({ where: { username, email } });
@@ -20,7 +57,16 @@ const signup = async (req, res) => {
         console.log(message);
         res.status(409).send({ errorMessage: message });
       } else {
-        const user = await User.create({ username, walletAddress: req.newWallet.address, email, password: hash });
+        const user = await User.create({
+          username,
+          ethWalletAddress: address,
+          btcWalletAddress,
+          btcWalletEncryptedPrivateKey,
+          btcWalletEncryptedPublicKey,
+          btcWalletEncryptedWIF,
+          email,
+          password: hash
+        });
         const uploadUserURL = `${process.env.RAILS_MICROSERVICE}/users`;
 
         const axiosBod = {

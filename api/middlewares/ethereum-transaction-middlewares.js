@@ -40,7 +40,7 @@ const findPrivateKey = async (req, res, next) => {
 }
 
 
-const generateNewEtherWallet = async (req, res, next) => {
+const instantiateEtherWallet = async (req, res, next) => {
   try {
     if (req.body.username, req.body.password) {
     let { username, password } = req.body;
@@ -49,8 +49,8 @@ const generateNewEtherWallet = async (req, res, next) => {
       var d = new SHA3.SHA3Hash('256');
       d.update(user_creds);
       const privateKey = `0x${d.digest('hex')}`;
-      const newWallet = new ethers.Wallet(privateKey);
-      req.newWallet = newWallet;
+      const newEtherWallet = new ethers.Wallet(privateKey);
+      req.newEtherWallet = newEtherWallet;
       next();
     } else {
       throw new Error('Must pass in credentials');
@@ -116,6 +116,6 @@ const sendEth = async (req, res, next) => {
 
 module.exports = {
   sendEth,
-  generateNewEtherWallet,
+  instantiateEtherWallet,
   findPrivateKey
 };
