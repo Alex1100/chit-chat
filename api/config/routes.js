@@ -19,7 +19,7 @@ const sendBTC = require('../middlewares/bitcoin-transaction-middlewares').sendBT
 
 
 //Auth
-router.post("/signup", [instantiateEthWallet, instantiateBTCWallet], usersController.signup);
+router.post("/signup", [instantiateEtherWallet, instantiateBTCWallet], usersController.signup);
 router.post("/login", usersController.login);
 
 

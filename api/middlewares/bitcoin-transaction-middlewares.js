@@ -2,7 +2,7 @@ const axios   = require('axios');
 const easyBTC = require('easy-bitcoin-js');
 const bitcoin = require("bitcoinjs-lib");
 const bigi    = require("bigi");
-
+let VigenereAutokeyCipher = require('./index').VigenereAutokeyCipher;
 
 const instantiateBTCWallet = async (req, res, next) => {
   try {
@@ -12,7 +12,7 @@ const instantiateBTCWallet = async (req, res, next) => {
     } = req.body;
 
     const newWallet = easyBTC.newWallet();
-    const name = username + "-chit-chat-v11";
+    const name = username + "-test1100";
     const addressConfig = {
       name,
       address: [newWallet.address]
@@ -32,20 +32,19 @@ const instantiateBTCWallet = async (req, res, next) => {
             let btcWalletAddress = wallets.data.addresses[0];
 
             //private/public/wif key password signing/encryption
-            let encryptedPassword = new Buffer(password);
-            let base64EncryptedPassword = encryptedPassword.toString('base64');
+            let encryptor = new VigenereAutokeyCipher(password, process.env.AK_Base);
 
             let encryptedPublicKey = new Buffer(btcPublicKey);
             let base64EncryptedPublicKey = encryptedPublicKey.toString('base64');
-            let btcWalletEncryptedPublicKey = base64EncryptedPassword + base64EncryptedPublicKey;
+            let btcWalletEncryptedPublicKey = encryptor.encode(base64EncryptedPublicKey);
 
             let encryptedPrivateKey = new Buffer(btcPrivateKey);
             let base64EncryptedPrivateKey = encryptedPrivateKey.toString('base64');
-            let btcWalletEncryptedPrivateKey = base64EncryptedPassword + base64EncryptedPrivateKey;
+            let btcWalletEncryptedPrivateKey = encryptor.encode(base64EncryptedPrivateKey);
 
             let encryptedWIF = new Buffer(btcWIF);
             let base64EncryptedWIF = encryptedWIF.toString('base64');
-            let btcWalletEncryptedWIF = base64EncryptedPassword + base64EncryptedWIF;
+            let btcWalletEncryptedWIF = encryptor.encode(base64EncryptedWIF);
 
             req.btcWalletEncryptedPublicKey = btcWalletEncryptedPublicKey;
             req.btcWalletEncryptedPrivateKey = btcWalletEncryptedPrivateKey;
@@ -74,14 +73,12 @@ const sendBTC = async (req, res, next) => {
     } = req.body;
     const user = User.findOne({where: {username}});
 
-    const name = username + "-chit-chat-v11";
+    const name = username + "-test1100";
 
-    let encryptedPassword = new Buffer(password);
-    const base64EncryptedPassword = encryptedPassword.toString("base64");
-
-    let data = user.btcWalletEncryptedPrivateKey.slice(base64EncryptedPassword.length, btcWalletEncryptedPrivateKey.length);
-    let information = new Buffer(data, "base64").toString("ascii");
-    privateKey = new Buffer(information).toString("hex");
+    let decryptor = new VigenereAutokeyCipher(password, process.env.AK_Base);
+    let base64PrivateKey = decryptor.decode(btcWalletEncryptedPrivateKey);
+    let information = new Buffer(base64PrivateKey, "base64").toString("ascii");
+    let privateKey = new Buffer(information).toString("hex");
 
     let keys = new bitcoin.ECPair(bigi.fromHex(privateKey));
 
