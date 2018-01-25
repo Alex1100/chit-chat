@@ -54,6 +54,7 @@
 - WebRTC API via RecordRTC for creating videos
 - Ethereum transactions via INFURA API for donating to content creator/platform participant contributions
 - Bitcoin transactions via BlockCypher API for donating to content creator/platform participant contributions
+- VigenereAutokeyCipher for securing User private keys for true anonymity, (only the user could unlock their wallet with their passwords) * case-sensitive
 
 ## SOON TO INCORPORATE
 - EOS donations once EOS mainnet is live in Summer/Fall 2018
