@@ -11,6 +11,9 @@
 ## LOGIN PAGE / SIGNUP PAGE
 ![screenshot](public/images/loginpage.png)
 
+## BLUE RAY QUALITY VIDEO RECORDING
+![screenshot](public/images/blueray-video.png)
+
 ## ALL VIDEOS PAGE A
 ![screenshot](public/images/all_videos_page_a.png)
 
