@@ -21,7 +21,8 @@ function VigenereAutokeyCipher(ok, abc) {
     let key = ok;
     return str.split('').map((z, i) => {
       if(abc.indexOf(z) == -1) {
-        ignore++; return z;
+        ignore++;
+        return z;
       }
 
       key = key.concat(z);
