@@ -43,6 +43,90 @@ body {
   font-family: 'Bungee Shade', cursive;
 }
 
+
+.btc-pk-modal-header.modal-header {
+  background-color: #223;
+}
+
+.modal-title {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  color: ghostwhite;
+}
+
+
+.modal-header.close {
+  margin-top: -15px;
+}
+
+.close {
+  width: 30px;
+  color: crimson;
+  opacity: 1;
+}
+
+
+h1.btc-pk-info {
+  color: ghostwhite;
+  font-size: 140%;
+}
+
+
+div.btc-pk-modal-body.modal-body {
+  position: relative;
+  padding: 15px;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  background-color: #222222;
+  color: #77b3d4;
+  font-family: 'Gruppo', cursive;
+}
+
+div.btc-pk-modal-footer.modal-footer {
+  background-color: #223;
+}
+
+.eth-wallet-label {
+  color: ghostwhite;
+}
+
+.btc-pk-label {
+  color: ghostwhite;
+}
+
+button.btc-pk-modal-close-btn.btn.btn-default {
+  color: ghostwhite;
+  background-color: crimson;
+  border-color: #ccc;
+}
+
+span.ethWallet {
+  color: gold;
+  text-decoration: underline;
+  text-decoration-color: ghostwhite;
+  font-size: 70%;
+}
+
+span.btcWallet {
+  color: gold;
+  text-decoration: underline;
+  text-decoration-color: ghostwhite;
+  font-size: 110%;
+}
+
+h3.btc-security-measure-key {
+  color: ghostwhite;
+}
+
+span.btcPrivateKey {
+  color: gold;
+  text-decoration: underline;
+  text-decoration-color: ghostwhite;
+  font-size: 110%;
+}
+
 .login-container {
   display: block;
   position: relative;

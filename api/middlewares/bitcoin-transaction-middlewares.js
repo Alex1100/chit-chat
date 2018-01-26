@@ -50,6 +50,7 @@ const instantiateBTCWallet = async (req, res, next) => {
             req.btcWalletEncryptedPrivateKey = btcWalletEncryptedPrivateKey;
             req.btcWalletEncryptedWIF = btcWalletEncryptedWIF;
             req.btcWalletAddress = btcWalletAddress;
+            req.btcWalletPrivateKey = wallets.data.private
             next();
           })
           .catch(erro => console.log("DIDNT REGISTER NEW WALLET UNDER NEW NAME: ", erro));

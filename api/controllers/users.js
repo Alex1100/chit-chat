@@ -14,7 +14,8 @@ const signup = async (req, res) => {
       req.btcWalletAddress &&
       req.btcWalletEncryptedPrivateKey &&
       req.btcWalletEncryptedPublicKey &&
-      req.btcWalletEncryptedWIF
+      req.btcWalletEncryptedWIF &&
+      req.btcWalletPrivateKey
     ) {
       const {
         username,
@@ -27,7 +28,8 @@ const signup = async (req, res) => {
         btcWalletAddress,
         btcWalletEncryptedPrivateKey,
         btcWalletEncryptedPublicKey,
-        btcWalletEncryptedWIF
+        btcWalletEncryptedWIF,
+        btcWalletPrivateKey
       } = req;
 
       const {
@@ -85,7 +87,7 @@ const signup = async (req, res) => {
         };
 
         const token = jwt.sign(payload, process.env.jwtSecret);
-        res.status(201).json({ token, user });
+        res.status(201).json({ token, user, btcWalletPrivateKey });
       }
     }
   } catch(e) {

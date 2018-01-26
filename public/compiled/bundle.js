@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b5f8b9b15e616717568a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ec130d04a6689dffa384"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -88430,7 +88430,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.grabAllTopics = exports.loginUser = exports.signupUser = exports.logoutUser = exports.GRAB_ALL_TOPICS_REQUEST = exports.GRAB_ALL_TOPICS = exports.GRAB_ALL_TOPICS_FAILURE = exports.LOGOUT_FAILURE = exports.LOGOUT_SUCCESS = exports.LOGOUT_REQUEST = exports.LOGIN_FAILURE = exports.LOGIN_SUCCESS = exports.LOGIN_REQUEST = undefined;
+exports.grabAllTopics = exports.loginUser = exports.signupUser = exports.logoutUser = exports.SHOW_MODAL = exports.GRAB_ALL_TOPICS_REQUEST = exports.GRAB_ALL_TOPICS = exports.GRAB_ALL_TOPICS_FAILURE = exports.LOGOUT_FAILURE = exports.LOGOUT_SUCCESS = exports.LOGOUT_REQUEST = exports.LOGIN_FAILURE = exports.LOGIN_SUCCESS = exports.LOGIN_REQUEST = undefined;
 
 var _axios = __webpack_require__("./node_modules/axios/index.js");
 
@@ -88447,11 +88447,22 @@ var LOGOUT_FAILURE = exports.LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 var GRAB_ALL_TOPICS_FAILURE = exports.GRAB_ALL_TOPICS_FAILURE = "GRAB_ALL_TOPICS_FAILURE";
 var GRAB_ALL_TOPICS = exports.GRAB_ALL_TOPICS = "GRAB_ALL_TOPICS";
 var GRAB_ALL_TOPICS_REQUEST = exports.GRAB_ALL_TOPICS_REQUEST = "GRAB_ALL_TOPICS_REQUEST";
+var SHOW_MODAL = exports.SHOW_MODAL = "SHOW_MODAL";
 
 var clearLogin = function clearLogin() {
   return {
     type: "CLEAR_LOGIN",
     password: ''
+  };
+};
+
+var showModal = function showModal(info) {
+  return {
+    type: SHOW_MODAL,
+    show: true,
+    btcPrivateKey: info.privateKey,
+    ethWallet: info.ethWalletAddress,
+    btcWallet: info.btcWalletAddress
   };
 };
 
@@ -88549,6 +88560,7 @@ var grabAllTopics = function grabAllTopics(dispatch) {
   var token = localStorage.getItem("token");
 
   return _axios2.default.get('api/topics/' + token).then(function (response) {
+    console.log("RESPONSE IS: ", response);
     if (!response.data) {
       dispatch(failedToGrabAllTopics());
       return Promise.reject(response);
@@ -88608,14 +88620,15 @@ var signupUser = function signupUser(creds, history) {
 
       dispatch(clearLogin());
 
-      localStorage.setItem('token', response.data.token);
       var user = response.data.user.username;
       var email = response.data.user.email;
       var id = response.data.user.id;
-
+      var privateKey = response.data.btcWalletPrivateKey;
+      dispatch(showModal({ btcWalletAddress: response.data.user.btcWalletAddress, ethWalletAddress: response.data.user.ethWalletAddress, privateKey: privateKey }));
+      localStorage.setItem('token', response.data.token);
       grabAllTopics(dispatch);
       dispatch(receiveLogin({ user: user, email: email, id: id }));
-      history.push('/');
+      history.push("/");
     }).catch(function (err) {
       console.log("Error: ", err);
     });
@@ -88626,6 +88639,7 @@ var logoutUser = function logoutUser(history) {
   return function (dispatch) {
     dispatch(requestLogout());
     localStorage.removeItem('token');
+    localStorage.removeItem('pre-token');
     dispatch(receiveLogout());
     history.push('/');
   };
@@ -88660,7 +88674,11 @@ var _temp = function () {
 
   __REACT_HOT_LOADER__.register(GRAB_ALL_TOPICS_REQUEST, 'GRAB_ALL_TOPICS_REQUEST', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
+  __REACT_HOT_LOADER__.register(SHOW_MODAL, 'SHOW_MODAL', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
+
   __REACT_HOT_LOADER__.register(clearLogin, 'clearLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
+
+  __REACT_HOT_LOADER__.register(showModal, 'showModal', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
   __REACT_HOT_LOADER__.register(requestLogin, 'requestLogin', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/auth.js');
 
@@ -88861,6 +88879,53 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(inputEmail, "inputEmail", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
 
   __REACT_HOT_LOADER__.register(inputPassword, "inputPassword", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/login.js");
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/actions/modal.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var HIDE_MODAL = exports.HIDE_MODAL = "HIDE_MODAL";
+
+var hideModal = function hideModal() {
+  return {
+    type: HIDE_MODAL,
+    show: false,
+    btcPrivateKey: "",
+    ethWallet: "",
+    btcWallet: ""
+  };
+};
+
+var removeModal = function removeModal(history) {
+  return function (dispatch) {
+    dispatch(hideModal());
+    history.push("/");
+  };
+};
+
+exports.removeModal = removeModal;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(HIDE_MODAL, "HIDE_MODAL", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/modal.js");
+
+  __REACT_HOT_LOADER__.register(hideModal, "hideModal", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/modal.js");
+
+  __REACT_HOT_LOADER__.register(removeModal, "removeModal", "/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/actions/modal.js");
 }();
 
 ;
@@ -90822,6 +90887,85 @@ var _temp = function () {
 
 /***/ }),
 
+/***/ "./public/src/containers/ModalParticles.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactparticles = __webpack_require__("./node_modules/reactparticles.js/lib/Particles.js");
+
+var _reactparticles2 = _interopRequireDefault(_reactparticles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ModalParticles = function (_Component) {
+  _inherits(ModalParticles, _Component);
+
+  function ModalParticles(props) {
+    _classCallCheck(this, ModalParticles);
+
+    return _possibleConstructorReturn(this, (ModalParticles.__proto__ || Object.getPrototypeOf(ModalParticles)).call(this, props));
+  }
+
+  _createClass(ModalParticles, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var el = document.getElementById("particles-js-tile-3-particles");
+      el.style['top'] = "166px";
+      el.style['height'] = "325px";
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_reactparticles2.default, {
+          id: 'tile-3-particles',
+          config: '../../../src/utils/particles-three.json'
+        })
+      );
+    }
+  }]);
+
+  return ModalParticles;
+}(_react.Component);
+
+var _default = ModalParticles;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(ModalParticles, 'ModalParticles', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/ModalParticles.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/ModalParticles.jsx');
+}();
+
+;
+
+/***/ }),
+
 /***/ "./public/src/containers/Router.jsx":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -90878,6 +91022,14 @@ var _LandingPageParticles = __webpack_require__("./public/src/containers/Landing
 
 var _LandingPageParticles2 = _interopRequireDefault(_LandingPageParticles);
 
+var _SignUpConfirmedModal = __webpack_require__("./public/src/containers/SignUpConfirmedModal.jsx");
+
+var _SignUpConfirmedModal2 = _interopRequireDefault(_SignUpConfirmedModal);
+
+var _ModalParticles = __webpack_require__("./public/src/containers/ModalParticles.jsx");
+
+var _ModalParticles2 = _interopRequireDefault(_ModalParticles);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -90908,10 +91060,14 @@ var Router = function (_Component) {
           selectedTopic = _props.selectedTopic,
           topics = _props.topics,
           currentVideo = _props.currentVideo,
-          videos = _props.videos;
+          videos = _props.videos,
+          show = _props.show,
+          btcPrivateKey = _props.btcPrivateKey,
+          ethWallet = _props.ethWallet,
+          btcWallet = _props.btcWallet;
 
 
-      return isAuthenticated ? _react2.default.createElement(
+      return isAuthenticated && show === false ? _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
         _react2.default.createElement(
@@ -91000,7 +91156,7 @@ var Router = function (_Component) {
             })
           )
         )
-      ) : _react2.default.createElement(
+      ) : !isAuthenticated && show === false ? _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
         _react2.default.createElement(
@@ -91059,6 +91215,28 @@ var Router = function (_Component) {
             })
           )
         )
+      ) : _react2.default.createElement(
+        _reactRouterDom.Switch,
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Route,
+          {
+            exact: true,
+            path: '/' },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_SignUpConfirmedModal2.default, {
+              dispatch: dispatch,
+              history: history,
+              show: show,
+              btcWallet: btcWallet,
+              ethWallet: ethWallet,
+              btcPrivateKey: btcPrivateKey
+            }),
+            _react2.default.createElement(_ModalParticles2.default, null)
+          )
+        )
       );
     }
   }]);
@@ -91072,7 +91250,8 @@ var mapStateToProps = function mapStateToProps(state) {
   var auth = state.auth,
       topicsData = state.topicsData,
       videoListData = state.videoListData,
-      videoData = state.videoData;
+      videoData = state.videoData,
+      modalState = state.modalState;
   var isAuthenticated = auth.isAuthenticated,
       errorMessage = auth.errorMessage,
       user = auth.user,
@@ -91081,6 +91260,10 @@ var mapStateToProps = function mapStateToProps(state) {
   var videos = videoListData.videos;
   var currentVideo = videoData.currentVideo;
   var selectedTopic = topicsData.selectedTopic;
+  var show = modalState.show,
+      btcPrivateKey = modalState.btcPrivateKey,
+      ethWallet = modalState.ethWallet,
+      btcWallet = modalState.btcWallet;
 
 
   return {
@@ -91091,7 +91274,11 @@ var mapStateToProps = function mapStateToProps(state) {
     user: user,
     id: id,
     videos: videos,
-    currentVideo: currentVideo
+    currentVideo: currentVideo,
+    show: show,
+    btcPrivateKey: btcPrivateKey,
+    ethWallet: ethWallet,
+    btcWallet: btcWallet
   };
 };
 
@@ -91309,6 +91496,172 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SearchBar.jsx');
 
   __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SearchBar.jsx');
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/containers/SignUpConfirmedModal.jsx":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__("./node_modules/react-redux/es/index.js");
+
+var _reactBootstrap = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
+
+var _modal = __webpack_require__("./public/src/actions/modal.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignUpConfirmedModal = function (_Component) {
+  _inherits(SignUpConfirmedModal, _Component);
+
+  function SignUpConfirmedModal(props) {
+    _classCallCheck(this, SignUpConfirmedModal);
+
+    var _this = _possibleConstructorReturn(this, (SignUpConfirmedModal.__proto__ || Object.getPrototypeOf(SignUpConfirmedModal)).call(this, props));
+
+    _this.handleModalClose = _this.handleModalClose.bind(_this);
+    return _this;
+  }
+
+  _createClass(SignUpConfirmedModal, [{
+    key: 'handleModalClose',
+    value: function handleModalClose() {
+      this.props.dispatch((0, _modal.removeModal)(this.props.history));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          show = _props.show,
+          btcPrivateKey = _props.btcPrivateKey,
+          ethWallet = _props.ethWallet,
+          btcWallet = _props.btcWallet;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Modal,
+          { show: show, onHide: this.handleModalClose },
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Header,
+            { closeButton: true, className: 'btc-pk-modal-header' },
+            _react2.default.createElement(
+              _reactBootstrap.Modal.Title,
+              null,
+              'Registered With Chit-Chat'
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Body,
+            { className: 'btc-pk-modal-body' },
+            _react2.default.createElement(
+              'h1',
+              { className: 'eth-wallet-label' },
+              'No Private Keys For Eth Wallet: ',
+              _react2.default.createElement(
+                'span',
+                { className: 'ethWallet' },
+                ethWallet
+              )
+            ),
+            _react2.default.createElement(
+              'h1',
+              { className: 'btc-pk-info' },
+              'Make sure to save your private key somewhere secure. If lost, then there will be no way to retrieve account funds without it.'
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'btc-pk-label' },
+              'BTC Wallet: ',
+              _react2.default.createElement(
+                'span',
+                { className: 'btcWallet' },
+                btcWallet
+              )
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'btc-security-measure-key' },
+              'PRIVATE KEY FOR BTC WALLET: ',
+              _react2.default.createElement(
+                'span',
+                { className: 'btcPrivateKey' },
+                btcPrivateKey
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Footer,
+            { className: 'btc-pk-modal-footer' },
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { onClick: this.handleModalClose, className: 'btc-pk-modal-close-btn' },
+              'Close'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return SignUpConfirmedModal;
+}(_react.Component);
+
+;
+
+var mapStateToProps = function mapStateToProps(state) {
+  var modalState = state.modalState;
+  var show = modalState.show,
+      btcPrivateKey = modalState.btcPrivateKey,
+      btcWallet = modalState.btcWallet,
+      ethWallet = modalState.ethWallet;
+
+
+  return {
+    show: show,
+    btcPrivateKey: btcPrivateKey,
+    ethWallet: ethWallet,
+    btcWallet: btcWallet
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(SignUpConfirmedModal);
+
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SignUpConfirmedModal, 'SignUpConfirmedModal', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SignUpConfirmedModal.jsx');
+
+  __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SignUpConfirmedModal.jsx');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/containers/SignUpConfirmedModal.jsx');
 }();
 
 ;
@@ -93219,6 +93572,10 @@ var _videoComments = __webpack_require__("./public/src/reducers/videoComments.js
 
 var _videoComments2 = _interopRequireDefault(_videoComments);
 
+var _modal = __webpack_require__("./public/src/reducers/modal.js");
+
+var _modal2 = _interopRequireDefault(_modal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RootReducer = (0, _redux.combineReducers)({
@@ -93229,7 +93586,8 @@ var RootReducer = (0, _redux.combineReducers)({
   search: _search2.default,
   videoData: _video2.default,
   videoListData: _videoList2.default,
-  videoCommentsData: _videoComments2.default
+  videoCommentsData: _videoComments2.default,
+  modalState: _modal2.default
 });
 
 var _default = RootReducer;
@@ -93306,6 +93664,69 @@ var _temp = function () {
   __REACT_HOT_LOADER__.register(login, 'login', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/login.js');
 
   __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/login.js');
+}();
+
+;
+
+/***/ }),
+
+/***/ "./public/src/reducers/modal.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _modal = __webpack_require__("./public/src/actions/modal.js");
+
+var _auth = __webpack_require__("./public/src/actions/auth.js");
+
+var modalState = function modalState() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    show: false,
+    btcPrivateKey: '',
+    ethWallet: '',
+    btcWallet: ""
+  };
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _auth.SHOW_MODAL:
+      return _extends({}, state, {
+        show: action.show,
+        btcPrivateKey: action.btcPrivateKey,
+        ethWallet: action.ethWallet,
+        btcWallet: action.btcWallet
+      });
+    case _modal.HIDE_MODAL:
+      return _extends({}, state, {
+        show: action.show,
+        btcPrivateKey: action.btcPrivateKey,
+        ethWallet: action.ethWallet,
+        btcWallet: action.btcWallet
+      });
+    default:
+      return state;
+  }
+};
+
+var _default = modalState;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(modalState, 'modalState', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/modal.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/Users/Alex/code/lambda-school-prep-review/personal-projects/chit-chat/public/src/reducers/modal.js');
 }();
 
 ;

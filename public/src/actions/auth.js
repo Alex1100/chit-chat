@@ -9,11 +9,19 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const GRAB_ALL_TOPICS_FAILURE = "GRAB_ALL_TOPICS_FAILURE";
 export const GRAB_ALL_TOPICS = "GRAB_ALL_TOPICS";
 export const GRAB_ALL_TOPICS_REQUEST = "GRAB_ALL_TOPICS_REQUEST";
-
+export const SHOW_MODAL = "SHOW_MODAL";
 
 const clearLogin = () => ({
   type: "CLEAR_LOGIN",
   password: ''
+});
+
+const showModal = (info) => ({
+  type: SHOW_MODAL,
+  show: true,
+  btcPrivateKey: info.privateKey,
+  ethWallet: info.ethWalletAddress,
+  btcWallet: info.btcWalletAddress
 });
 
 const requestLogin = user => ({
@@ -100,6 +108,7 @@ const grabAllTopics = (dispatch) => {
 
   return axios.get(`api/topics/${token}`)
     .then(response => {
+      console.log("RESPONSE IS: ", response);
       if(!response.data) {
         dispatch(failedToGrabAllTopics());
         return Promise.reject(response);
@@ -163,14 +172,15 @@ const signupUser = (creds, history) => {
 
         dispatch(clearLogin());
 
-        localStorage.setItem('token', response.data.token);
         const user = response.data.user.username;
         const email = response.data.user.email;
         const id = response.data.user.id;
-
+        const privateKey = response.data.btcWalletPrivateKey;
+        dispatch(showModal({btcWalletAddress: response.data.user.btcWalletAddress, ethWalletAddress: response.data.user.ethWalletAddress, privateKey: privateKey}))
+        localStorage.setItem('token', response.data.token);
         grabAllTopics(dispatch);
         dispatch(receiveLogin({ user, email, id }));
-        history.push('/');
+        history.push("/");
       })
       .catch(err => {
         console.log("Error: ", err);
@@ -182,6 +192,7 @@ const signupUser = (creds, history) => {
 const logoutUser = (history) => (dispatch) => {
   dispatch(requestLogout());
   localStorage.removeItem('token');
+  localStorage.removeItem('pre-token');
   dispatch(receiveLogout());
   history.push('/');
 };

@@ -7,7 +7,7 @@ import search from './search';
 import videoData from './video';
 import videoListData from './videoList';
 import videoCommentsData from './videoComments';
-
+import modalState from './modal';
 
 const RootReducer = combineReducers({
   auth,
@@ -17,7 +17,8 @@ const RootReducer = combineReducers({
   search,
   videoData,
   videoListData,
-  videoCommentsData
+  videoCommentsData,
+  modalState
 });
 
 export default RootReducer;

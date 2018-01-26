@@ -15,7 +15,8 @@ import VideoRecorder from './VideoRecorder';
 import VideoList from './VideoList';
 import Video from '../components/Video';
 import LandingPageParticles from './LandingPageParticles';
-
+import SignUpConfirmedModal from './SignUpConfirmedModal';
+import ModalParticles from './ModalParticles';
 
 class Router extends Component {
 
@@ -31,9 +32,13 @@ class Router extends Component {
       topics,
       currentVideo,
       videos,
+      show,
+      btcPrivateKey,
+      ethWallet,
+      btcWallet
     } = this.props;
 
-    return isAuthenticated ? (
+    return isAuthenticated && show === false ? (
       <Switch>
         <Route
           exact
@@ -106,7 +111,7 @@ class Router extends Component {
           </div>
         </Route>
       </Switch>
-    ) : (
+    ) : !isAuthenticated && show === false ? (
       <Switch>
         <Route
           exact
@@ -153,7 +158,25 @@ class Router extends Component {
           </div>
         </Route>
       </Switch>
-    );
+    ) : (
+      <Switch>
+        <Route
+          exact
+          path="/">
+          <div>
+            <SignUpConfirmedModal
+              dispatch={dispatch}
+              history={history}
+              show={show}
+              btcWallet={btcWallet}
+              ethWallet={ethWallet}
+              btcPrivateKey={btcPrivateKey}
+            />
+            <ModalParticles />
+          </div>
+        </Route>
+      </Switch>
+    )
   }
 };
 
@@ -163,7 +186,8 @@ const mapStateToProps = (state) => {
     auth,
     topicsData,
     videoListData,
-    videoData
+    videoData,
+    modalState
   } = state;
 
   const {
@@ -178,9 +202,20 @@ const mapStateToProps = (state) => {
     videos,
   } = videoListData;
 
-  const { currentVideo } = videoData;
+  const {
+    currentVideo
+  } = videoData;
 
-  const { selectedTopic } = topicsData;
+  const {
+    selectedTopic
+  } = topicsData;
+
+  const {
+    show,
+    btcPrivateKey,
+    ethWallet,
+    btcWallet
+  } = modalState;
 
   return {
     topics,
@@ -191,6 +226,10 @@ const mapStateToProps = (state) => {
     id,
     videos,
     currentVideo,
+    show,
+    btcPrivateKey,
+    ethWallet,
+    btcWallet
   };
 };
 

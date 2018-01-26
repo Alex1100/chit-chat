@@ -57,7 +57,6 @@ const getTopics = async (req, res) => {
             }
           })
         }
-
         let sortedTopics = JSON.parse(topics);
         res.status(200).json(sortedTopics);
       });
